@@ -105,6 +105,7 @@ namespace XenkoByteSized.ProceduralMesh {
         }
 
         private void UpdateMeshData() {
+            /* currently assumes the size of the data does not change, only the contents */
             var context = Services.GetService<GraphicsContext>();
             mesh.Draw.VertexBuffers[0].Buffer.SetData(context.CommandList, vertices);
         }
