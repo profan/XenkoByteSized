@@ -1,0 +1,43 @@
+!Package
+Id: 18dd718c-edc9-4618-a295-a49df9ba058b
+SerializedVersion: {Assets: 0.0.4}
+Meta:
+    Name: XenkoByteSized
+    Version: 1.0.0.0
+    Authors: []
+    Owners: []
+    RootNamespace: XenkoByteSized
+    Dependencies:
+        -   Name: Xenko
+            Version: 3.0.0.7
+            RootAssets: []
+LocalDependencies: []
+Profiles:
+    -   Name: Shared
+        Platform: Shared
+        InheritProfiles: []
+        AssetFolders:
+            -   Path: Assets/Shared
+            -   Path: XenkoByteSized.Game/Effects
+        ResourceFolders:
+            - Resources
+        OutputGroupDirectories: {}
+        ProjectReferences:
+            -   Id: b79c0f3b-1607-4d39-a3d9-f872aa1a9dbb
+                Location: XenkoByteSized.Game/XenkoByteSized.Game.csproj
+                Type: Library
+    -   Name: Windows
+        Platform: Windows
+        InheritProfiles: []
+        AssetFolders:
+            -   Path: Assets/Windows
+        ResourceFolders: []
+        OutputGroupDirectories: {}
+        ProjectReferences:
+            -   Id: e687323f-dc19-4844-9046-c16aeb06823a
+                Location: XenkoByteSized.Windows/XenkoByteSized.Windows.csproj
+                Type: Executable
+ExplicitFolders: []
+Bundles: []
+TemplateFolders: []
+RootAssets: []
