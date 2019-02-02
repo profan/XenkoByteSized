@@ -4,7 +4,7 @@ Intended as a sort of dumping ground for various small samples of using Xenko to
 
 Project is currently on **Xenko 3.1.0.1-beta01-0430**.
 
-## [XenkoByteSized.ProceduralMesh](XenkoByteSized/XenkoByteSized.Game/ProceduralMesh/TetraHedronMesh.cs)
+## [XenkoByteSized.ProceduralMesh](XenkoByteSized/XenkoByteSized.Game/ProceduralMesh/TetrahedronMesh.cs)
 A simple example of creating a mesh procedurally by supplying vertices, also calculates normals automatically. Can be observed in the scene that loads when you open the project aside from the source itself.
 
 ![tetrahedra](bytesized.png "sphere and tetrahedra")
