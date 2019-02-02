@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xenko.Core.Mathematics;
-using Xenko.Input;
+﻿using Xenko.Core.Mathematics;
 using Xenko.Engine;
 using Xenko.Rendering;
 using Xenko.Graphics;
@@ -18,12 +12,11 @@ namespace XenkoByteSized.ProceduralMesh {
         static Vector3 VERT_RIGHT = new Vector3(-1, 1, -1);
         static Vector3 VERT_FRONT = new Vector3(1, -1, -1);
 
-        private ModelComponent modelComponent;
-
         /* our vertex array, vertex buffer will be built from this data we keep around */
         private VertexPositionNormalTexture[] vertices;
 
         /* GPU side data */
+        private ModelComponent modelComponent;
         private Mesh mesh;
 
         /* rotation in radians per second */
@@ -105,13 +98,17 @@ namespace XenkoByteSized.ProceduralMesh {
         }
 
         private void UpdateMeshData() {
+
             /* currently assumes the size of the data does not change, only the contents */
             var context = Services.GetService<GraphicsContext>();
             mesh.Draw.VertexBuffers[0].Buffer.SetData(context.CommandList, vertices);
+
         }
 
         public override void Start() {
+
             CreateMesh();
+
         }
 
         public override void Update() {
