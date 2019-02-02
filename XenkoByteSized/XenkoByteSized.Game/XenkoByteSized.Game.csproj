@@ -1,21 +1,22 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
     <TargetFramework>net461</TargetFramework>
     <RootNamespace>XenkoByteSized</RootNamespace>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
-
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
     <LangVersion>7.3</LangVersion>
   </PropertyGroup>
-
   <ItemGroup>
-    <PackageReference Include="Xenko" Version="3.0.0.7">
-      <PrivateAssets>contentfiles;analyzers</PrivateAssets>
-    </PackageReference>
+    <PackageReference Include="Xenko.Core" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Core.Assets.CompilerApp" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" IncludeAssets="build" />
+    <PackageReference Include="Xenko.Engine" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Navigation" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Particles" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Physics" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.UI" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
+    <PackageReference Include="Xenko.Video" Version="3.1.0.1-beta01-0430" PrivateAssets="contentfiles;analyzers" />
   </ItemGroup>
 </Project>
