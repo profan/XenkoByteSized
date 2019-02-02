@@ -76,12 +76,12 @@ namespace XenkoByteSized.ProceduralMesh {
                 GraphicsResourceUsage.Dynamic /* usage hint to the GPU for it to allocate it appropriately */
             );
 
-            var vertexBuffer = new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, vertices.Length);
-
             mesh = new Mesh() {
                 Draw = new MeshDraw() {
                     PrimitiveType = PrimitiveType.TriangleList,
-                    VertexBuffers = new[] { vertexBuffer },
+                    VertexBuffers = new[] {
+                        new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, vertices.Length)
+                    },
                     DrawCount = vertices.Length
                 }
             };
