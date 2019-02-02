@@ -2,6 +2,6 @@ XenkoByteSized
 ---------------
 Intended as a sort of dumping ground for various small samples of using Xenko to do various things, like procedurally generate meshes.
 
-Intended currently for **Xenko 3.0.7**, will move to 3.1 once it stabilizes.
+Project is currently on **Xenko 3.1.0.1-beta01-0430**.
 
 ![tetrahedra](bytesized.png "sphere and tetrahedra")
