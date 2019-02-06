@@ -22,92 +22,99 @@ namespace XenkoByteSized.ProceduralMesh {
         /* rotation in radians per second */
         public float rotationSpeed = MathUtil.PiOverFour;
 
-        private void GenerateTetrahedra() {
+        static private VertexPositionNormalTexture[] GenerateTetrahedra() {
 
             /* create our vertex data first */
-            vertices = new VertexPositionNormalTexture[TETRAHEDRON_VERTS];
+            var verts = new VertexPositionNormalTexture[TETRAHEDRON_VERTS];
 
             /* bottom face */
-            vertices[0].Position = VERT_LEFT;
-            vertices[1].Position = VERT_FRONT;
-            vertices[2].Position = VERT_RIGHT;
+            verts[0].Position = VERT_LEFT;
+            verts[1].Position = VERT_FRONT;
+            verts[2].Position = VERT_RIGHT;
 
             /* left face */
-            vertices[3].Position = VERT_TOP;
-            vertices[4].Position = VERT_FRONT;
-            vertices[5].Position = VERT_LEFT;
+            verts[3].Position = VERT_TOP;
+            verts[4].Position = VERT_FRONT;
+            verts[5].Position = VERT_LEFT;
 
             /* right face */
-            vertices[6].Position = VERT_RIGHT;
-            vertices[7].Position = VERT_FRONT;
-            vertices[8].Position = VERT_TOP;
+            verts[6].Position = VERT_RIGHT;
+            verts[7].Position = VERT_FRONT;
+            verts[8].Position = VERT_TOP;
 
             /* back face */
-            vertices[9].Position = VERT_LEFT;
-            vertices[10].Position = VERT_RIGHT;
-            vertices[11].Position = VERT_TOP;
+            verts[9].Position = VERT_LEFT;
+            verts[10].Position = VERT_RIGHT;
+            verts[11].Position = VERT_TOP;
+
+            return verts;
 
         }
 
-        private void CalculateNormals() {
+        static private void CalculateNormals(VertexPositionNormalTexture[] verts) {
 
-            for (int i = 0; i < vertices.Length; i += 3) {
-                var u = vertices[i + 2].Position - vertices[i].Position;
-                var v = vertices[i + 1].Position - vertices[i].Position;
+            for (int i = 0; i < verts.Length; i += 3) {
+                var u = verts[i + 2].Position - verts[i].Position;
+                var v = verts[i + 1].Position - verts[i].Position;
                 var normal = Vector3.Cross(u, v);
-                vertices[i + 0].Normal = normal;
-                vertices[i + 1].Normal = normal;
-                vertices[i + 2].Normal = normal;
+                verts[i + 0].Normal = normal;
+                verts[i + 1].Normal = normal;
+                verts[i + 2].Normal = normal;
             }
 
         }
 
-        private void CreateMesh() {
-
-            /* set up our mesh */
-            GenerateTetrahedra();
-            CalculateNormals();
+        private Mesh CreateMesh(VertexPositionNormalTexture[] verts) {
 
             /* now set up the GPU side stuff */
             var vbo = Xenko.Graphics.Buffer.New<VertexPositionNormalTexture>(
                 GraphicsDevice,
-                vertices.Length, /* how many vertices to allocate space for */
+                verts.Length, /* how many vertices to allocate space for */
                 BufferFlags.VertexBuffer, /* what kind of buffer... */
-                GraphicsResourceUsage.Dynamic /* usage hint to the GPU for it to allocate it appropriately */
+                GraphicsResourceUsage.Default /* usage hint to the GPU for it to allocate it appropriately (explicit default in our case) */
             );
 
-            mesh = new Mesh() {
+            Mesh newMesh = new Mesh() {
                 Draw = new MeshDraw() {
                     PrimitiveType = PrimitiveType.TriangleList,
                     VertexBuffers = new[] {
-                        new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, vertices.Length)
+                        new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length)
                     },
-                    DrawCount = vertices.Length
+                    DrawCount = verts.Length
                 }
             };
 
-            modelComponent = new ModelComponent() {
-                Model = new Model() {
-                    mesh,
-                }
-            };
-
-            UpdateMeshData(); /* finally push the data */
-            Entity.Add(modelComponent);
+            return newMesh;
 
         }
 
         private void UpdateMeshData() {
 
-            /* currently assumes the size of the data does not change, only the contents */
             var context = Services.GetService<GraphicsContext>();
+
+            /* currently assumes the size of the data does not change, only the contents */
             mesh.Draw.VertexBuffers[0].Buffer.SetData(context.CommandList, vertices);
 
         }
 
         public override void Start() {
 
-            CreateMesh();
+            /* set up our mesh */
+            vertices = GenerateTetrahedra();
+            CalculateNormals(vertices);
+            mesh = CreateMesh(vertices);
+
+            /* push the created mesh and its data */
+            UpdateMeshData();
+
+            /* create our ModelComponent and add the mesh to it */
+            modelComponent = new ModelComponent() {
+                Model = new Model() {
+                    mesh,
+                }
+            };
+
+            Entity.Add(modelComponent);
 
         }
 
