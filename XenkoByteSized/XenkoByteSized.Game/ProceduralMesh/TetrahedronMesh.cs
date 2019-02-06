@@ -74,7 +74,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 GraphicsResourceUsage.Default /* usage hint to the GPU for it to allocate it appropriately (explicit default in our case) */
             );
 
-            Mesh newMesh = new Mesh() {
+            var newMesh = new Mesh() {
                 Draw = new MeshDraw() {
                     PrimitiveType = PrimitiveType.TriangleList,
                     VertexBuffers = new[] {
