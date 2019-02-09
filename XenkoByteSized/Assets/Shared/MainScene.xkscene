@@ -28,6 +28,7 @@ Hierarchy:
                         Children: {}
                     2f98a2bbdcc7e95798290b6498f5b6f4: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized.Game
                         Id: 1824dd23-cec4-46d5-945d-d3314658e91e
+                        CurrentCamera: ref!! e2228c1b-ec7c-41b2-bf0e-edec37a5aefe
         -   Entity:
                 Id: 14f71868-26bb-4678-95c8-ee92d5a190fb
                 Name: Ground

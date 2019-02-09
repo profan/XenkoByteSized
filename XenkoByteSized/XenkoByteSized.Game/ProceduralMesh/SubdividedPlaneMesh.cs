@@ -87,6 +87,8 @@ namespace XenkoByteSized.ProceduralMesh {
         /* current camera */
         private CameraComponent currentCamera;
 
+        public CameraComponent CurrentCamera { get => currentCamera; set => currentCamera = value; }
+
         static private VertexPositionNormalTexture[] GenerateSubdividedPlaneMesh(int width, int height, int subdivisions) {
 
             void CreateQuad(float x1, float z1, float x2, float z2, VertexPositionNormalTexture[] vs, ref int offset) {
@@ -274,9 +276,6 @@ namespace XenkoByteSized.ProceduralMesh {
         }
 
         public override void Start() {
-
-            /* get our current camera, we know it doesnt change so this is fine */
-            currentCamera = SceneSystem.SceneInstance.RootScene.Entities.First(e => e.Name == "Camera").Get<CameraComponent>();
 
             /* set up our heightmap and plane */
             heightmap = new UnmanagedArray<float>(DEFAULT_WIDTH * DEFAULT_HEIGHT);
