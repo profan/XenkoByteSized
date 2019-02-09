@@ -8,12 +8,11 @@ using Xenko.Physics.Shapes;
 using Xenko.Core.Annotations;
 using Xenko.Core.Diagnostics;
 using Xenko.Extensions;
+using Xenko.Profiling;
+using Xenko.Input;
 
 using System.Collections.Generic;
-using System.Linq;
-using Xenko.Input;
 using System;
-using Xenko.Profiling;
 
 namespace XenkoByteSized.ProceduralMesh {
     class SubdividedPlaneMesh : SyncScript {
@@ -71,7 +70,7 @@ namespace XenkoByteSized.ProceduralMesh {
             public ModificationMode Mode { get; set; }
             public float multiplier = 1.0f;
 
-            void Raise(ref Vector2 pos, float radius) {
+            private void AdjustHeight(ref Vector2 pos, float radius, float delta) {
 
                 /* FIXME: more efficient later */
                 var verts = VerticesNearPosition(vertices, pos, radius);
@@ -81,38 +80,42 @@ namespace XenkoByteSized.ProceduralMesh {
                     var dist = (v.XZ() - pos).Length();
                     ShittyDebug.Log($"dist: {dist}, v.XZ: {v.XZ()}, pos: {pos}");
                     if (dist <= radius) {
-                        v.Y += (multiplier * (dist / radius));
+                        v.Y += (multiplier * (dist / radius)) * delta;
                     }
                 }
 
             }
 
-            void Lower(ref Vector2 pos, float radius) {
+            void Raise(ref Vector2 pos, float radius, float delta) {
+                AdjustHeight(ref pos, radius, delta);
+            }
+
+            void Lower(ref Vector2 pos, float radius, float delta) {
+                AdjustHeight(ref pos, radius, -delta);
+            }
+
+            void Smoothen(ref Vector2 pos, float radius, float delta) {
 
             }
 
-            void Smoothen(ref Vector2 pos, float radius) {
+            void Flatten(ref Vector2 pos, float radius, float delta) {
 
             }
 
-            void Flatten(ref Vector2 pos, float radius) {
-
-            }
-
-            public void Modify(Vector2 pos, float radius) {
+            public void Modify(Vector2 pos, float radius, float delta) {
 
                 switch (Mode) {
                     case ModificationMode.Raise:
-                        Raise(ref pos, radius);
+                        Raise(ref pos, radius, delta);
                         break;
                     case ModificationMode.Lower:
-                        Lower(ref pos, radius);
+                        Lower(ref pos, radius, delta);
                         break;
                     case ModificationMode.Smoothen:
-                        Smoothen(ref pos, radius);
+                        Smoothen(ref pos, radius, delta);
                         break;
                     case ModificationMode.Flatten:
-                        Flatten(ref pos, radius);
+                        Flatten(ref pos, radius, delta);
                         break;
                 }
 
@@ -294,6 +297,8 @@ namespace XenkoByteSized.ProceduralMesh {
 
         public override void Update() {
 
+            const float UNITS_PER_SECOND = 2.0f;
+
             // init our temp shit debugger thing
             if (ShittyDebug.debug == null) {
                 ShittyDebug.debug = DebugText;
@@ -302,7 +307,7 @@ namespace XenkoByteSized.ProceduralMesh {
             var screenPos = Input.MousePosition;
             float dt = (float)Game.TargetElapsedTime.TotalSeconds;
 
-            if (Input.IsMouseButtonPressed(MouseButton.Left)) {
+            if (Input.IsMouseButtonDown(MouseButton.Left)) {
 
                 var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
@@ -310,14 +315,14 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Raise;
-                    modifier.Modify(localHitPos.XZ(), 4.0f);
+                    modifier.Modify(localHitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
                     UpdateMeshData();
                     CalculateNormals(vertices);
                 }
 
                 ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
 
-            } else if (Input.IsMouseButtonReleased(MouseButton.Right)) {
+            } else if (Input.IsMouseButtonDown(MouseButton.Right)) {
 
                 var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
@@ -325,7 +330,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Lower;
-                    modifier.Modify(hitPos.XZ(), 4.0f);
+                    modifier.Modify(hitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
                     UpdateMeshData();
                     CalculateNormals(vertices);
                 }
