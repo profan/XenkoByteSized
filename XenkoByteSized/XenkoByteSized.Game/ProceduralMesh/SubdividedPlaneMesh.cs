@@ -24,11 +24,11 @@ namespace XenkoByteSized.ProceduralMesh {
             }
 
             public TerrainModifier(UnmanagedArray<float> data) {
-                mode = ModificationMode.Raise;
+                Mode = ModificationMode.Raise;
                 multiplier = 1.0f;
             }
 
-            public ModificationMode mode;
+            public ModificationMode Mode { get; set; }
             public float multiplier;
 
             void Raise(ref Vector2 pos, float radius) {
@@ -47,9 +47,9 @@ namespace XenkoByteSized.ProceduralMesh {
 
             }
 
-            public void Modify(ref Vector2 pos, float radius) {
+            public void Modify(Vector2 pos, float radius) {
 
-                switch (mode) {
+                switch (Mode) {
                     case ModificationMode.Raise:
                         Raise(ref pos, radius);
                         break;
@@ -84,10 +84,7 @@ namespace XenkoByteSized.ProceduralMesh {
         /* terrain modification thing */
         private TerrainModifier modifier;
 
-        /* current camera */
-        private CameraComponent currentCamera;
-
-        public CameraComponent CurrentCamera { get => currentCamera; set => currentCamera = value; }
+        public CameraComponent CurrentCamera { get; set; }
 
         static private VertexPositionNormalTexture[] GenerateSubdividedPlaneMesh(int width, int height, int subdivisions) {
 
@@ -253,8 +250,13 @@ namespace XenkoByteSized.ProceduralMesh {
 
             if (Input.IsMouseButtonPressed(MouseButton.Left)) {
 
-                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, currentCamera, this.GetSimulation());
+                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
+
+                if (worldPosHit.Succeeded) {
+                    modifier.Mode = TerrainModifier.ModificationMode.Raise;
+                    modifier.Modify(hitPos.XZ(), 2.0f);
+                }
 
                 lastHitResult = worldPosHit;
                 lastHitPos = lastHitResult.Point;
@@ -263,8 +265,13 @@ namespace XenkoByteSized.ProceduralMesh {
 
             } else if (Input.IsMouseButtonReleased(MouseButton.Right)) {
 
-                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, currentCamera, this.GetSimulation());
+                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
+
+                if (worldPosHit.Succeeded) {
+                    modifier.Mode = TerrainModifier.ModificationMode.Lower;
+                    modifier.Modify(hitPos.XZ(), 2.0f);
+                }
 
                 lastHitResult = worldPosHit;
                 lastHitPos = lastHitResult.Point;
