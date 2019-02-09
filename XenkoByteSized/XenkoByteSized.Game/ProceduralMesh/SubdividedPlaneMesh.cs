@@ -355,7 +355,7 @@ namespace XenkoByteSized.ProceduralMesh {
             colliderComponent = new StaticColliderComponent();
 
             var heightfield = new HeightfieldColliderShape(
-                DEFAULT_WIDTH, DEFAULT_HEIGHT, heightmap,
+                DEFAULT_WIDTH*2, DEFAULT_HEIGHT*2, heightmap,
                 heightScale: 1.0f,
                 minHeight: -64.0f,
                 maxHeight: 64.0f,
