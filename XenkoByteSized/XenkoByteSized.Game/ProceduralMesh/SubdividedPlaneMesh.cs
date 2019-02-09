@@ -80,7 +80,7 @@ namespace XenkoByteSized.ProceduralMesh {
                     var dist = (v.XZ() - pos).Length();
                     ShittyDebug.Log($"dist: {dist}, v.XZ: {v.XZ()}, pos: {pos}");
                     if (dist <= radius) {
-                        v.Y += (multiplier * (dist / radius)) * delta;
+                        v.Y += (multiplier * (radius / dist)) * delta;
                     }
                 }
 
@@ -99,6 +99,29 @@ namespace XenkoByteSized.ProceduralMesh {
             }
 
             void Flatten(ref Vector2 pos, float radius, float delta) {
+
+                /* FIXME: more efficient later */
+                var verts = VerticesNearPosition(vertices, pos, radius);
+
+                float closestVertVal = float.MaxValue;
+                float closestVertHeight = 0.0f;
+
+                for (int i = 0; i < verts.Length; ++i) {
+                    ref var v = ref verts[i].Position;
+                    float dist = (v.XZ() - pos).Length();
+                    if (dist <= radius && dist <= closestVertVal) {
+                        closestVertVal = dist;
+                        closestVertHeight = v.Y;
+                    }
+                }
+
+                for (int i = 0; i < verts.Length; ++i) {
+                    ref var v = ref verts[i].Position;
+                    var dist = (v.XZ() - pos).Length();
+                    if (dist <= radius) {
+                        v.Y = closestVertHeight;
+                    }
+                }
 
             }
 
@@ -307,7 +330,20 @@ namespace XenkoByteSized.ProceduralMesh {
             var screenPos = Input.MousePosition;
             float dt = (float)Game.TargetElapsedTime.TotalSeconds;
 
-            if (Input.IsMouseButtonDown(MouseButton.Left)) {
+            if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftShift)) {
+
+                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
+                var hitPos = worldPosHit.Point;
+
+                if (worldPosHit.Succeeded) {
+                    var localHitPos = Entity.Transform.WorldToLocal(hitPos);
+                    modifier.Mode = TerrainModifier.ModificationMode.Flatten;
+                    modifier.Modify(hitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
+                    UpdateMeshData();
+                    CalculateNormals(vertices);
+                }
+
+            } else if (Input.IsMouseButtonDown(MouseButton.Left)) {
 
                 var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
@@ -322,7 +358,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
                 ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
 
-            } else if (Input.IsMouseButtonDown(MouseButton.Right)) {
+            } else if (Input.IsMouseButtonDown(MouseButton.Right) && false) {
 
                 var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
