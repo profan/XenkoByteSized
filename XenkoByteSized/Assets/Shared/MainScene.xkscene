@@ -12,7 +12,22 @@ Hierarchy:
         - ref!! 14f71868-26bb-4678-95c8-ee92d5a190fb
         - ref!! b48535fa-2b98-4df4-a71c-a03c5377b6af
         - ref!! 925da908-dc1e-42e0-a417-b54e4ffe21a4
+        - ref!! 01bdc91a-3559-4f98-9f9b-2187250509e7
+        - ref!! c99b455f-8564-4bcb-af5b-9a7af33cd5f4
     Parts:
+        -   Folder: ProceduralMesh
+            Entity:
+                Id: 01bdc91a-3559-4f98-9f9b-2187250509e7
+                Name: SubdividedPlaneMesh
+                Components:
+                    3b39ee7cf4b7a3f7129e32c37af34fe1: !TransformComponent
+                        Id: 532547f4-39eb-42f5-85c5-cf61e86fb7bb
+                        Position: {X: 0.0, Y: 1.31977522, Z: -3.08407259}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    2f98a2bbdcc7e95798290b6498f5b6f4: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized.Game
+                        Id: 1824dd23-cec4-46d5-945d-d3314658e91e
         -   Entity:
                 Id: 14f71868-26bb-4678-95c8-ee92d5a190fb
                 Name: Ground
@@ -72,7 +87,7 @@ Hierarchy:
         -   Folder: ProceduralMesh
             Entity:
                 Id: 925da908-dc1e-42e0-a417-b54e4ffe21a4
-                Name: ProceduralMesh
+                Name: TetrahedronMesh
                 Components:
                     05157f4ec7b186718a70596513d921d6: !TransformComponent
                         Id: 441305cd-296b-49dd-a410-4290b95fdd63
@@ -89,8 +104,8 @@ Hierarchy:
                 Components:
                     942ab63c1893704d15868be4ed13a6c5: !TransformComponent
                         Id: d12e0cb9-a04e-4ce6-86f2-e724c2850198
-                        Position: {X: 2.6, Y: 0.6, Z: -1.0}
-                        Rotation: {X: 0.0, Y: 0.829037547, Z: 0.0, W: 0.5591929}
+                        Position: {X: 7.62846375, Y: 2.83207655, Z: -0.6871376}
+                        Rotation: {X: 0.0, Y: 0.6922245, Z: 0.0, W: 0.7216822}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
                     51bcd52e32947c42c08084b58a4210c0: !CameraComponent
@@ -120,3 +135,37 @@ Hierarchy:
                         Id: 76351885-dff7-4499-8000-de85042113c1
                         Model: 003a90e7-4eb0-4838-9ac0-32b0f96f3206:Sphere
                         Materials: {}
+        -   Entity:
+                Id: c99b455f-8564-4bcb-af5b-9a7af33cd5f4
+                Name: RigidSphere
+                Components:
+                    c67104846de9d3e567f9d0852edeb7cc: !TransformComponent
+                        Id: b4fdbb0e-b91a-41b0-bf91-39fb9a8a59e0
+                        Position: {X: 5.307163, Y: 7.52842236, Z: 0.358312964}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    38d207e0a59cb94999e671aefe6d3338: !ModelComponent
+                        Id: 8714d966-c7d7-4733-b5e5-adadd80d2948
+                        Model: 003a90e7-4eb0-4838-9ac0-32b0f96f3206:Sphere
+                        Materials: {}
+                    a2b84793567c2da293f271e72cccc7d2: !RigidbodyComponent
+                        Id: 44d07c26-3dfc-4545-9a03-410b952e3b4a
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            90394d9faedfbba043ae98034fa676ab: !SphereColliderShapeDesc
+                                Is2D: false
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
