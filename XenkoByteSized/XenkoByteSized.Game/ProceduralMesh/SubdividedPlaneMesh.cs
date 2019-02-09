@@ -6,13 +6,50 @@ using Xenko.Physics;
 using Xenko.Core;
 using Xenko.Physics.Shapes;
 using Xenko.Core.Annotations;
+using Xenko.Core.Diagnostics;
+using Xenko.Extensions;
 
 using System.Collections.Generic;
 using System.Linq;
 using Xenko.Input;
+using System;
+using Xenko.Profiling;
 
 namespace XenkoByteSized.ProceduralMesh {
     class SubdividedPlaneMesh : SyncScript {
+
+        static class ShittyDebug {
+
+            public static DebugTextSystem debug;
+
+            const int MSG_HEIGHT = 16;
+            const int MAX_MESSAGES = 32;
+            static string[] messages = new string[MAX_MESSAGES];
+            static Int2 initialOffset = new Int2(48, 48);
+            static int curPos = 0;
+
+            public static void Log(string msg) {
+                curPos = (curPos + 1) % MAX_MESSAGES;
+                messages[curPos] = msg;
+            }
+
+            public static void Draw() {
+
+                if (debug == null) {
+                    return;
+                }
+
+                var curOffset = initialOffset;
+                foreach (var msg in messages) {
+                    if (msg != null) {
+                        debug.Print(msg, curOffset);
+                        curOffset.Y += MSG_HEIGHT;
+                    }
+                }
+
+            }
+
+        }
 
         class TerrainModifier {
 
@@ -23,15 +60,30 @@ namespace XenkoByteSized.ProceduralMesh {
                 Flatten = 3
             }
 
-            public TerrainModifier(UnmanagedArray<float> data) {
+            public TerrainModifier(VertexPositionNormalTexture[] verts) {
+                vertices = verts;
                 Mode = ModificationMode.Raise;
                 multiplier = 1.0f;
             }
 
+            private VertexPositionNormalTexture[] vertices;
+
             public ModificationMode Mode { get; set; }
-            public float multiplier;
+            public float multiplier = 1.0f;
 
             void Raise(ref Vector2 pos, float radius) {
+
+                /* FIXME: more efficient later */
+                var verts = VerticesNearPosition(vertices, pos, radius);
+
+                for (int i = 0; i < verts.Length; ++i) {
+                    ref var v = ref verts[i].Position;
+                    var dist = (v.XZ() - pos).Length();
+                    ShittyDebug.Log($"dist: {dist}, v.XZ: {v.XZ()}, pos: {pos}");
+                    if (dist <= radius) {
+                        v.Y += (multiplier * (dist / radius));
+                    }
+                }
 
             }
 
@@ -186,6 +238,14 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
+        static private Span<VertexPositionNormalTexture> VerticesNearPosition(VertexPositionNormalTexture[] vs, Vector2 pos, float radius) {
+
+            /* for now, we do this with brute force, but we know our data layout, so it can be a *lot* more efficient */
+            Span<VertexPositionNormalTexture> verts = vs;
+            return verts;
+
+        }
+
         /* from the xenko docs: https://doc.xenko.com/latest/en/manual/physics/raycasting.html */
         public static HitResult ScreenPositionToWorldPositionRaycast(Vector2 screenPos, CameraComponent camera, Simulation simulation) {
 
@@ -213,6 +273,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
             // Raycast from the point on the near plane to the point on the far plane and get the collision result
             var result = simulation.Raycast(vectorNear.XYZ(), vectorFar.XYZ());
+
             return result;
 
         }
@@ -231,22 +292,15 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        float debugTime = 0.0f;
-        HitResult lastHitResult;
-        Vector3 lastHitPos;
-
         public override void Update() {
+
+            // init our temp shit debugger thing
+            if (ShittyDebug.debug == null) {
+                ShittyDebug.debug = DebugText;
+            }
 
             var screenPos = Input.MousePosition;
             float dt = (float)Game.TargetElapsedTime.TotalSeconds;
-            debugTime -= dt;
-            
-            if (debugTime >= 0.0f) {
-                DebugText.Print(
-                    $"lastHitPos, result: {lastHitResult.Succeeded}, x: {lastHitPos.X}, y: {lastHitPos.Y}, z: {lastHitPos.Z}",
-                    new Int2(64, 64)
-                );
-            }
 
             if (Input.IsMouseButtonPressed(MouseButton.Left)) {
 
@@ -254,14 +308,14 @@ namespace XenkoByteSized.ProceduralMesh {
                 var hitPos = worldPosHit.Point;
 
                 if (worldPosHit.Succeeded) {
+                    var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Raise;
-                    modifier.Modify(hitPos.XZ(), 2.0f);
+                    modifier.Modify(localHitPos.XZ(), 4.0f);
+                    UpdateMeshData();
+                    CalculateNormals(vertices);
                 }
 
-                lastHitResult = worldPosHit;
-                lastHitPos = lastHitResult.Point;
-
-                debugTime = 1.0f;
+                ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
 
             } else if (Input.IsMouseButtonReleased(MouseButton.Right)) {
 
@@ -269,16 +323,18 @@ namespace XenkoByteSized.ProceduralMesh {
                 var hitPos = worldPosHit.Point;
 
                 if (worldPosHit.Succeeded) {
+                    var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Lower;
-                    modifier.Modify(hitPos.XZ(), 2.0f);
+                    modifier.Modify(hitPos.XZ(), 4.0f);
+                    UpdateMeshData();
+                    CalculateNormals(vertices);
                 }
 
-                lastHitResult = worldPosHit;
-                lastHitPos = lastHitResult.Point;
-
-                debugTime = 1.0f;
+                ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
 
             }
+
+            ShittyDebug.Draw();
 
         }
 
@@ -310,9 +366,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
             Entity.Add(colliderComponent);
 
-            /* set up our terrain modifier */
-            modifier = new TerrainModifier(heightmap);
-
             /* set up our mesh */
             vertices = GenerateSubdividedPlaneMesh(
                 DEFAULT_WIDTH, DEFAULT_HEIGHT,
@@ -320,6 +373,9 @@ namespace XenkoByteSized.ProceduralMesh {
             );
             CalculateNormals(vertices);
             mesh = CreateMesh(vertices);
+
+            /* set up our terrain modifier */
+            modifier = new TerrainModifier(vertices);
 
             /* push the created mesh and its data */
             UpdateMeshData();
