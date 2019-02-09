@@ -9,9 +9,64 @@ using Xenko.Core.Annotations;
 
 using System.Collections.Generic;
 using System.Linq;
+using Xenko.Input;
 
 namespace XenkoByteSized.ProceduralMesh {
     class SubdividedPlaneMesh : SyncScript {
+
+        class TerrainModifier {
+
+            public enum ModificationMode {
+                Raise = 0,
+                Lower = 1,
+                Smoothen = 2,
+                Flatten = 3
+            }
+
+            public TerrainModifier(UnmanagedArray<float> data) {
+                mode = ModificationMode.Raise;
+                multiplier = 1.0f;
+            }
+
+            public ModificationMode mode;
+            public float multiplier;
+
+            void Raise(ref Vector2 pos, float radius) {
+
+            }
+
+            void Lower(ref Vector2 pos, float radius) {
+
+            }
+
+            void Smoothen(ref Vector2 pos, float radius) {
+
+            }
+
+            void Flatten(ref Vector2 pos, float radius) {
+
+            }
+
+            public void Modify(ref Vector2 pos, float radius) {
+
+                switch (mode) {
+                    case ModificationMode.Raise:
+                        Raise(ref pos, radius);
+                        break;
+                    case ModificationMode.Lower:
+                        Lower(ref pos, radius);
+                        break;
+                    case ModificationMode.Smoothen:
+                        Smoothen(ref pos, radius);
+                        break;
+                    case ModificationMode.Flatten:
+                        Flatten(ref pos, radius);
+                        break;
+                }
+
+            }
+
+        }
 
         const int DEFAULT_WIDTH = 16;
         const int DEFAULT_HEIGHT = 16;
@@ -25,6 +80,12 @@ namespace XenkoByteSized.ProceduralMesh {
         /* plane collision and heightmap data */
         private StaticColliderComponent colliderComponent;
         private UnmanagedArray<float> heightmap;
+
+        /* terrain modification thing */
+        private TerrainModifier modifier;
+
+        /* current camera */
+        private CameraComponent currentCamera;
 
         static private VertexPositionNormalTexture[] GenerateSubdividedPlaneMesh(int width, int height, int subdivisions) {
 
@@ -127,7 +188,7 @@ namespace XenkoByteSized.ProceduralMesh {
         }
 
         /* from the xenko docs: https://doc.xenko.com/latest/en/manual/physics/raycasting.html */
-        public static bool ScreenPositionToWorldPositionRaycast(Vector2 screenPos, CameraComponent camera, Simulation simulation) {
+        public static HitResult ScreenPositionToWorldPositionRaycast(Vector2 screenPos, CameraComponent camera, Simulation simulation) {
 
             Matrix invViewProj = Matrix.Invert(camera.ViewProjectionMatrix);
 
@@ -153,7 +214,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
             // Raycast from the point on the near plane to the point on the far plane and get the collision result
             var result = simulation.Raycast(vectorNear.XYZ(), vectorFar.XYZ());
-            return result.Succeeded;
+            return result;
 
         }
 
@@ -171,11 +232,51 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
+        float debugTime = 0.0f;
+        HitResult lastHitResult;
+        Vector3 lastHitPos;
+
         public override void Update() {
+
+            var screenPos = Input.MousePosition;
+            float dt = (float)Game.TargetElapsedTime.TotalSeconds;
+            debugTime -= dt;
+            
+            if (debugTime >= 0.0f) {
+                DebugText.Print(
+                    $"lastHitPos, result: {lastHitResult.Succeeded}, x: {lastHitPos.X}, y: {lastHitPos.Y}, z: {lastHitPos.Z}",
+                    new Int2(64, 64)
+                );
+            }
+
+            if (Input.IsMouseButtonPressed(MouseButton.Left)) {
+
+                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, currentCamera, this.GetSimulation());
+                var hitPos = worldPosHit.Point;
+
+                lastHitResult = worldPosHit;
+                lastHitPos = lastHitResult.Point;
+
+                debugTime = 1.0f;
+
+            } else if (Input.IsMouseButtonReleased(MouseButton.Right)) {
+
+                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, currentCamera, this.GetSimulation());
+                var hitPos = worldPosHit.Point;
+
+                lastHitResult = worldPosHit;
+                lastHitPos = lastHitResult.Point;
+
+                debugTime = 1.0f;
+
+            }
 
         }
 
         public override void Start() {
+
+            /* get our current camera, we know it doesnt change so this is fine */
+            currentCamera = SceneSystem.SceneInstance.RootScene.Entities.First(e => e.Name == "Camera").Get<CameraComponent>();
 
             /* set up our heightmap and plane */
             heightmap = new UnmanagedArray<float>(DEFAULT_WIDTH * DEFAULT_HEIGHT);
@@ -202,6 +303,9 @@ namespace XenkoByteSized.ProceduralMesh {
             colliderComponent.ColliderShape = heightfield;
 
             Entity.Add(colliderComponent);
+
+            /* set up our terrain modifier */
+            modifier = new TerrainModifier(heightmap);
 
             /* set up our mesh */
             vertices = GenerateSubdividedPlaneMesh(
