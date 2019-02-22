@@ -2,6 +2,7 @@
 using Xenko.Engine;
 using Xenko.Rendering;
 using Xenko.Graphics;
+using Xenko.Core;
 
 namespace XenkoByteSized.ProceduralMesh {
     public class TetrahedronMesh : SyncScript {
@@ -66,6 +67,8 @@ namespace XenkoByteSized.ProceduralMesh {
 
         private Mesh CreateMesh(VertexPositionNormalTexture[] verts) {
 
+            var g = Game.GraphicsDevice;
+
             /* now set up the GPU side stuff */
             var vbo = Xenko.Graphics.Buffer.New<VertexPositionNormalTexture>(
                 GraphicsDevice,
@@ -89,8 +92,8 @@ namespace XenkoByteSized.ProceduralMesh {
         }
 
         private void UpdateMeshData() {
-
-            var context = Services.GetService<GraphicsContext>();
+            
+            var context = Game.GraphicsContext;
 
             /* currently assumes the size of the data does not change, only the contents */
             mesh.Draw.VertexBuffers[0].Buffer.SetData(context.CommandList, vertices);

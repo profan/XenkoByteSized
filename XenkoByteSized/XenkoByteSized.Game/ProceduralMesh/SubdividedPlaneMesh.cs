@@ -79,9 +79,8 @@ namespace XenkoByteSized.ProceduralMesh {
                     ref var v = ref verts[i].Position;
                     var dist = (v.XZ() - pos).Length();
                     ShittyDebug.Log($"dist: {dist}, v.XZ: {v.XZ()}, pos: {pos}");
-                    if (dist <= radius) {
-                        v.Y += (multiplier * (radius / dist)) * delta;
-                    }
+                    float factor = (multiplier * (radius - dist) * delta);
+                    if (factor >= 0.0f) v.Y += factor;
                 }
 
             }
@@ -195,10 +194,10 @@ namespace XenkoByteSized.ProceduralMesh {
 
                     for (int sX = 0; sX < subdivisions; ++sX) {
                         for (int sZ = 0; sZ < subdivisions; ++sZ) {
-                            float x1 = curX + ((float)sX / subdivisions);
-                            float z1 = curZ + ((float)sZ / subdivisions);
-                            float x2 = x1 + (1.0f / subdivisions) * sX + 1;
-                            float z2 = z1 + (1.0f / subdivisions) * sZ + 1;
+                            float x1 = curX + ((float)sX / subdivisions) + 1 * (1.0f / subdivisions);
+                            float z1 = curZ + ((float)sZ / subdivisions) + 1 * (1.0f / subdivisions);
+                            float x2 = x1 + (1.0f / subdivisions);
+                            float z2 = z1 + (1.0f / subdivisions);
                             CreateQuad(x1, z1, x2, z2, verts, ref curOffset);
                         }
                     }
@@ -213,6 +212,9 @@ namespace XenkoByteSized.ProceduralMesh {
                 }
 
             }
+
+            ShittyDebug.Log($"curOffset: {curOffset}");
+            ShittyDebug.Log($"vertCount: {verts.Length}");
 
             return verts;
 
