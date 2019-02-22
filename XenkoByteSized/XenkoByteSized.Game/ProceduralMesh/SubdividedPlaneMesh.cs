@@ -72,6 +72,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
             public ModificationMode Mode { get; set; }
             public float multiplier = 1.0f;
+            public float radius = 4.0f;
 
             private void AdjustHeight(ref Vector2 pos, float radius, float delta) {
 
@@ -99,6 +100,30 @@ namespace XenkoByteSized.ProceduralMesh {
             }
 
             void Smoothen(ref Vector2 pos, float radius, float delta) {
+
+                /* FIXME: more efficient later */
+                var verts = VerticesNearPosition(vertices, pos, radius);
+
+                float totalHeights = 0.0f;
+                for (int i = 0; i < verts.Length; ++i) {
+                    ref var v = ref verts[i].Position;
+                    var dist = (v.XZ() - pos).Length();
+                    if (dist <= radius) {
+                        totalHeights += v.Y;
+                    }
+                }
+
+
+                /* now _approach_ the average height value, from the current height value */
+                float avgHeight = totalHeights / verts.Length;
+
+                for (int i = 0; i < verts.Length; ++i) {
+                    ref var v = ref verts[i].Position;
+                    var dist = (v.XZ() - pos).Length();
+                    if (dist <= radius) {
+                        v.Y += (avgHeight - v.Y) * (radius - dist) * delta;
+                    }
+                }
 
             }
 
@@ -318,7 +343,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Flatten;
-                    modifier.Modify(hitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
+                    modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
                 }
 
             } else if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftShift)) {
@@ -329,7 +354,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Smoothen;
-                    modifier.Modify(hitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
+                    modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
                 }
 
             } else if (Input.IsMouseButtonDown(MouseButton.Left)) {
@@ -340,7 +365,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Raise;
-                    modifier.Modify(localHitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
+                    modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
                 }
 
                 // ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
@@ -353,7 +378,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Lower;
-                    modifier.Modify(hitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
+                    modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
                 }
 
                 // ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
