@@ -67,8 +67,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
         private Mesh CreateMesh(VertexPositionNormalTexture[] verts) {
 
-            var g = Game.GraphicsDevice;
-
             /* now set up the GPU side stuff */
             var vbo = Xenko.Graphics.Buffer.New<VertexPositionNormalTexture>(
                 GraphicsDevice,

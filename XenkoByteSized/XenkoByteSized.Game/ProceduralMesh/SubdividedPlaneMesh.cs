@@ -78,9 +78,11 @@ namespace XenkoByteSized.ProceduralMesh {
                 for (int i = 0; i < verts.Length; ++i) {
                     ref var v = ref verts[i].Position;
                     var dist = (v.XZ() - pos).Length();
-                    ShittyDebug.Log($"dist: {dist}, v.XZ: {v.XZ()}, pos: {pos}");
-                    float factor = (multiplier * (radius - dist) * delta);
-                    if (factor >= 0.0f) v.Y += factor;
+                    // ShittyDebug.Log($"dist: {dist}, v.XZ: {v.XZ()}, pos: {pos}");
+                    float factor = (multiplier * (radius - dist));
+                    if (factor >= 0.0f) {
+                        v.Y += factor * delta;
+                    }
                 }
 
             }
@@ -97,7 +99,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
             }
 
-            void Flatten(ref Vector2 pos, float radius, float delta) {
+            float Flatten(ref Vector2 pos, float radius, float delta) {
 
                 /* FIXME: more efficient later */
                 var verts = VerticesNearPosition(vertices, pos, radius);
@@ -122,6 +124,8 @@ namespace XenkoByteSized.ProceduralMesh {
                     }
                 }
 
+                return closestVertVal;
+
             }
 
             public void Modify(Vector2 pos, float radius, float delta) {
@@ -145,8 +149,8 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        const int DEFAULT_WIDTH = 16;
-        const int DEFAULT_HEIGHT = 16;
+        const int DEFAULT_WIDTH = 64;
+        const int DEFAULT_HEIGHT = 64;
         const int DEFAULT_SUBDIVISIONS = 2;
 
         /* plane mesh data */
@@ -194,10 +198,11 @@ namespace XenkoByteSized.ProceduralMesh {
 
                     for (int sX = 0; sX < subdivisions; ++sX) {
                         for (int sZ = 0; sZ < subdivisions; ++sZ) {
-                            float x1 = curX + ((float)sX / subdivisions) + 1 * (1.0f / subdivisions);
-                            float z1 = curZ + ((float)sZ / subdivisions) + 1 * (1.0f / subdivisions);
-                            float x2 = x1 + (1.0f / subdivisions);
-                            float z2 = z1 + (1.0f / subdivisions);
+                            float step = (1.0f / subdivisions);
+                            float x1 = curX + ((float)sX / subdivisions) + step;
+                            float z1 = curZ + ((float)sZ / subdivisions) + step;
+                            float x2 = x1 + step;
+                            float z2 = z1 + step;
                             CreateQuad(x1, z1, x2, z2, verts, ref curOffset);
                         }
                     }
@@ -273,39 +278,7 @@ namespace XenkoByteSized.ProceduralMesh {
             return verts;
 
         }
-
-        /* from the xenko docs: https://doc.xenko.com/latest/en/manual/physics/raycasting.html */
-        public static HitResult ScreenPositionToWorldPositionRaycast(Vector2 screenPos, CameraComponent camera, Simulation simulation) {
-
-            Matrix invViewProj = Matrix.Invert(camera.ViewProjectionMatrix);
-
-            // Reconstruct the projection-space position in the (-1, +1) range.
-            //    Don't forget that Y is down in screen coordinates, but up in projection space
-            Vector3 sPos;
-            sPos.X = screenPos.X * 2f - 1f;
-            sPos.Y = 1f - screenPos.Y * 2f;
-
-            // Compute the near (start) point for the raycast
-            // It's assumed to have the same projection space (x,y) coordinates and z = 0 (lying on the near plane)
-            // We need to unproject it to world space
-            sPos.Z = 0f;
-            var vectorNear = Vector3.Transform(sPos, invViewProj);
-            vectorNear /= vectorNear.W;
-
-            // Compute the far (end) point for the raycast
-            // It's assumed to have the same projection space (x,y) coordinates and z = 1 (lying on the far plane)
-            // We need to unproject it to world space
-            sPos.Z = 1f;
-            var vectorFar = Vector3.Transform(sPos, invViewProj);
-            vectorFar /= vectorFar.W;
-
-            // Raycast from the point on the near plane to the point on the far plane and get the collision result
-            var result = simulation.Raycast(vectorNear.XYZ(), vectorFar.XYZ());
-
-            return result;
-
-        }
-
+        
         static private BoundingBox FromPoints(VertexPositionNormalTexture[] verts) {
 
             Vector3 min = new Vector3(float.MaxValue);
@@ -334,7 +307,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
             if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftShift)) {
 
-                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
+                var worldPosHit = Utils.ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
 
                 if (worldPosHit.Succeeded) {
@@ -347,7 +320,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
             } else if (Input.IsMouseButtonDown(MouseButton.Left)) {
 
-                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
+                var worldPosHit = Utils.ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
 
                 if (worldPosHit.Succeeded) {
@@ -358,11 +331,11 @@ namespace XenkoByteSized.ProceduralMesh {
                     CalculateNormals(vertices);
                 }
 
-                ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
+                // ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
 
-            } else if (Input.IsMouseButtonDown(MouseButton.Right) && false) {
+            } else if (Input.IsMouseButtonDown(MouseButton.Middle)) {
 
-                var worldPosHit = ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
+                var worldPosHit = Utils.ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
 
                 if (worldPosHit.Succeeded) {
@@ -373,7 +346,7 @@ namespace XenkoByteSized.ProceduralMesh {
                     CalculateNormals(vertices);
                 }
 
-                ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
+                // ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
 
             }
 
@@ -401,13 +374,13 @@ namespace XenkoByteSized.ProceduralMesh {
             );
 
             /* HACK: necessary because of.. reasons? (without this it will complain of having no collider shape) */
-            colliderComponent.ColliderShapes.Add(new BoxColliderShapeDesc());
+            // colliderComponent.ColliderShapes.Add(new BoxColliderShapeDesc());
 
             /* this is here because the collider component is what ends up loading the bullet physics dll,
              * if we create the collider shape before the component, bullet will not have loaded yet. */
-            colliderComponent.ColliderShape = heightfield;
+            // colliderComponent.ColliderShape = heightfield;
 
-            Entity.Add(colliderComponent);
+            // Entity.Add(colliderComponent);
 
             /* set up our mesh */
             vertices = GenerateSubdividedPlaneMesh(
