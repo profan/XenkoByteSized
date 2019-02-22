@@ -52,6 +52,9 @@ namespace XenkoByteSized.ProceduralMesh {
 
         class TerrainModifier {
 
+            public delegate void OnModify();
+            public event OnModify OnModifyEvent;
+
             public enum ModificationMode {
                 Raise = 0,
                 Lower = 1,
@@ -144,6 +147,8 @@ namespace XenkoByteSized.ProceduralMesh {
                         Flatten(ref pos, radius, delta);
                         break;
                 }
+
+                OnModifyEvent();
 
             }
 
@@ -305,7 +310,7 @@ namespace XenkoByteSized.ProceduralMesh {
             var screenPos = Input.MousePosition;
             float dt = (float)Game.TargetElapsedTime.TotalSeconds;
 
-            if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftShift)) {
+            if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftCtrl)) {
 
                 var worldPosHit = Utils.ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
                 var hitPos = worldPosHit.Point;
@@ -314,8 +319,17 @@ namespace XenkoByteSized.ProceduralMesh {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Flatten;
                     modifier.Modify(hitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
-                    UpdateMeshData();
-                    CalculateNormals(vertices);
+                }
+
+            } else if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftShift)) {
+
+                var worldPosHit = Utils.ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
+                var hitPos = worldPosHit.Point;
+
+                if (worldPosHit.Succeeded) {
+                    var localHitPos = Entity.Transform.WorldToLocal(hitPos);
+                    modifier.Mode = TerrainModifier.ModificationMode.Smoothen;
+                    modifier.Modify(hitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
                 }
 
             } else if (Input.IsMouseButtonDown(MouseButton.Left)) {
@@ -327,8 +341,6 @@ namespace XenkoByteSized.ProceduralMesh {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Raise;
                     modifier.Modify(localHitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
-                    UpdateMeshData();
-                    CalculateNormals(vertices);
                 }
 
                 // ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
@@ -342,8 +354,6 @@ namespace XenkoByteSized.ProceduralMesh {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Lower;
                     modifier.Modify(hitPos.XZ(), 4.0f, UNITS_PER_SECOND * dt);
-                    UpdateMeshData();
-                    CalculateNormals(vertices);
                 }
 
                 // ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
@@ -392,6 +402,8 @@ namespace XenkoByteSized.ProceduralMesh {
 
             /* set up our terrain modifier */
             modifier = new TerrainModifier(vertices);
+            modifier.OnModifyEvent += () => UpdateMeshData();
+            modifier.OnModifyEvent += () => CalculateNormals(vertices);
 
             /* push the created mesh and its data */
             UpdateMeshData();
