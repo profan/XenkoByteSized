@@ -17,7 +17,6 @@ namespace XenkoByteSized.ProceduralMesh {
         private VertexPositionNormalTexture[] vertices;
 
         /* GPU side data */
-        private VertexBufferBinding vboBinding;
         private ModelComponent modelComponent;
         private Mesh mesh;
 
@@ -66,7 +65,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        private (Mesh, VertexBufferBinding) CreateMesh(VertexPositionNormalTexture[] verts) {
+        private Mesh CreateMesh(VertexPositionNormalTexture[] verts) {
 
             /* now set up the GPU side stuff */
             var vbo = Xenko.Graphics.Buffer.Vertex.New(
@@ -75,19 +74,17 @@ namespace XenkoByteSized.ProceduralMesh {
                 GraphicsResourceUsage.Default /* usage hint to the GPU for it to allocate it appropriately (explicit default in our case) */
             );
 
-            var vertexBufferBinding = new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length);
-
             var newMesh = new Mesh() {
                 Draw = new MeshDraw() {
                     PrimitiveType = PrimitiveType.TriangleList,
                     VertexBuffers = new[] {
-                        vertexBufferBinding
+                        new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length)
                     },
                     DrawCount = verts.Length
                 }
             };
 
-            return (newMesh, vertexBufferBinding);
+            return newMesh;
 
         }
 
@@ -96,7 +93,7 @@ namespace XenkoByteSized.ProceduralMesh {
             var context = Game.GraphicsContext;
 
             /* currently assumes the size of the data does not change, only the contents */
-            vboBinding.Buffer.SetData(context.CommandList, vertices);
+            mesh.Draw.VertexBuffers[0].Buffer.SetData(context.CommandList, vertices);
 
         }
 
@@ -105,7 +102,7 @@ namespace XenkoByteSized.ProceduralMesh {
             /* set up our mesh */
             vertices = GenerateTetrahedra();
             CalculateNormals(vertices);
-            (mesh, vboBinding) = CreateMesh(vertices);
+            mesh = CreateMesh(vertices);
 
             /* push the created mesh and its data */
             UpdateMeshData();
@@ -132,7 +129,7 @@ namespace XenkoByteSized.ProceduralMesh {
         // FIXME: this is a hack to make the scene reload work
         public override void Cancel() {
             base.Cancel();
-            vboBinding.Buffer.Dispose();
+            mesh.Draw.VertexBuffers[0].Buffer.Dispose();
             Entity.Remove<ModelComponent>();
             modelComponent = null;
             vertices = null;
