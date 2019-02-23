@@ -29,19 +29,6 @@ Hierarchy:
                     2f98a2bbdcc7e95798290b6498f5b6f4: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized.Game
                         Id: 1824dd23-cec4-46d5-945d-d3314658e91e
                         CurrentCamera: ref!! e2228c1b-ec7c-41b2-bf0e-edec37a5aefe
-                    efa2614bb41922c80c5b1e90d85a892b: !StaticColliderComponent
-                        Id: b42c0a5d-7df3-4930-876b-4f0ebd0e7617
-                        CanSleep: false
-                        Restitution: 0.0
-                        Friction: 0.5
-                        RollingFriction: 0.0
-                        CcdMotionThreshold: 0.0
-                        CcdSweptSphereRadius: 0.0
-                        IsTrigger: false
-                        ColliderShapes:
-                            a2ee46c435e15cb8234901ba5461afdf: !StaticPlaneColliderShapeDesc
-                                Normal: {X: 0.0, Y: 1.0, Z: 0.0}
-                                Offset: 0.0
         -   Entity:
                 Id: 14f71868-26bb-4678-95c8-ee92d5a190fb
                 Name: Ground

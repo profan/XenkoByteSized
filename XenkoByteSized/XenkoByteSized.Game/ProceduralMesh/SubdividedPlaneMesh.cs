@@ -375,14 +375,22 @@ namespace XenkoByteSized.ProceduralMesh {
             /* init our bad debug helper */
             StaticDebug.debug = DebugText;
 
+            /* create our collision component, must be created first */
+            colliderComponent = new StaticColliderComponent();
+
+            /* create plane collider shape, meant to catch our raycasts so we can manipulate terrain (for now) */
+            StaticPlaneColliderShape planeShape = new StaticPlaneColliderShape(new Vector3(0.0f, 1.0f, 0.0f), 0.0f);
+            colliderComponent.ColliderShapes.Add(new StaticPlaneColliderShapeDesc() { Normal = new Vector3(0.0f, 1.0f, 0.0f) });
+            colliderComponent.ColliderShape = planeShape;
+            Entity.Add(colliderComponent);
+
             /* set up our heightmap and plane */
+
+            /* temporarily uncommented
             heightmap = new UnmanagedArray<float>(DEFAULT_WIDTH * DEFAULT_HEIGHT);
             for (int i = 0; i < heightmap.Length; ++i) {
                 heightmap[i] = 0.0f;
             }
-
-            /* create our collision component, must be created first */
-            colliderComponent = new StaticColliderComponent();
 
             var heightfield = new HeightfieldColliderShape(
                 DEFAULT_WIDTH*2, DEFAULT_HEIGHT*2, heightmap,
@@ -391,6 +399,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 maxHeight: 64.0f,
                 flipQuadEdges: false
             );
+            */
 
             /* HACK: necessary because of.. reasons? (without this it will complain of having no collider shape) */
             // colliderComponent.ColliderShapes.Add(new BoxColliderShapeDesc());
