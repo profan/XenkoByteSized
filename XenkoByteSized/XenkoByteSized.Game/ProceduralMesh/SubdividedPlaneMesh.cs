@@ -313,11 +313,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
             const float UNITS_PER_SECOND = 2.0f;
 
-            // init our temp shit debugger thing
-            if (StaticDebug.debug == null) {
-                StaticDebug.debug = Debug;
-            }
-
             var screenPos = Input.MousePosition;
             float dt = (float)Game.TargetElapsedTime.TotalSeconds;
 
@@ -376,6 +371,9 @@ namespace XenkoByteSized.ProceduralMesh {
         }
 
         public override void Start() {
+
+            /* init our bad debug helper */
+            StaticDebug.debug = Debug;
 
             /* set up our heightmap and plane */
             heightmap = new UnmanagedArray<float>(DEFAULT_WIDTH * DEFAULT_HEIGHT);
