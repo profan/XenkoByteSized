@@ -68,10 +68,9 @@ namespace XenkoByteSized.ProceduralMesh {
         private Mesh CreateMesh(VertexPositionNormalTexture[] verts) {
 
             /* now set up the GPU side stuff */
-            var vbo = Xenko.Graphics.Buffer.New<VertexPositionNormalTexture>(
+            var vbo = Xenko.Graphics.Buffer.Vertex.New(
                 GraphicsDevice,
-                verts.Length, /* how many vertices to allocate space for */
-                BufferFlags.VertexBuffer, /* what kind of buffer... */
+                verts, /* allocated size of buffer inferred from the stored datatype and the length of the array */
                 GraphicsResourceUsage.Default /* usage hint to the GPU for it to allocate it appropriately (explicit default in our case) */
             );
 
