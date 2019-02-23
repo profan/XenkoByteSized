@@ -427,7 +427,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
             /* set up our terrain modifier */
             modifier = new TerrainModifier(vertices);
-            modifier.OnModifyEvent += () => UpdateMeshData();
+            modifier.OnModifyEvent += UpdateMeshData;
             modifier.OnModifyEvent += () => CalculateNormals(vertices);
 
             /* push the created mesh and its data */
