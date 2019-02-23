@@ -17,7 +17,7 @@ using System;
 namespace XenkoByteSized.ProceduralMesh {
     class SubdividedPlaneMesh : SyncScript {
 
-        static class ShittyDebug {
+        static class StaticDebug {
 
             public static DebugTextSystem debug;
 
@@ -248,8 +248,8 @@ namespace XenkoByteSized.ProceduralMesh {
 
             }
 
-            ShittyDebug.Log($"curOffset: {curOffset}");
-            ShittyDebug.Log($"vertCount: {verts.Length}");
+            StaticDebug.Log($"curOffset: {curOffset}");
+            StaticDebug.Log($"vertCount: {verts.Length}");
 
             return verts;
 
@@ -328,8 +328,8 @@ namespace XenkoByteSized.ProceduralMesh {
             const float UNITS_PER_SECOND = 2.0f;
 
             // init our temp shit debugger thing
-            if (ShittyDebug.debug == null) {
-                ShittyDebug.debug = DebugText;
+            if (StaticDebug.debug == null) {
+                StaticDebug.debug = Debug;
             }
 
             var screenPos = Input.MousePosition;
@@ -385,7 +385,10 @@ namespace XenkoByteSized.ProceduralMesh {
 
             }
 
-            ShittyDebug.Draw();
+            StaticDebug.Draw();
+
+            /* print some info about multipliers */
+            Debug.Print($"modifier radius: {modifier.radius}", new Int2(1280 - 256, 64));
 
         }
 
