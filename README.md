@@ -13,7 +13,7 @@ Uses only a vertex buffer to be as simple as possible.
 
 ## [XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh](XenkoByteSized/XenkoByteSized.Game/ProceduralMesh/SubdividedPlaneMesh.cs)
 
-A somewhat less simple example of expanding upon the above, generates a subdivded plane with a configurable width, height and number of subdivisions in each quadrant.
+A somewhat less simple example of expanding upon the above, generates a subdivided plane with a configurable width, height and number of subdivisions in each quadrant.
 
 Still does not use any index buffer, probably should.
 
