@@ -308,20 +308,6 @@ namespace XenkoByteSized.ProceduralMesh {
             return verts;
 
         }
-        
-        static private BoundingBox FromPoints(VertexPositionNormalTexture[] verts) {
-
-            Vector3 min = new Vector3(float.MaxValue);
-            Vector3 max = new Vector3(float.MinValue);
-
-            for (int i = 0; i < verts.Length; ++i) {
-                Vector3.Min(ref min, ref verts[i].Position, out min);
-                Vector3.Max(ref max, ref verts[i].Position, out max);
-            }
-
-            return new BoundingBox(min, max);
-
-        }
 
         public override void Update() {
 
@@ -434,12 +420,12 @@ namespace XenkoByteSized.ProceduralMesh {
             UpdateMeshData();
 
             /* create our ModelComponent and add the mesh to it */
-            var boundingBox = FromPoints(vertices);
+            var boundingBox = Utils.FromPoints(vertices);
             var boundingSphere = BoundingSphere.FromBox(boundingBox);
 
             modelComponent = new ModelComponent() {
                 Model = new Model() {
-                    BoundingBox = FromPoints(vertices),
+                    BoundingBox = Utils.FromPoints(vertices),
                     BoundingSphere = BoundingSphere.FromBox(boundingBox)
                 }
             };

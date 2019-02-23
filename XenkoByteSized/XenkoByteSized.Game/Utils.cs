@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 using Xenko.Core.Mathematics;
 using Xenko.Physics;
 using Xenko.Engine;
+using Xenko.Graphics;
 
 namespace XenkoByteSized {
     class Utils {
-
         
         /* from the xenko docs: https://doc.xenko.com/latest/en/manual/physics/raycasting.html */
         public static HitResult ScreenPositionToWorldPositionRaycast(Vector2 screenPos, CameraComponent camera, Simulation simulation) {
@@ -41,6 +41,20 @@ namespace XenkoByteSized {
             var result = simulation.Raycast(vectorNear.XYZ(), vectorFar.XYZ());
 
             return result;
+
+        }
+
+        public static BoundingBox FromPoints(VertexPositionNormalTexture[] verts) {
+
+            Vector3 min = new Vector3(float.MaxValue);
+            Vector3 max = new Vector3(float.MinValue);
+
+            for (int i = 0; i < verts.Length; ++i) {
+                Vector3.Min(ref min, ref verts[i].Position, out min);
+                Vector3.Max(ref max, ref verts[i].Position, out max);
+            }
+
+            return new BoundingBox(min, max);
 
         }
 
