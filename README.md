@@ -15,6 +15,8 @@ Uses only a vertex buffer to be as simple as possible.
 
 A somewhat less simple example of expanding upon the above, generates a subdivided plane with a configurable width, height and number of subdivisions in each quadrant.
 
+**Does not yet have proper collision.** (Heightfield collider pending)
+
 Still does not use any index buffer, probably should.
 
 Has some basic operations possible like:
