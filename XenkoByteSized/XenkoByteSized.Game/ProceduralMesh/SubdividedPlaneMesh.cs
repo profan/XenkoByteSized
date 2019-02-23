@@ -387,9 +387,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
             StaticDebug.Draw();
 
-            /* print some info about multipliers */
-            Debug.Print($"modifier radius: {modifier.radius}", new Int2(1280 - 256, 64));
-
         }
 
         public override void Start() {
