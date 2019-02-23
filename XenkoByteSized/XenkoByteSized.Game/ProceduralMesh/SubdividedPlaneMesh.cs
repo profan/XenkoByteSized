@@ -373,7 +373,7 @@ namespace XenkoByteSized.ProceduralMesh {
         public override void Start() {
 
             /* init our bad debug helper */
-            StaticDebug.debug = Debug;
+            StaticDebug.debug = DebugText;
 
             /* set up our heightmap and plane */
             heightmap = new UnmanagedArray<float>(DEFAULT_WIDTH * DEFAULT_HEIGHT);

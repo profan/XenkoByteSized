@@ -20,7 +20,7 @@ A somewhat less simple example of expanding upon the above, generates a subdivid
 Still does not use any index buffer, probably should.
 
 Has some basic operations possible like:
- * Lowering/Raising terrain (Left/Middle Mouse)
+ * Raising/Lowering terrain (Left/Middle Mouse)
  * Smoothing terrain (Shift + Left Mouse)
  * Leveling terrain (Ctrl + Left Mouse)
 
