@@ -294,7 +294,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         private void UpdateMeshData() {
 
-            var context = Services.GetService<GraphicsContext>();
+            var context = Game.GraphicsContext;
 
             /* currently assumes the size of the data does not change, only the contents */
             mesh.Draw.VertexBuffers[0].Buffer.SetData(context.CommandList, vertices);
