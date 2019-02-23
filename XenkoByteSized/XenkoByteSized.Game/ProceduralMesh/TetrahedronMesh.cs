@@ -17,6 +17,7 @@ namespace XenkoByteSized.ProceduralMesh {
         private VertexPositionNormalTexture[] vertices;
 
         /* GPU side data */
+        private VertexBufferBinding vboBinding;
         private ModelComponent modelComponent;
         private Mesh mesh;
 
@@ -74,11 +75,13 @@ namespace XenkoByteSized.ProceduralMesh {
                 GraphicsResourceUsage.Default /* usage hint to the GPU for it to allocate it appropriately (explicit default in our case) */
             );
 
+            vboBinding = new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length);
+
             var newMesh = new Mesh() {
                 Draw = new MeshDraw() {
                     PrimitiveType = PrimitiveType.TriangleList,
                     VertexBuffers = new[] {
-                        new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length)
+                        vboBinding
                     },
                     DrawCount = verts.Length
                 }
@@ -93,7 +96,7 @@ namespace XenkoByteSized.ProceduralMesh {
             var context = Game.GraphicsContext;
 
             /* currently assumes the size of the data does not change, only the contents */
-            mesh.Draw.VertexBuffers[0].Buffer.SetData(context.CommandList, vertices);
+            vboBinding.Buffer.SetData(context.CommandList, vertices);
 
         }
 
@@ -124,6 +127,13 @@ namespace XenkoByteSized.ProceduralMesh {
             var rotation = Quaternion.RotationY(rotationSpeed * deltaTime) * Quaternion.RotationZ(rotationSpeed * deltaTime);
             Entity.Transform.Rotation *= rotation;
 
+        }
+
+        // FIXME: this is a hack to make the scene reload work
+        public override void Cancel() {
+            base.Cancel();
+            mesh.Draw.VertexBuffers[0].Buffer.Dispose();
+            Entity.Remove<ModelComponent>();
         }
 
     }

@@ -27,6 +27,13 @@ namespace XenkoByteSized.ProceduralMesh {
             static Int2 initialOffset = new Int2(48, 48);
             static int curPos = 0;
 
+            public static void Clear() {
+                for (int i = 0; i < messages.Length; ++i) {
+                    messages[i] = null;
+                }
+                curPos = 0;
+            }
+
             public static void Log(string msg) {
                 curPos = (curPos + 1) % MAX_MESSAGES;
                 messages[curPos] = msg;
@@ -185,6 +192,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         /* plane mesh data */
         private VertexPositionNormalTexture[] vertices;
+        private VertexBufferBinding vboBinding;
         private ModelComponent modelComponent;
         private Mesh mesh;
 
@@ -277,11 +285,13 @@ namespace XenkoByteSized.ProceduralMesh {
                 GraphicsResourceUsage.Dynamic /* usage hint to the GPU for it to allocate it appropriately */
             );
 
+            vboBinding = new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length);
+
             var newMesh = new Mesh() {
                 Draw = new MeshDraw() {
                     PrimitiveType = PrimitiveType.TriangleList,
                     VertexBuffers = new[] {
-                        new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length)
+                        vboBinding
                     },
                     DrawCount = verts.Length
                 }
@@ -296,7 +306,7 @@ namespace XenkoByteSized.ProceduralMesh {
             var context = Game.GraphicsContext;
 
             /* currently assumes the size of the data does not change, only the contents */
-            mesh.Draw.VertexBuffers[0].Buffer.SetData(context.CommandList, vertices);
+            vboBinding.Buffer.SetData(context.CommandList, vertices);
 
         }
 
@@ -371,8 +381,9 @@ namespace XenkoByteSized.ProceduralMesh {
 
         public override void Start() {
 
-            /* init our bad debug helper */
-            StaticDebug.debug = DebugText;
+            /* init our bad debug helper and clear it */
+            StaticDebug.debug = Debug;
+            StaticDebug.Clear();
 
             /* create our collision component, must be created first */
             colliderComponent = new StaticColliderComponent();
@@ -439,6 +450,14 @@ namespace XenkoByteSized.ProceduralMesh {
             modelComponent.Model.Add(mesh);
             Entity.Add(modelComponent);
 
+        }
+
+        // FIXME: this is a hack to make the scene reload work
+        public override void Cancel() {
+            base.Cancel();
+            mesh.Draw.VertexBuffers[0].Buffer.Dispose();
+            Entity.Remove<StaticColliderComponent>();
+            Entity.Remove<ModelComponent>();
         }
 
     }

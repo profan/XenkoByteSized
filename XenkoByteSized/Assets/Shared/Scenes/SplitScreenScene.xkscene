@@ -1,0 +1,78 @@
+!SceneAsset
+Id: 2bed0fe7-f1d2-4738-b533-156342d3f98f
+SerializedVersion: {Xenko: 3.1.0.1}
+Tags: []
+ChildrenIds: []
+Parent: 0b1e703c-6c4c-4c79-838c-e30f61f0c0b4:Scenes/MainScene
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! d7065bdd-387f-4a2d-9eab-dd05ebbbafcf
+        - ref!! 8a632126-8786-4058-aa4e-144e6fa7ba63
+        - ref!! 02df9d2e-a758-47b3-9f39-568588e0aa9b
+    Parts:
+        -   Entity:
+                Id: 02df9d2e-a758-47b3-9f39-568588e0aa9b
+                Name: Skybox
+                Components:
+                    61915fcfde48578d5f06087f4278c724: !TransformComponent
+                        Id: 41a7c76a-2703-4719-853c-6d8273b40039
+                        Position: {X: 0.0, Y: 2.0, Z: -2.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e581eb5fd49d5cd346a537c0e29c2b3d: !BackgroundComponent
+                        Id: 6baf32da-925e-4f68-9482-103531c8f99a
+                        Texture: bca21148-2dd2-405f-b3d8-82e20d303765:Skybox texture
+                    db3371ad11dcc42b0860ee3d227f1e80: !LightComponent
+                        Id: c2977463-27a1-44ec-9cad-9a45b1c5751e
+                        Type: !LightSkybox
+                            Skybox: 46812647-4c4e-41b1-bdc3-66d39c9bd2c4:Skybox
+        -   Entity:
+                Id: 8a632126-8786-4058-aa4e-144e6fa7ba63
+                Name: Directional light
+                Components:
+                    9b8e2939d2dab3056458b2a1712795d8: !TransformComponent
+                        Id: b5009d05-b984-448f-b093-2072e8d98c69
+                        Position: {X: 0.0, Y: 2.0, Z: 0.0}
+                        Rotation: {X: 1.131334E-08, Y: -0.9659258, Z: -0.258819044, W: -4.222196E-08}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    34dc6245aeec6383f7b20297124f39a1: !LightComponent
+                        Id: 0fb70514-e23c-437b-9105-6313c4c6942a
+                        Type: !LightDirectional
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 1.0, B: 1.0}
+                            Shadow:
+                                Enabled: true
+                                Filter: !LightShadowMapFilterTypePcf
+                                    FilterSize: Filter5x5
+                                Size: Large
+                                DepthRange: {}
+                                PartitionMode: !LightDirectionalShadowMap.PartitionLogarithmic {}
+                                ComputeTransmittance: false
+                                BiasParameters: {}
+                        Intensity: 20.0
+        -   Entity:
+                Id: d7065bdd-387f-4a2d-9eab-dd05ebbbafcf
+                Name: Camera
+                Components:
+                    942ab63c1893704d15868be4ed13a6c5: !TransformComponent
+                        Id: 69147b40-8cc5-4ab5-ad3e-9ecc26812cd7
+                        Position: {X: 7.62846375, Y: 2.83207655, Z: -0.6871376}
+                        Rotation: {X: 0.0, Y: 0.6922245, Z: 0.0, W: 0.7216822}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    51bcd52e32947c42c08084b58a4210c0: !CameraComponent
+                        Id: 247f2156-50b9-42c1-abc7-a412fa3331e0
+                        Name: null
+                        Projection: Perspective
+                        Slot: 1eec0a63-abef-446b-89b2-b8b6e4c1d7e6
+                    119f88710108683ecb3f9578f52b4afc: !XenkoByteSized.BasicCameraController,XenkoByteSized.Game
+                        Id: 9a9da8ce-8c80-46b8-8745-f3a84006d9f2
+                        KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
+                        TouchMovementSpeed: {X: 40.0, Y: 40.0, Z: 20.0}
+                        SpeedFactor: 5.0
+                        KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
+                        MouseRotationSpeed: {X: 90.0, Y: 60.0}
+                        TouchRotationSpeed: {X: 60.0, Y: 40.0}
