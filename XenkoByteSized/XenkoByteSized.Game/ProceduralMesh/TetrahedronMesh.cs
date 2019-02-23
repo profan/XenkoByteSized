@@ -66,7 +66,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        private Mesh CreateMesh(VertexPositionNormalTexture[] verts) {
+        private (Mesh, VertexBufferBinding) CreateMesh(VertexPositionNormalTexture[] verts) {
 
             /* now set up the GPU side stuff */
             var vbo = Xenko.Graphics.Buffer.Vertex.New(
@@ -75,19 +75,19 @@ namespace XenkoByteSized.ProceduralMesh {
                 GraphicsResourceUsage.Default /* usage hint to the GPU for it to allocate it appropriately (explicit default in our case) */
             );
 
-            vboBinding = new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length);
+            var vertexBufferBinding = new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length);
 
             var newMesh = new Mesh() {
                 Draw = new MeshDraw() {
                     PrimitiveType = PrimitiveType.TriangleList,
                     VertexBuffers = new[] {
-                        vboBinding
+                        vertexBufferBinding
                     },
                     DrawCount = verts.Length
                 }
             };
 
-            return newMesh;
+            return (newMesh, vertexBufferBinding);
 
         }
 
@@ -105,7 +105,7 @@ namespace XenkoByteSized.ProceduralMesh {
             /* set up our mesh */
             vertices = GenerateTetrahedra();
             CalculateNormals(vertices);
-            mesh = CreateMesh(vertices);
+            (mesh, vboBinding) = CreateMesh(vertices);
 
             /* push the created mesh and its data */
             UpdateMeshData();
@@ -134,6 +134,9 @@ namespace XenkoByteSized.ProceduralMesh {
             base.Cancel();
             vboBinding.Buffer.Dispose();
             Entity.Remove<ModelComponent>();
+            modelComponent = null;
+            vertices = null;
+            mesh = null;
         }
 
     }

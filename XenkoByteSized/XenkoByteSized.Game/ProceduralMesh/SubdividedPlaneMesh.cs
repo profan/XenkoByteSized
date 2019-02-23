@@ -276,7 +276,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        private Mesh CreateMesh(VertexPositionNormalTexture[] verts) {
+        private (Mesh, VertexBufferBinding) CreateMesh(VertexPositionNormalTexture[] verts) {
 
             /* now set up the GPU side stuff */
             var vbo = Xenko.Graphics.Buffer.Vertex.New(
@@ -285,19 +285,19 @@ namespace XenkoByteSized.ProceduralMesh {
                 GraphicsResourceUsage.Dynamic /* usage hint to the GPU for it to allocate it appropriately */
             );
 
-            vboBinding = new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length);
+            var vertexBufferBinding = new VertexBufferBinding(vbo, VertexPositionNormalTexture.Layout, verts.Length);
 
             var newMesh = new Mesh() {
                 Draw = new MeshDraw() {
                     PrimitiveType = PrimitiveType.TriangleList,
                     VertexBuffers = new[] {
-                        vboBinding
+                        vertexBufferBinding
                     },
                     DrawCount = verts.Length
                 }
             };
 
-            return newMesh;
+            return (newMesh, vertexBufferBinding);
 
         }
 
@@ -426,7 +426,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 DEFAULT_SUBDIVISIONS
             );
             CalculateNormals(vertices);
-            mesh = CreateMesh(vertices);
+            (mesh, vboBinding) = CreateMesh(vertices);
 
             /* set up our terrain modifier */
             modifier = new TerrainModifier(vertices);
@@ -458,6 +458,10 @@ namespace XenkoByteSized.ProceduralMesh {
             vboBinding.Buffer.Dispose();
             Entity.Remove<StaticColliderComponent>();
             Entity.Remove<ModelComponent>();
+            vertices = null;
+            modelComponent = null;
+            modifier = null;
+            mesh = null;
         }
 
     }
