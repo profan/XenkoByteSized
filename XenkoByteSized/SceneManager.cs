@@ -33,7 +33,7 @@ namespace XenkoByteSized {
 
         private void SwitchToScene(string sceneUrl) {
 
-            if (timeout >= 0.0f) {
+            if (timeout >= 0.0f && sceneUrl == currentSceneUrl) {
                 return;
             }
 
