@@ -439,8 +439,8 @@ namespace XenkoByteSized.ProceduralMesh {
 
             modelComponent = new ModelComponent() {
                 Model = new Model() {
-                    BoundingBox = Utils.FromPoints(vertices),
-                    BoundingSphere = BoundingSphere.FromBox(boundingBox)
+                    BoundingBox = boundingBox,
+                    BoundingSphere = boundingSphere
                 }
             };
 
