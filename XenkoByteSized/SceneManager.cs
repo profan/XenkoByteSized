@@ -37,12 +37,11 @@ namespace XenkoByteSized {
                 return;
             }
 
-            timeout = 1.0f; // wait a second either way
-
             /* don't load ourselves again */
             if (currentScene != null) {
                 Content.TryGetAssetUrl(currentScene, out string currentUrl);
                 if (currentUrl == sceneUrl) {
+                    timeout = 1.0f;
                     return;
                 }
             }
@@ -88,8 +87,7 @@ namespace XenkoByteSized {
 
             foreach (var scn in scenes) {
                 if (scn == currentSceneUrl) {
-                    DebugText.Print($"{sceneId}: {scn}", curOffset + new Int2(16, 0));
-                    DebugText.Print("* ", curOffset);
+                    DebugText.Print($"* {sceneId}: {scn}", curOffset);
                 } else {
                     DebugText.Print($"{sceneId}: {scn}", curOffset);
                 }
