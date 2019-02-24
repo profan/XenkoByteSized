@@ -58,7 +58,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\XenkoByteSized.Game\XenkoByteSized.Game.csproj" />
+    <ProjectReference Include="..\XenkoByteSized\XenkoByteSized.csproj" />
   </ItemGroup>
 
 </Project>

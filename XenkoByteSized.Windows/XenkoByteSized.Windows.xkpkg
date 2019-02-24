@@ -1,0 +1,20 @@
+!Package
+SerializedVersion: {Assets: 3.1.0.0}
+Meta:
+    Name: XenkoByteSized.Windows
+    Version: 1.0.0
+    Authors: []
+    Owners: []
+    Dependencies: null
+AssetFolders:
+    -   Path: !dir Assets
+ResourceFolders:
+    - !dir Resources
+OutputGroupDirectories: {}
+ExplicitFolders: []
+Bundles: []
+TemplateFolders: []
+RootAssets:
+    - 0be2c393-df5b-4dfc-be56-f49840db281b:Scenes/SubdividedPlaneScene
+    - 2bed0fe7-f1d2-4738-b533-156342d3f98f:Scenes/SplitScreenScene
+    - d5c286c0-cae0-44a7-bd29-0997a774a029:Scenes/TetrahedronScene

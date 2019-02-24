@@ -130,10 +130,6 @@ namespace XenkoByteSized.ProceduralMesh {
         public override void Cancel() {
             base.Cancel();
             mesh.Draw.VertexBuffers[0].Buffer.Dispose();
-            Entity.Remove<ModelComponent>();
-            modelComponent = null;
-            vertices = null;
-            mesh = null;
         }
 
     }

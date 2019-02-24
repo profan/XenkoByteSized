@@ -21,9 +21,6 @@ namespace XenkoByteSized {
 
         public CameraComponent Camera;
 
-        /* FIXME: these are just here so theyre ACTUALLY INCLUDED IN THE BUILD, report this bug */
-        public Scene S1, S2, S3;
-
         private string[] scenes = {
             "Scenes/TetrahedronScene",
             "Scenes/SubdividedPlaneScene",
@@ -31,10 +28,7 @@ namespace XenkoByteSized {
         };
 
         public override void Start() {
-            // HACK
-            S1 = null;
-            S2 = null;
-            S3 = null;
+
         }
 
         private void SwitchToScene(string sceneUrl) {
@@ -89,15 +83,15 @@ namespace XenkoByteSized {
             var sceneId = 1;
             var curOffset = new Int2(192, 64);
 
-            DebugText.Print("Available Scenes: ", curOffset);
+            Debug.Print("Available Scenes: ", curOffset);
             curOffset.Y += 16;
 
             foreach (var scn in scenes) {
                 if (scn == currentSceneUrl) {
-                    DebugText.Print($"{sceneId}: {scn}", curOffset + new Int2(16, 0));
-                    DebugText.Print("* ", curOffset);
+                    Debug.Print($"{sceneId}: {scn}", curOffset + new Int2(16, 0));
+                    Debug.Print("* ", curOffset);
                 } else {
-                    DebugText.Print($"{sceneId}: {scn}", curOffset);
+                    Debug.Print($"{sceneId}: {scn}", curOffset);
                 }
                 curOffset.Y += 16;
                 sceneId++;

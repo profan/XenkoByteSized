@@ -3,7 +3,6 @@ Id: 0be2c393-df5b-4dfc-be56-f49840db281b
 SerializedVersion: {Xenko: 3.1.0.1}
 Tags: []
 ChildrenIds: []
-Parent: 0b1e703c-6c4c-4c79-838c-e30f61f0c0b4:Scenes/MainScene
 Offset: {X: 0.0, Y: 0.0, Z: 0.0}
 Hierarchy:
     RootParts:
@@ -22,7 +21,7 @@ Hierarchy:
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
-                    2f98a2bbdcc7e95798290b6498f5b6f4: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized.Game
+                    2f98a2bbdcc7e95798290b6498f5b6f4: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized
                         Id: aa2ac3d6-88c9-4da0-9f38-100e7a1bc7de
                         CurrentCamera: ref!! 65597cce-0d9b-4f4d-b699-69e7fb55f302
         -   Entity:
@@ -40,7 +39,7 @@ Hierarchy:
                         Name: null
                         Projection: Perspective
                         Slot: 1eec0a63-abef-446b-89b2-b8b6e4c1d7e6
-                    119f88710108683ecb3f9578f52b4afc: !XenkoByteSized.BasicCameraController,XenkoByteSized.Game
+                    119f88710108683ecb3f9578f52b4afc: !XenkoByteSized.BasicCameraController,XenkoByteSized
                         Id: 425c457c-341d-4c2c-8b11-0f98a16c56dd
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
                         TouchMovementSpeed: {X: 40.0, Y: 40.0, Z: 20.0}

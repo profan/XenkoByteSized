@@ -2,10 +2,7 @@
 Id: 0b1e703c-6c4c-4c79-838c-e30f61f0c0b4
 SerializedVersion: {Xenko: 3.1.0.1}
 Tags: []
-ChildrenIds:
-    - d5c286c0-cae0-44a7-bd29-0997a774a029
-    - 0be2c393-df5b-4dfc-be56-f49840db281b
-    - 2bed0fe7-f1d2-4738-b533-156342d3f98f
+ChildrenIds: []
 Offset: {X: 0.0, Y: 0.0, Z: 0.0}
 Hierarchy:
     RootParts:
@@ -37,9 +34,6 @@ Hierarchy:
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
-                    207190dc72d2d2c498951955d4a7dbef: !XenkoByteSized.SceneManager,XenkoByteSized.Game
+                    207190dc72d2d2c498951955d4a7dbef: !XenkoByteSized.SceneManager,XenkoByteSized
                         Id: bb088f7f-6e2a-4b61-be86-d9518810d22d
                         Camera: ref!! 69dcc99b-3445-48a5-96b2-a33c1347647e
-                        S1: d5c286c0-cae0-44a7-bd29-0997a774a029:Scenes/TetrahedronScene
-                        S2: 0be2c393-df5b-4dfc-be56-f49840db281b:Scenes/SubdividedPlaneScene
-                        S3: 2bed0fe7-f1d2-4738-b533-156342d3f98f:Scenes/SplitScreenScene

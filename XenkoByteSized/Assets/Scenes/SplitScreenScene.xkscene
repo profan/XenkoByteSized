@@ -3,7 +3,6 @@ Id: 2bed0fe7-f1d2-4738-b533-156342d3f98f
 SerializedVersion: {Xenko: 3.1.0.1}
 Tags: []
 ChildrenIds: []
-Parent: 0b1e703c-6c4c-4c79-838c-e30f61f0c0b4:Scenes/MainScene
 Offset: {X: 0.0, Y: 0.0, Z: 0.0}
 Hierarchy:
     RootParts:
@@ -68,7 +67,7 @@ Hierarchy:
                         Name: null
                         Projection: Perspective
                         Slot: 1eec0a63-abef-446b-89b2-b8b6e4c1d7e6
-                    119f88710108683ecb3f9578f52b4afc: !XenkoByteSized.BasicCameraController,XenkoByteSized.Game
+                    119f88710108683ecb3f9578f52b4afc: !XenkoByteSized.BasicCameraController,XenkoByteSized
                         Id: 9a9da8ce-8c80-46b8-8745-f3a84006d9f2
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
                         TouchMovementSpeed: {X: 40.0, Y: 40.0, Z: 20.0}

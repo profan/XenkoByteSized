@@ -19,7 +19,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         static class StaticDebug {
 
-            public static DebugTextSystem debug;
+            public static DebugSystem debug;
 
             const int MSG_HEIGHT = 16;
             const int MAX_MESSAGES = 32;
@@ -188,7 +188,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         const int DEFAULT_WIDTH = 64;
         const int DEFAULT_HEIGHT = 64;
-        const int DEFAULT_SUBDIVISIONS = 2;
+        const int DEFAULT_SUBDIVISIONS = 1;
 
         /* plane mesh data */
         private VertexPositionNormalTexture[] vertices;
@@ -453,12 +453,6 @@ namespace XenkoByteSized.ProceduralMesh {
         public override void Cancel() {
             base.Cancel();
             mesh.Draw.VertexBuffers[0].Buffer.Dispose();
-            Entity.Remove<StaticColliderComponent>();
-            Entity.Remove<ModelComponent>();
-            vertices = null;
-            modelComponent = null;
-            modifier = null;
-            mesh = null;
         }
 
     }
