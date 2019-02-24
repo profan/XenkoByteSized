@@ -1,12 +1,13 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net461</TargetFramework>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <RuntimeIdentifier>osx-x64</RuntimeIdentifier>
     <ApplicationIcon>Resources\Icon.ico</ApplicationIcon>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>XenkoByteSized.Windows</RootNamespace>
+    <RootNamespace>XenkoByteSized.macOS</RootNamespace>
 
-    <OutputPath>..\Bin\Windows\$(Configuration)\</OutputPath>
+    <OutputPath>..\Bin\macOS\$(Configuration)\</OutputPath>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
 
     <!-- Force msbuild to check to rebuild this assembly instead of letting VS IDE guess -->
@@ -14,11 +15,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.Memory" Version="4.5.2" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\XenkoByteSized\XenkoByteSized.csproj" />
+    <PackageReference Include="System.Memory" Version="4.5.2" />
+    <!-- Needed for custom runtime.json -->
+    <PackageReference Include="Xenko" Version="3.1.0.1-beta01-0441" PrivateAssets="contentfiles;analyzers" />
   </ItemGroup>
 
 </Project>

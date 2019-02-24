@@ -15,7 +15,7 @@ using System.Collections.Generic;
 using System;
 
 namespace XenkoByteSized.ProceduralMesh {
-    class SubdividedPlaneMesh : SyncScript {
+    public class SubdividedPlaneMesh : SyncScript {
 
         static class StaticDebug {
 
@@ -379,7 +379,7 @@ namespace XenkoByteSized.ProceduralMesh {
         public override void Start() {
 
             /* init our bad debug helper and clear it */
-            StaticDebug.debug = Debug;
+            StaticDebug.debug = DebugText;
             StaticDebug.Clear();
 
             /* create our collision component, must be created first */

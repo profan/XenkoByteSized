@@ -15,6 +15,6 @@ ExplicitFolders: []
 Bundles: []
 TemplateFolders: []
 RootAssets:
-    - 0be2c393-df5b-4dfc-be56-f49840db281b:Scenes/SubdividedPlaneScene
-    - 2bed0fe7-f1d2-4738-b533-156342d3f98f:Scenes/SplitScreenScene
-    - d5c286c0-cae0-44a7-bd29-0997a774a029:Scenes/TetrahedronScene
+    - 0e875fe5-1f5a-49dc-922d-b7d286d69967:Scenes/SubdividedPlaneScene
+    - 67647aca-f17b-4c8c-81dd-eaa1b53023f3:Scenes/TetrahedronScene
+    - adecce91-3716-41c2-9ccf-20a60019a643:Scenes/SplitScreenScene

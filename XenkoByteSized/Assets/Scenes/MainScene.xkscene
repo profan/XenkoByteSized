@@ -1,39 +1,51 @@
 !SceneAsset
-Id: 0b1e703c-6c4c-4c79-838c-e30f61f0c0b4
+Id: 55a44ab0-fb5d-4888-8368-0cb5c34197b5
 SerializedVersion: {Xenko: 3.1.0.1}
 Tags: []
-ChildrenIds: []
+ChildrenIds:
+    - 67647aca-f17b-4c8c-81dd-eaa1b53023f3
+    - 0e875fe5-1f5a-49dc-922d-b7d286d69967
+    - adecce91-3716-41c2-9ccf-20a60019a643
 Offset: {X: 0.0, Y: 0.0, Z: 0.0}
 Hierarchy:
     RootParts:
-        - ref!! b435e408-c4ea-4fc6-96e0-491a0af8ce3c
-        - ref!! 561d0407-4b88-4269-84e8-bc22f3166fbe
+        - ref!! b56625c1-d228-4bf9-8ea8-f0b6fa0753c5
+        - ref!! 3dd6cb47-6026-477b-a911-740d3465e814
     Parts:
         -   Entity:
-                Id: 561d0407-4b88-4269-84e8-bc22f3166fbe
-                Name: Camera
-                Components:
-                    4c8d1f0667630ea87829d69c09011d5e: !TransformComponent
-                        Id: d36b6984-9ad3-41f2-90ed-fd86c504d8ba
-                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
-                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
-                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
-                        Children: {}
-                    b91f405ee59be9f92c531f31001ef854: !CameraComponent
-                        Id: 69dcc99b-3445-48a5-96b2-a33c1347647e
-                        Name: null
-                        Projection: Orthographic
-                        Slot: 1eec0a63-abef-446b-89b2-b8b6e4c1d7e6
-        -   Entity:
-                Id: b435e408-c4ea-4fc6-96e0-491a0af8ce3c
+                Id: 3dd6cb47-6026-477b-a911-740d3465e814
                 Name: SceneManager
                 Components:
-                    3f9f8a3ef9ae0bbe2724ffcded5e0957: !TransformComponent
-                        Id: 31fef9d6-370d-4c51-9a47-8942953733bb
+                    ccc7ee167c51d5b8ab69d1b934cf0482: !TransformComponent
+                        Id: 21a9e8b9-4393-48de-a011-ac37ce84dfae
                         Position: {X: 0.0, Y: 0.0, Z: 0.0}
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
-                    207190dc72d2d2c498951955d4a7dbef: !XenkoByteSized.SceneManager,XenkoByteSized
-                        Id: bb088f7f-6e2a-4b61-be86-d9518810d22d
-                        Camera: ref!! 69dcc99b-3445-48a5-96b2-a33c1347647e
+                    9480d100cf55655255851a680abffa16: !XenkoByteSized.SceneManager,XenkoByteSized
+                        Id: 71f26258-66c5-42bc-8840-9543341da558
+                        Camera: ref!! 4775ecc7-e5ad-4ad1-ab21-8d810a71088f
+        -   Entity:
+                Id: b56625c1-d228-4bf9-8ea8-f0b6fa0753c5
+                Name: Camera
+                Components:
+                    2b9be6127bc92b0a328ca32b81a47564: !TransformComponent
+                        Id: 96f3c124-58fd-45df-a4db-acf438be1dbd
+                        Position: {X: 2.6, Y: 0.6, Z: -1.0}
+                        Rotation: {X: 0.0, Y: 0.829037547, Z: 0.0, W: 0.5591929}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    decb234d569b86b75678cb25a6ff9c58: !CameraComponent
+                        Id: 4775ecc7-e5ad-4ad1-ab21-8d810a71088f
+                        Name: null
+                        Projection: Orthographic
+                        Slot: d5fb481e-db96-4a8e-b678-113307612ee9
+                    cb1700b9d451c2dd7590d0f3f2b67fa5: !XenkoByteSized.BasicCameraController,XenkoByteSized
+                        Id: e1a461a0-1553-4809-8439-2bbaab2bdb6a
+                        Gamepad: false
+                        KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
+                        TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}
+                        SpeedFactor: 5.0
+                        KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
+                        MouseRotationSpeed: {X: 1.0, Y: 1.0}
+                        TouchRotationSpeed: {X: 1.0, Y: 0.7}

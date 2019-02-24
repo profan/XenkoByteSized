@@ -1,6 +1,6 @@
 using Xenko.Engine;
 
-namespace XenkoByteSized.Windows
+namespace XenkoByteSized.Linux
 {
     class XenkoByteSizedApp
     {

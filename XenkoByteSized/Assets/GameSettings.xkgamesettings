@@ -1,9 +1,9 @@
 !GameSettingsAsset
-Id: abd108f7-09f5-4067-a28f-c1f6be2aa748
-SerializedVersion: {Xenko: 3.1.0.1}
+Id: d11f54d2-9b6a-4883-a0b9-d3f0485fe396
+SerializedVersion: {Xenko: 2.1.0.3}
 Tags: []
-DefaultScene: 0b1e703c-6c4c-4c79-838c-e30f61f0c0b4:Scenes/MainScene
-GraphicsCompositor: cc29aae3-8146-4374-84de-115d6169a9d1:GraphicsCompositor
+DefaultScene: 55a44ab0-fb5d-4888-8368-0cb5c34197b5:Scenes/MainScene
+GraphicsCompositor: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
 Defaults:
     - !Xenko.Audio.AudioEngineSettings,Xenko.Audio
         HrtfSupport: false
@@ -23,7 +23,7 @@ Defaults:
             DetailSamplingDistance: 6.0
             MaxDetailSamplingError: 1.0
         Groups:
-            -   Id: 09234a67-88b7-49df-97e7-b92c4a7fdc25
+            -   Id: 87e421dc-e65b-40f1-92f1-2cd0e760866d
                 Name: New group
                 AgentSettings:
                     Height: 1.0
@@ -41,7 +41,7 @@ Defaults:
         DefaultGraphicsProfile: Level_10_0
         ColorSpace: Linear
         DisplayOrientation: LandscapeRight
-    - !Xenko.Streaming.StreamingSettings,Xenko.Rendering
+    - !Xenko.Streaming.StreamingSettings,Xenko.Engine
         ManagerUpdatesInterval: 0:00:00:00.0330000
         ResourceLiveTimeout: 0:00:00:08.0000000
     - !Xenko.Assets.Textures.TextureSettings,Xenko.Assets

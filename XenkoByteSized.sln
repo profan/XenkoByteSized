@@ -1,31 +1,15 @@
 
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27703.2026
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
 MinimumVisualStudioVersion = 14.0.23107.0
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoByteSized.Windows", "XenkoByteSized.Windows\XenkoByteSized.Windows.csproj", "{E687323F-DC19-4844-9046-C16AEB06823A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XenkoByteSized.Windows", "XenkoByteSized.Windows\XenkoByteSized.Windows.csproj", "{EB346522-5741-427C-9CC5-16D4E5C83F13}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "XenkoByteSized", "XenkoByteSized\XenkoByteSized.csproj", "{B79C0F3B-1607-4D39-A3D9-F872AA1A9DBB}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XenkoByteSized", "XenkoByteSized\XenkoByteSized.csproj", "{BA32BD44-3ECB-4E22-9D74-F1EED2B1CEE5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XenkoByteSized.Linux", "XenkoByteSized.Linux\XenkoByteSized.Linux.csproj", "{9A9E57D5-8B7E-4F6C-A044-EF40581AFC28}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "XenkoByteSized.macOS", "XenkoByteSized.macOS\XenkoByteSized.macOS.csproj", "{1A760487-DAAF-435C-A176-D71AC39A6557}"
 EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{E687323F-DC19-4844-9046-C16AEB06823A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E687323F-DC19-4844-9046-C16AEB06823A}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E687323F-DC19-4844-9046-C16AEB06823A}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E687323F-DC19-4844-9046-C16AEB06823A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{B79C0F3B-1607-4D39-A3D9-F872AA1A9DBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B79C0F3B-1607-4D39-A3D9-F872AA1A9DBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B79C0F3B-1607-4D39-A3D9-F872AA1A9DBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B79C0F3B-1607-4D39-A3D9-F872AA1A9DBB}.Release|Any CPU.Build.0 = Release|Any CPU
-	EndGlobalSection
-	GlobalSection(SolutionProperties) = preSolution
-		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {3DF40373-E3E7-4108-AF21-6712D041CF0C}
-	EndGlobalSection
 EndGlobal
