@@ -19,7 +19,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         static class StaticDebug {
 
-            public static DebugSystem debug;
+            public static DebugTextSystem debug;
 
             const int MSG_HEIGHT = 16;
             const int MAX_MESSAGES = 32;

@@ -83,15 +83,15 @@ namespace XenkoByteSized {
             var sceneId = 1;
             var curOffset = new Int2(192, 64);
 
-            Debug.Print("Available Scenes: ", curOffset);
+            DebugText.Print("Available Scenes: ", curOffset);
             curOffset.Y += 16;
 
             foreach (var scn in scenes) {
                 if (scn == currentSceneUrl) {
-                    Debug.Print($"{sceneId}: {scn}", curOffset + new Int2(16, 0));
-                    Debug.Print("* ", curOffset);
+                    DebugText.Print($"{sceneId}: {scn}", curOffset + new Int2(16, 0));
+                    DebugText.Print("* ", curOffset);
                 } else {
-                    Debug.Print($"{sceneId}: {scn}", curOffset);
+                    DebugText.Print($"{sceneId}: {scn}", curOffset);
                 }
                 curOffset.Y += 16;
                 sceneId++;
