@@ -37,6 +37,8 @@ namespace XenkoByteSized {
                 return;
             }
 
+            timeout = 1.0f; // wait a second either way
+
             /* don't load ourselves again */
             if (currentScene != null) {
                 Content.TryGetAssetUrl(currentScene, out string currentUrl);
@@ -45,9 +47,7 @@ namespace XenkoByteSized {
                 }
             }
 
-            timeout = 1.0f; // wait a second either way
             loadingInProgress = true;
-
             var localLoadingTask = loadingTask = Content.LoadAsync<Scene>(sceneUrl);
 
             Script.AddTask(async () => {
