@@ -355,8 +355,6 @@ namespace XenkoByteSized.ProceduralMesh {
                     modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
                 }
 
-                // ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
-
             } else if (Input.IsMouseButtonDown(MouseButton.Middle)) {
 
                 var worldPosHit = Utils.ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
@@ -367,8 +365,6 @@ namespace XenkoByteSized.ProceduralMesh {
                     modifier.Mode = TerrainModifier.ModificationMode.Lower;
                     modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
                 }
-
-                // ShittyDebug.Log($"hitPos, result: {worldPosHit.Succeeded}, x: {hitPos.X}, y: {hitPos.Y}, z: {hitPos.Z}");
 
             }
 
@@ -451,7 +447,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
         // FIXME: this is a hack to make the scene reload work
         public override void Cancel() {
-            base.Cancel();
             mesh.Draw.VertexBuffers[0].Buffer.Dispose();
         }
 

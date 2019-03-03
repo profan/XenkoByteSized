@@ -21,6 +21,8 @@ namespace XenkoByteSized
         private Vector3 translation;
         private float yaw;
         private float pitch;
+
+        public bool Enabled = true;
         
         public bool Gamepad { get; set; } = false;
         
@@ -53,6 +55,7 @@ namespace XenkoByteSized
 
         public override void Update()
         {
+            if (!Enabled) return;
             ProcessInput();
             UpdateTransform();
         }

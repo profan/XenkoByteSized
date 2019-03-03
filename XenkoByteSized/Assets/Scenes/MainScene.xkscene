@@ -50,6 +50,7 @@ Hierarchy:
                         Slot: d5fb481e-db96-4a8e-b678-113307612ee9
                     04f896fa56bfbeff251b1340ab89f214: !XenkoByteSized.BasicCameraController,XenkoByteSized
                         Id: e1a461a0-1553-4809-8439-2bbaab2bdb6a
+                        Enabled: true
                         Gamepad: false
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
                         TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}

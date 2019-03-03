@@ -15,6 +15,7 @@ Hierarchy:
         - ref!! c36eca9d-5b95-4c4f-b2bd-4d44f078b057
         - ref!! d46863c3-9daa-47ff-be71-c56640982191
         - ref!! c69f778f-9f7f-448f-a118-3b9b1b45f74b
+        - ref!! 645b8dfe-8735-4a3b-ac97-0539cfabd54a
     Parts:
         -   Entity:
                 Id: 1e126e57-56f1-4b2f-bd69-66bc3dde8b06
@@ -48,6 +49,7 @@ Hierarchy:
                         Slot: dfd41ea4-383d-4327-a060-18a9977a3972
                     fea7f1aac6eb592ae13ebf5b3948fd05: !XenkoByteSized.BasicCameraController,XenkoByteSized
                         Id: b28be58e-56b5-4421-a8ee-9b019b87a536
+                        Enabled: true
                         Gamepad: false
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
                         TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}
@@ -97,6 +99,22 @@ Hierarchy:
                                 ComputeTransmittance: false
                                 BiasParameters: {}
                         Intensity: 20.0
+        -   Folder: Cameras
+            Entity:
+                Id: 645b8dfe-8735-4a3b-ac97-0539cfabd54a
+                Name: CameraSwitcher
+                Components:
+                    c860754eec41b9ec1d826ad921afc1ef: !TransformComponent
+                        Id: 33a7443c-9937-49f1-a395-1a4595df5577
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    2c53f05c6c215d8226f6a1abac3f5b2f: !XenkoByteSized.CameraSwitcher,XenkoByteSized
+                        Id: 3eb63a39-0a01-4864-88a6-1ba7a72fb3d5
+                        cameras:
+                            8146922193b9659aa794d6064389368d: ref!! b28be58e-56b5-4421-a8ee-9b019b87a536
+                            d616ab1c0d7ac07acf41767a29363f6a: ref!! 4d088a6b-b647-40f8-8fcf-8f21b29da0bb
         -   Folder: null
             Entity:
                 Id: 688dc34f-ae84-4c38-bece-4e38d7ac6023
@@ -176,6 +194,7 @@ Hierarchy:
                         Slot: 92b2d06e-7fd6-4c1e-8bc3-1bc9ce0b8ca2
                     982596bafab2a18ba283b4fb8abddc4b: !XenkoByteSized.BasicCameraController,XenkoByteSized
                         Id: 4d088a6b-b647-40f8-8fcf-8f21b29da0bb
+                        Enabled: false
                         Gamepad: false
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
                         TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}
