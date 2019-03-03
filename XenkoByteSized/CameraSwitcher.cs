@@ -20,7 +20,7 @@ namespace XenkoByteSized {
 
         public override void Update() {
 
-            DebugText.Print($"Active Camera (TAB to switch): {activeCamera}", new Int2(24, 24));
+            DebugText.Print($"Active Camera: {activeCamera} (TAB to switch)", new Int2(24, 24));
 
             if (Input.IsKeyPressed(Keys.Tab)) {
                 cameras[activeCamera].Enabled = false;
