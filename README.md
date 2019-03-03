@@ -27,3 +27,24 @@ Has some basic operations possible like:
 Can also be observed in the same scene
 
 ![terrain](terrainy.png "some sculpted terrain thing")
+
+## **XenkoByteSized.SplitScreen**
+This one is slightly harder to simply link to some code to illustrate, you'll want to explore the following to see whats going on: 
+* **Scenes/SplitScreen/SplitScreenScene**
+* **Scenes/SplitScreen/SplitScreenCompositor**
+* **Scenes/SplitScreen/LeftTexture**
+* **Scenes/SplitScreen/RightTexture**
+
+The scene itself:
+![splitscreen](splitscreen.png "the scene as can be seen in the sample")
+
+A relevant piece of the compositor setup, where the default **CameraRenderer** at the root has been replaced by a **SceneRenderCollection**, as can be seen in [this page on the Xenko Docs about render targets](https://doc.xenko.com/latest/en/manual/graphics/graphics-compositor/render-textures.html).
+
+![compositor](compositor_setup.png "a relevant piece of the compositor")
+
+Of the most important bits to consider here are:
+* The main renderer only renders the sprites for each of the render target textures, (Group 31), while the render targets render everything **except** Group 31.
+* I created a [special script called Screen.cs](XenkoByteSized/SplitScreen/Screen.cs) which just takes the center offset at which to place the render texture on screen, a reference to the render texture, the render group it should be in (to not be rendered by the split screen cameras) and creates the sprite for it.
+
+## Misc
+The sample also switches out the graphics compositor to the one associated with the scene being switched to currently, currently only relevant for the **SplitScreen** sample.
