@@ -1,0 +1,251 @@
+!SceneAsset
+Id: adecce91-3716-41c2-9ccf-20a60019a643
+SerializedVersion: {Xenko: 3.1.0.1}
+Tags: []
+ChildrenIds: []
+Parent: 55a44ab0-fb5d-4888-8368-0cb5c34197b5:Scenes/MainScene
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! a1f48a41-8cc8-43f3-a85b-d812a64a71ef
+        - ref!! 4b72bd41-695b-4ca4-bf84-68f10a310cf3
+        - ref!! 513927a4-f0b9-46de-9222-da4bd1ec9333
+        - ref!! 2af05756-0ac9-454d-be1a-bbff7da77b06
+        - ref!! a45b6eba-b43a-4afc-85df-112cd0435d8c
+        - ref!! c36eca9d-5b95-4c4f-b2bd-4d44f078b057
+        - ref!! d46863c3-9daa-47ff-be71-c56640982191
+        - ref!! c69f778f-9f7f-448f-a118-3b9b1b45f74b
+    Parts:
+        -   Entity:
+                Id: 1e126e57-56f1-4b2f-bd69-66bc3dde8b06
+                Name: Sphere
+                Components:
+                    36e3f422ffa6b2c08bf2c9044e65b781: !TransformComponent
+                        Id: a1a46b17-3efc-4e18-94ea-0d63225a525d
+                        Position: {X: -3.86158681, Y: 0.5, Z: 1.29945743}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e830b9406ef2f51778dd9bcb577c9aae: !ModelComponent
+                        Id: cb84b8a8-a89e-4c56-acc8-895337a9844a
+                        Model: 9ae224a2-16ff-4a06-89b6-fde32293329a:Sphere
+                        Materials: {}
+        -   Folder: Cameras
+            Entity:
+                Id: 2af05756-0ac9-454d-be1a-bbff7da77b06
+                Name: LeftCamera
+                Components:
+                    2b9be6127bc92b0a328ca32b81a47564: !TransformComponent
+                        Id: fa0a9718-95af-4d01-b347-141a2ff149b5
+                        Position: {X: 2.6, Y: 0.6, Z: 0.8067913}
+                        Rotation: {X: 0.0, Y: 0.829037547, Z: 0.0, W: 0.5591929}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    decb234d569b86b75678cb25a6ff9c58: !CameraComponent
+                        Id: a7010b6d-7c33-409e-a017-be3e8906d45e
+                        Name: LeftCamera
+                        Projection: Perspective
+                        Slot: dfd41ea4-383d-4327-a060-18a9977a3972
+                    fea7f1aac6eb592ae13ebf5b3948fd05: !XenkoByteSized.BasicCameraController,XenkoByteSized
+                        Id: b28be58e-56b5-4421-a8ee-9b019b87a536
+                        Gamepad: false
+                        KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
+                        TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}
+                        SpeedFactor: 5.0
+                        KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
+                        MouseRotationSpeed: {X: 2.0, Y: 2.0}
+                        TouchRotationSpeed: {X: 1.0, Y: 0.7}
+        -   Entity:
+                Id: 4b72bd41-695b-4ca4-bf84-68f10a310cf3
+                Name: Skybox
+                Components:
+                    07424f2d928fa023d630acb2a494afbf: !TransformComponent
+                        Id: e1995511-6963-487f-bc4e-33294ddbac31
+                        Position: {X: 0.0, Y: 2.0, Z: -2.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    f446bb0f1d7040acd71780442198ccd8: !BackgroundComponent
+                        Id: b0654674-20c2-4688-8a6c-847d53de6b0e
+                        Texture: b111c453-668c-49a8-9216-23ec308fc195:Skybox texture
+                    eb8ffcbd1184dfa14fd78e7a9d5e14cc: !LightComponent
+                        Id: 81a1fc47-9097-4546-a8fc-e8a5a8dcae27
+                        Type: !LightSkybox
+                            Skybox: 76aea3e2-991a-48f1-8a00-726296989466:Skybox
+        -   Entity:
+                Id: 513927a4-f0b9-46de-9222-da4bd1ec9333
+                Name: Directional light
+                Components:
+                    410a0a22cb23d638e08bd3daae45f5f4: !TransformComponent
+                        Id: eaab3caf-33f9-4a57-80ab-7464c9e57056
+                        Position: {X: 0.0, Y: 2.0, Z: 0.0}
+                        Rotation: {X: 1.131334E-08, Y: -0.9659258, Z: -0.258819044, W: -4.222196E-08}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    2e6d1d380258bd441153d9eedb764e58: !LightComponent
+                        Id: 5283f39c-1a69-4d09-bb00-6889c6dd6d15
+                        Type: !LightDirectional
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 1.0, B: 1.0}
+                            Shadow:
+                                Enabled: true
+                                Filter: !LightShadowMapFilterTypePcf
+                                    FilterSize: Filter5x5
+                                Size: Large
+                                DepthRange: {}
+                                PartitionMode: !LightDirectionalShadowMap.PartitionLogarithmic {}
+                                ComputeTransmittance: false
+                                BiasParameters: {}
+                        Intensity: 20.0
+        -   Folder: null
+            Entity:
+                Id: 688dc34f-ae84-4c38-bece-4e38d7ac6023
+                Name: Sphere
+                Components:
+                    36e3f422ffa6b2c08bf2c9044e65b781: !TransformComponent
+                        Id: 82b51943-b477-4f08-b28e-8c2513dff909
+                        Position: {X: -3.86158681, Y: 0.5, Z: 3.99}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e830b9406ef2f51778dd9bcb577c9aae: !ModelComponent
+                        Id: e21acbf6-1c15-491c-87d6-1127afcbd9ee
+                        Model: 9ae224a2-16ff-4a06-89b6-fde32293329a:Sphere
+                        Materials: {}
+        -   Folder: null
+            Entity:
+                Id: 87d4d3c9-7e79-4748-8049-01d73a1f094d
+                Name: Sphere
+                Components:
+                    36e3f422ffa6b2c08bf2c9044e65b781: !TransformComponent
+                        Id: c4a0797f-56a7-48bd-985f-c283e3f9d5b7
+                        Position: {X: -3.86158681, Y: 0.5, Z: 2.64703274}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e830b9406ef2f51778dd9bcb577c9aae: !ModelComponent
+                        Id: 9c123a75-e9e2-484c-8ddc-a054eb24fbcd
+                        Model: 9ae224a2-16ff-4a06-89b6-fde32293329a:Sphere
+                        Materials: {}
+        -   Folder: null
+            Entity:
+                Id: 91228602-eb55-4418-9960-f9b950745171
+                Name: Sphere
+                Components:
+                    36e3f422ffa6b2c08bf2c9044e65b781: !TransformComponent
+                        Id: 965377d2-1096-410e-b755-22fb7db04e21
+                        Position: {X: -3.86158681, Y: 1.5, Z: -2.59575939}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e830b9406ef2f51778dd9bcb577c9aae: !ModelComponent
+                        Id: 2eaa4cf4-ca92-44b9-b522-cc2a4dc90bb8
+                        Model: 9ae224a2-16ff-4a06-89b6-fde32293329a:Sphere
+                        Materials: {}
+        -   Entity:
+                Id: a1f48a41-8cc8-43f3-a85b-d812a64a71ef
+                Name: Camera
+                Components:
+                    2b9be6127bc92b0a328ca32b81a47564: !TransformComponent
+                        Id: 7ab987b6-a3a3-440b-bcb9-01aff363f52a
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    decb234d569b86b75678cb25a6ff9c58: !CameraComponent
+                        Id: d6b6740e-029c-40bd-b8e6-a17fd3a90134
+                        Name: Main
+                        Projection: Orthographic
+                        OrthographicSize: 7.2
+                        Slot: 641ce700-e559-427f-ae31-d5d43bbbd5e9
+        -   Folder: Cameras
+            Entity:
+                Id: a45b6eba-b43a-4afc-85df-112cd0435d8c
+                Name: RightCamera
+                Components:
+                    2b9be6127bc92b0a328ca32b81a47564: !TransformComponent
+                        Id: 16529009-7916-4071-b170-b4949b6d993d
+                        Position: {X: 2.6, Y: 0.6, Z: -4.91186428}
+                        Rotation: {X: 0.0, Y: 0.829037547, Z: 0.0, W: 0.5591929}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    decb234d569b86b75678cb25a6ff9c58: !CameraComponent
+                        Id: a51c2e27-6c94-46f3-ac42-d0e8868a4cde
+                        Name: RightCamera
+                        Projection: Perspective
+                        Slot: 92b2d06e-7fd6-4c1e-8bc3-1bc9ce0b8ca2
+                    982596bafab2a18ba283b4fb8abddc4b: !XenkoByteSized.BasicCameraController,XenkoByteSized
+                        Id: 4d088a6b-b647-40f8-8fcf-8f21b29da0bb
+                        Gamepad: false
+                        KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
+                        TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}
+                        SpeedFactor: 5.0
+                        KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
+                        MouseRotationSpeed: {X: 2.0, Y: 2.0}
+                        TouchRotationSpeed: {X: 1.0, Y: 0.7}
+        -   Folder: null
+            Entity:
+                Id: b5c152cf-84e8-4978-b7bd-eb9bd0549134
+                Name: Sphere
+                Components:
+                    36e3f422ffa6b2c08bf2c9044e65b781: !TransformComponent
+                        Id: 719f7b54-92b8-4f34-b40c-b93489050a0c
+                        Position: {X: -3.86158681, Y: 0.5, Z: -2.59575939}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    e830b9406ef2f51778dd9bcb577c9aae: !ModelComponent
+                        Id: 1189a5e1-aead-4136-aecc-18985bca5798
+                        Model: 9ae224a2-16ff-4a06-89b6-fde32293329a:Sphere
+                        Materials: {}
+        -   Entity:
+                Id: c36eca9d-5b95-4c4f-b2bd-4d44f078b057
+                Name: Ground
+                Components:
+                    98cd2ec329f36fd6fa415aae4f37a431: !TransformComponent
+                        Id: 1c0338b2-1896-4c30-9c60-3c9ee46ed524
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            c62605c1c5b9d76de533f8ed9d1d6d26: ref!! a1a46b17-3efc-4e18-94ea-0d63225a525d
+                            695b95d83600bdcae959d77b556057ca: ref!! 82b51943-b477-4f08-b28e-8c2513dff909
+                            b50ad4f033290c83ac3b596a35f5f638: ref!! c4a0797f-56a7-48bd-985f-c283e3f9d5b7
+                            c55fc046e8c7ca0501bc1f93920a1c8b: ref!! 719f7b54-92b8-4f34-b40c-b93489050a0c
+                            b224d1dc5f7ec3cf2ae6d7adfbd7266e: ref!! 965377d2-1096-410e-b755-22fb7db04e21
+                    8758d6e43d072429720fdba2529286a9: !ModelComponent
+                        Id: c6a3d122-42dc-4ef7-9b0c-abc812699ce7
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+        -   Folder: Screens
+            Entity:
+                Id: c69f778f-9f7f-448f-a118-3b9b1b45f74b
+                Name: RightScreen
+                Components:
+                    5c60c94c7fc3f6d05e4e8c700b978358: !TransformComponent
+                        Id: 6aa97d29-2c82-4d94-bb8b-cfbea98d3d62
+                        Position: {X: 0.0, Y: 0.0, Z: -1.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    971bad211c8b72d3507cf05e7b526b1c: !XenkoByteSized.Screen,XenkoByteSized
+                        Id: c34c6d5b-c90d-4a8e-bb6a-0d949cd6e429
+                        center: {X: -320.0, Y: 0.0}
+                        renderTexture: 80c9d666-22a3-4a64-ae79-6ae0ba31527d:Scenes/SplitScreen/RightTexture
+                        renderGroup: Group31
+        -   Folder: Screens
+            Entity:
+                Id: d46863c3-9daa-47ff-be71-c56640982191
+                Name: LeftScreen
+                Components:
+                    5c60c94c7fc3f6d05e4e8c700b978358: !TransformComponent
+                        Id: 4c78f06d-6668-47af-a79f-b8bf91748a4c
+                        Position: {X: 0.0, Y: 0.0, Z: -1.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    70ff348b1c86591417939cb3d40ad517: !XenkoByteSized.Screen,XenkoByteSized
+                        Id: bbcce450-89b4-40d1-9c3c-95aa50069586
+                        center: {X: 320.0, Y: 0.0}
+                        renderTexture: 5a86885b-2a5f-4a5d-b4cb-1a7b63e1b6c2:Scenes/SplitScreen/LeftTexture
+                        renderGroup: Group31

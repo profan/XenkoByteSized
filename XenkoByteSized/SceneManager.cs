@@ -21,17 +21,28 @@ namespace XenkoByteSized {
 
         public CameraComponent Camera;
 
+        // HACK: fix me later, this is terrible and is here only 
+        //  because i can't figure out how to use lists in the
+        //  property grid.
         private string[] scenes = {
             "Scenes/TetrahedronScene",
             "Scenes/SubdividedPlaneScene",
-            "Scenes/SplitScreenScene"
+            "Scenes/SplitScreen/SplitScreenScene"
+        };
+
+        private GraphicsCompositor[] compositors = {
+            null,
+            null,
+            null
         };
 
         public override void Start() {
-
+            compositors[0] = SceneSystem.GraphicsCompositor;
+            compositors[1] = SceneSystem.GraphicsCompositor;
+            compositors[2] = Content.Load<GraphicsCompositor>("Scenes/SplitScreen/SplitScreenCompositor");
         }
 
-        private void SwitchToScene(string sceneUrl) {
+        private void SwitchToScene(string sceneUrl, GraphicsCompositor compositor) {
 
             if (timeout >= 0.0f && sceneUrl == currentSceneUrl) {
                 return;
@@ -48,6 +59,7 @@ namespace XenkoByteSized {
 
             loadingInProgress = true;
             var localLoadingTask = loadingTask = Content.LoadAsync<Scene>(sceneUrl);
+            Log.Info($"Loading: {sceneUrl}");
 
             Script.AddTask(async () => {
 
@@ -61,6 +73,12 @@ namespace XenkoByteSized {
                 /* HACK */
                 if (Camera.Enabled) {
                     Camera.Enabled = false;
+                }
+
+                /* switch compositor, if necessary */
+                var currentCompositor = SceneSystem.GraphicsCompositor;
+                if (currentCompositor != compositor) {
+                    SceneSystem.GraphicsCompositor = compositor;
                 }
 
                 currentScene = loadingTask.Result;
@@ -96,11 +114,11 @@ namespace XenkoByteSized {
             }
 
             /* not handling cancels */
-            if (loadingInProgress) return;
+            if (loadingInProgress) { return; }
 
             for (int i = 0; i < scenes.Length; ++i) {
                 if (Input.IsKeyPressed(Keys.D1 + i)) {
-                    SwitchToScene(scenes[i]);
+                    SwitchToScene(scenes[i], compositors[i]);
                     break;
                 }
             }

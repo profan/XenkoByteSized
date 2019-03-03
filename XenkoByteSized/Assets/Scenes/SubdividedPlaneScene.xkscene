@@ -44,7 +44,7 @@ Hierarchy:
                         Name: null
                         Projection: Perspective
                         Slot: d5fb481e-db96-4a8e-b678-113307612ee9
-                    cb1700b9d451c2dd7590d0f3f2b67fa5: !XenkoByteSized.BasicCameraController,XenkoByteSized
+                    39385e5164e78bcc05669892937d692a: !XenkoByteSized.BasicCameraController,XenkoByteSized
                         Id: a25a148c-4d8e-471d-9034-c28125f6a65b
                         Gamepad: false
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
@@ -88,6 +88,6 @@ Hierarchy:
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
-                    e856455aa80f60bf9b7a519a96bfcff2: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized
+                    becd83edf6163c7b714e2a54eb0c48a5: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized
                         Id: c9a5e4a5-f1b6-42fc-9e1a-0da38aa3ab57
                         CurrentCamera: ref!! b1afd2db-cafe-41c8-ba1d-363175440687

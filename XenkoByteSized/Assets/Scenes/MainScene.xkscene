@@ -22,7 +22,7 @@ Hierarchy:
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
-                    9480d100cf55655255851a680abffa16: !XenkoByteSized.SceneManager,XenkoByteSized
+                    ad645b68613e6c8e0237e305326e4ddc: !XenkoByteSized.SceneManager,XenkoByteSized
                         Id: 71f26258-66c5-42bc-8840-9543341da558
                         Camera: ref!! 4775ecc7-e5ad-4ad1-ab21-8d810a71088f
         -   Entity:
@@ -40,7 +40,7 @@ Hierarchy:
                         Name: null
                         Projection: Orthographic
                         Slot: d5fb481e-db96-4a8e-b678-113307612ee9
-                    cb1700b9d451c2dd7590d0f3f2b67fa5: !XenkoByteSized.BasicCameraController,XenkoByteSized
+                    04f896fa56bfbeff251b1340ab89f214: !XenkoByteSized.BasicCameraController,XenkoByteSized
                         Id: e1a461a0-1553-4809-8439-2bbaab2bdb6a
                         Gamepad: false
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
