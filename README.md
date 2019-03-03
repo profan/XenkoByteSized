@@ -42,9 +42,10 @@ A relevant piece of the compositor setup, where the default **CameraRenderer** a
 
 ![compositor](compositor_setup.png "a relevant piece of the compositor")
 
+### Misc Considerations
 Of the most important bits to consider here are:
-* The main renderer only renders the sprites for each of the render target textures, (Group 31), while the render targets render everything **except** Group 31.
-* I created a [special script called Screen.cs](XenkoByteSized/SplitScreen/Screen.cs) which just takes the center offset at which to place the render texture on screen, a reference to the render texture, the render group it should be in (to not be rendered by the split screen cameras) and creates the sprite for it.
+* The main renderer only renders the sprites for each of the render target textures, (Group 31), while the render targets render everything **except** Group 31 (can be observed by looking at the GraphicsCompositor).
+* I created a [special script](XenkoByteSized/SplitScreen/Screen.cs) which just takes the center offset at which to place the render texture on screen, a reference to the render texture, the render group it should be in (to not be rendered by the split screen cameras) and creates the sprite for it.
 
 ## Misc
 The sample also switches out the graphics compositor to the one associated with the scene being switched to currently, currently only relevant for the **SplitScreen** sample.
