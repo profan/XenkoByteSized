@@ -174,7 +174,6 @@ SharedRenderers:
             Enabled: false
             DOFAreas: {X: 0.5, Y: 6.0, Z: 50.0, W: 200.0}
         BrightFilter:
-            Enabled*: true
             Color: {R: 1.0, G: 1.0, B: 1.0}
         Bloom:
             Distortion: {X: 1.0, Y: 1.0}
@@ -211,7 +210,7 @@ Game*: !Xenko.Rendering.Compositing.SceneRendererCollection,Xenko.Engine
             Child: !Xenko.Rendering.Compositing.RenderTextureSceneRenderer,Xenko.Engine
                 Id: 96bb4b19-4849-4878-9686-4f38c4672acc
                 RenderTexture: 5a86885b-2a5f-4a5d-b4cb-1a7b63e1b6c2:Scenes/SplitScreen/LeftTexture
-                Child: !Xenko.Rendering.Compositing.ForwardRenderer,Xenko.Engine ref!! 3f6de75b-6a20-4f90-8122-7ad78de76a44
+                Child: !Xenko.Rendering.Compositing.ForwardRenderer,Xenko.Engine ref!! f41fac78-195b-4c88-b926-25f589ece228
             RenderMask: Group0, Group1, Group2, Group3, Group4, Group5, Group6, Group7, Group8, Group9, Group10, Group11, Group12, Group13, Group14, Group15, Group16, Group17, Group18, Group19, Group20, Group21, Group22, Group23, Group24, Group25, Group26, Group27, Group28, Group29, Group30
         2ffaf14c539a9a06f9b4a2e1f10b3778: !Xenko.Rendering.Compositing.SceneCameraRenderer,Xenko.Engine
             Id: b1e20099-f038-4585-94cd-000e671737e4
@@ -219,7 +218,7 @@ Game*: !Xenko.Rendering.Compositing.SceneRendererCollection,Xenko.Engine
             Child: !Xenko.Rendering.Compositing.RenderTextureSceneRenderer,Xenko.Engine
                 Id: 09762594-a408-4366-b190-e8e71d46900d
                 RenderTexture: 80c9d666-22a3-4a64-ae79-6ae0ba31527d:Scenes/SplitScreen/RightTexture
-                Child: !Xenko.Rendering.Compositing.ForwardRenderer,Xenko.Engine ref!! 3f6de75b-6a20-4f90-8122-7ad78de76a44
+                Child: !Xenko.Rendering.Compositing.ForwardRenderer,Xenko.Engine ref!! f41fac78-195b-4c88-b926-25f589ece228
             RenderMask: Group0, Group1, Group2, Group3, Group4, Group5, Group6, Group7, Group8, Group9, Group10, Group11, Group12, Group13, Group14, Group15, Group16, Group17, Group18, Group19, Group20, Group21, Group22, Group23, Group24, Group25, Group26, Group27, Group28, Group29, Group30
 SingleView: !Xenko.Rendering.Compositing.ForwardRenderer,Xenko.Engine ref!! f41fac78-195b-4c88-b926-25f589ece228
 Editor: !Xenko.Rendering.Compositing.ForwardRenderer,Xenko.Engine ref!! 3f6de75b-6a20-4f90-8122-7ad78de76a44

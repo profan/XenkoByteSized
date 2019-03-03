@@ -21,26 +21,13 @@ namespace XenkoByteSized {
 
         public CameraComponent Camera;
 
-        // HACK: fix me later, this is terrible and is here only 
-        //  because i can't figure out how to use lists in the
-        //  property grid.
-        private string[] scenes = {
-            "Scenes/TetrahedronScene",
-            "Scenes/SubdividedPlaneScene",
-            "Scenes/SplitScreen/SplitScreenScene"
-        };
+        [DataMember(100)]
+        [Display("Scenes")]
+        public List<string> scenes = new List<string>();
 
-        private GraphicsCompositor[] compositors = {
-            null,
-            null,
-            null
-        };
-
-        public override void Start() {
-            compositors[0] = SceneSystem.GraphicsCompositor;
-            compositors[1] = SceneSystem.GraphicsCompositor;
-            compositors[2] = Content.Load<GraphicsCompositor>("Scenes/SplitScreen/SplitScreenCompositor");
-        }
+        [DataMember(200)]
+        [Display("Compositors")]
+        public List<GraphicsCompositor> compositors = new List<GraphicsCompositor>();
 
         private void SwitchToScene(string sceneUrl, GraphicsCompositor compositor) {
 
@@ -116,7 +103,7 @@ namespace XenkoByteSized {
             /* not handling cancels */
             if (loadingInProgress) { return; }
 
-            for (int i = 0; i < scenes.Length; ++i) {
+            for (int i = 0; i < scenes.Count; ++i) {
                 if (Input.IsKeyPressed(Keys.D1 + i)) {
                     SwitchToScene(scenes[i], compositors[i]);
                     break;

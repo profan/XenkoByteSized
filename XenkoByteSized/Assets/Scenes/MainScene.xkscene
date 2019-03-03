@@ -24,6 +24,14 @@ Hierarchy:
                         Children: {}
                     ad645b68613e6c8e0237e305326e4ddc: !XenkoByteSized.SceneManager,XenkoByteSized
                         Id: 71f26258-66c5-42bc-8840-9543341da558
+                        scenes:
+                            f97eac892063de0133a4439502a17437: Scenes/TetrahedronScene
+                            6d9cf6fbaabecc844332b20db6569c1b: Scenes/SubdividedPlaneScene
+                            fc9780fc3b358f9edc34dd39aee657b5: Scenes/SplitScreen/SplitScreenScene
+                        compositors:
+                            85cc55b6c2969be23b60ff290e9b19c0: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
+                            d7d5a8ac098c617a4edc03d690ef7f94: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
+                            75229fdbaf6ccd870fe516ff837ed18f: 01a53bfc-fb53-4cf5-a5b0-9aec932490f3:Scenes/SplitScreen/SplitScreenCompositor
                         Camera: ref!! 4775ecc7-e5ad-4ad1-ab21-8d810a71088f
         -   Entity:
                 Id: b56625c1-d228-4bf9-8ea8-f0b6fa0753c5

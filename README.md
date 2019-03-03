@@ -46,6 +46,7 @@ A relevant piece of the compositor setup, where the default **CameraRenderer** a
 Of the most important bits to consider here are:
 * The main renderer only renders the sprites for each of the render target textures, (Group 31), while the render targets render everything **except** Group 31 (can be observed by looking at the **RenderMask** in the GraphicsCompositor for each renderer).
 * I created a [special script](XenkoByteSized/SplitScreen/Screen.cs) which just takes the center offset at which to place the render texture on screen, a reference to the render texture, the render group it should be in (to not be rendered by the split screen cameras) and creates the sprite for it.
+* I made sure the main camera goes through the normal forward renderer and applies the postfx at the end (so render left, render right, then the main path composits and applies postfx), while the two render target renderers only have a forward renderer, if you used the same render path for both, you'd end up applying post fx twice.
 
 ## Misc
 The sample also switches out the graphics compositor to the one associated with the scene being switched to currently, currently only relevant for the **SplitScreen** sample.
