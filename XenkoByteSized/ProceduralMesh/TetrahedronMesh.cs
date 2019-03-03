@@ -2,7 +2,6 @@
 using Xenko.Engine;
 using Xenko.Rendering;
 using Xenko.Graphics;
-using Xenko.Core;
 
 namespace XenkoByteSized.ProceduralMesh {
     public class TetrahedronMesh : SyncScript {

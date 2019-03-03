@@ -1,17 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xenko.Core.Mathematics;
-using Xenko.Input;
+﻿using Xenko.Input;
 using Xenko.Engine;
+using Xenko.Core.Mathematics;
 using Xenko.Core.Collections;
+using Xenko.Core;
 
 namespace XenkoByteSized {
     public class CameraSwitcher : SyncScript {
         
         private int activeCamera;
+
+        [Display("Cameras")]
         public FastList<BasicCameraController> cameras = new FastList<BasicCameraController>();
 
         public override void Start() {
