@@ -1,10 +1,10 @@
-﻿using System.Collections.Generic;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
-using Xenko.Core.Mathematics;
+using Xenko.Core;
 using Xenko.Input;
 using Xenko.Engine;
-using Xenko.Core;
+using Xenko.Core.Collections;
+using Xenko.Core.Mathematics;
 using Xenko.Rendering.Compositing;
 
 namespace XenkoByteSized {
@@ -20,11 +20,11 @@ namespace XenkoByteSized {
 
         [DataMember(100)]
         [Display("Scenes")]
-        public List<string> scenes = new List<string>();
+        public FastList<string> scenes = new FastList<string>();
 
         [DataMember(200)]
         [Display("Compositors")]
-        public List<GraphicsCompositor> compositors = new List<GraphicsCompositor>();
+        public FastList<GraphicsCompositor> compositors = new FastList<GraphicsCompositor>();
 
         private void SwitchToScene(string sceneUrl, GraphicsCompositor compositor) {
 
