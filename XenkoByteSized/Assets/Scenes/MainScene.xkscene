@@ -6,10 +6,11 @@ ChildrenIds:
     - 67647aca-f17b-4c8c-81dd-eaa1b53023f3
     - 0e875fe5-1f5a-49dc-922d-b7d286d69967
     - adecce91-3716-41c2-9ccf-20a60019a643
+    - 62a7f556-07b9-483c-8910-16eed8aaf9b9
 Offset: {X: 0.0, Y: 0.0, Z: 0.0}
 Hierarchy:
     RootParts:
-        - ref!! b56625c1-d228-4bf9-8ea8-f0b6fa0753c5
+        - ref!! 65449698-b1a1-4ea9-9a94-6cd0f9340dbd
         - ref!! 3dd6cb47-6026-477b-a911-740d3465e814
     Parts:
         -   Entity:
@@ -28,33 +29,25 @@ Hierarchy:
                             f97eac892063de0133a4439502a17437: Scenes/TetrahedronScene
                             6d9cf6fbaabecc844332b20db6569c1b: Scenes/SubdividedPlaneScene
                             fc9780fc3b358f9edc34dd39aee657b5: Scenes/SplitScreen/SplitScreenScene
+                            65043fa5c34a2f1d993d0c8f2bb1b6d3: Scenes/TriggerScene
                         compositors:
                             85cc55b6c2969be23b60ff290e9b19c0: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
                             d7d5a8ac098c617a4edc03d690ef7f94: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
                             75229fdbaf6ccd870fe516ff837ed18f: 01a53bfc-fb53-4cf5-a5b0-9aec932490f3:Scenes/SplitScreen/SplitScreenCompositor
-                        Camera: ref!! 4775ecc7-e5ad-4ad1-ab21-8d810a71088f
+                            74c718272503432a40dc68f80ad6c7ea: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
+                        Camera: ref!! 3687e441-4b8f-4295-b012-fa686ee6c024
         -   Entity:
-                Id: b56625c1-d228-4bf9-8ea8-f0b6fa0753c5
+                Id: 65449698-b1a1-4ea9-9a94-6cd0f9340dbd
                 Name: Camera
                 Components:
-                    2b9be6127bc92b0a328ca32b81a47564: !TransformComponent
-                        Id: 96f3c124-58fd-45df-a4db-acf438be1dbd
-                        Position: {X: 2.6, Y: 0.6, Z: -1.0}
-                        Rotation: {X: 0.0, Y: 0.829037547, Z: 0.0, W: 0.5591929}
+                    57f8c75cd1f7f41eb9288425f9ff3e2f: !TransformComponent
+                        Id: 2c1e814f-02cb-4898-8d7b-7055678f6427
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
-                    decb234d569b86b75678cb25a6ff9c58: !CameraComponent
-                        Id: 4775ecc7-e5ad-4ad1-ab21-8d810a71088f
+                    5ac32622ac8710ad577b82512b57093b: !CameraComponent
+                        Id: 3687e441-4b8f-4295-b012-fa686ee6c024
                         Name: null
                         Projection: Orthographic
                         Slot: d5fb481e-db96-4a8e-b678-113307612ee9
-                    04f896fa56bfbeff251b1340ab89f214: !XenkoByteSized.BasicCameraController,XenkoByteSized
-                        Id: e1a461a0-1553-4809-8439-2bbaab2bdb6a
-                        Enabled: true
-                        Gamepad: false
-                        KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
-                        TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}
-                        SpeedFactor: 5.0
-                        KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
-                        MouseRotationSpeed: {X: 1.0, Y: 1.0}
-                        TouchRotationSpeed: {X: 1.0, Y: 0.7}

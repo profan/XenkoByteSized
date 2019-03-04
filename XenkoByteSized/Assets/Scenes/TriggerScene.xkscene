@@ -1,0 +1,450 @@
+!SceneAsset
+Id: 62a7f556-07b9-483c-8910-16eed8aaf9b9
+SerializedVersion: {Xenko: 3.1.0.1}
+Tags: []
+ChildrenIds: []
+Parent: 55a44ab0-fb5d-4888-8368-0cb5c34197b5:Scenes/MainScene
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! 5a0f17cf-a24f-4b6b-9226-d0b68f972506
+        - ref!! eae8e754-bfb6-452e-ad09-90cf52b7abc1
+        - ref!! 12e92f6c-df5a-47c8-9308-56cd90fc2f2b
+        - ref!! ae503647-7507-44f7-8f21-9aa95fb61c3a
+        - ref!! 72f404ce-5cef-4baf-ad60-99bd2b4de736
+        - ref!! 5be00bab-cde9-4a51-9660-1b610de2d082
+        - ref!! 7d5dd2a5-4016-4a2d-8828-bc6db805620b
+        - ref!! 6c99742d-d4f7-4e1c-8ddf-95cdd61150d4
+        - ref!! 498d7ae6-9e5b-429a-8c6b-1e266909f5d0
+        - ref!! afdff0e9-7969-49f9-b3d4-2f2b47cc3b96
+        - ref!! 61832c61-fd11-4f0e-aa51-0809d9342e73
+        - ref!! 0c122bee-071c-4076-beb6-ff326d476ef1
+        - ref!! 01c9adf3-f4b3-4d5a-880e-c8dea8c42d7c
+        - ref!! 8994d5b0-bd12-4253-80e1-14e95623d024
+        - ref!! b57e922b-b43c-4f02-8dbc-0ef01a22b3fb
+        - ref!! f19ff3e8-375d-4e2e-b466-34c23e9c0c20
+    Parts:
+        -   Entity:
+                Id: 01c9adf3-f4b3-4d5a-880e-c8dea8c42d7c
+                Name: Ambient light
+                Components:
+                    123c29489c852d543c16dccb8244e07d: !TransformComponent
+                        Id: 35a742e6-84ff-458c-9f98-73fbbede0d8f
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    61bf9ec0a80eed448e16b689d3dc4df8: !LightComponent
+                        Id: e21159e1-b54e-442d-bae5-4b478063fcf7
+                        Type: !LightAmbient
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 1.0, B: 1.0}
+        -   Folder: RoomTwo
+            Entity:
+                Id: 0c122bee-071c-4076-beb6-ff326d476ef1
+                Name: Cube
+                Components:
+                    4cecfd98c28aa4d0d242970e1d8d69a6: !TransformComponent
+                        Id: 65b61934-1007-418d-8fec-49e3f3c14071
+                        Position: {X: -15.5, Y: 2.499998, Z: 0.08674641}
+                        Rotation: {X: 6.164385E-08, Y: -0.707106769, Z: 6.198966E-08, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 5.0, Z: 1.0}
+                        Children: {}
+                    5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
+                        Id: 90a592d6-cc25-40e1-ac42-d957b4c6f4fa
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    aff357acf4d5081058f81c1c842700f6: !StaticColliderComponent
+                        Id: 6ece6803-8c22-4a2e-bd7b-058680217e9d
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            ca79cb27854c85d212539071c85b37b8: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomOne
+            Entity:
+                Id: 12e92f6c-df5a-47c8-9308-56cd90fc2f2b
+                Name: Cube
+                Components:
+                    4cecfd98c28aa4d0d242970e1d8d69a6: !TransformComponent
+                        Id: fba8587d-ae0d-4fd3-b15f-81ad50762952
+                        Position: {X: 0.0, Y: 2.5, Z: 5.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 10.0, Y: 5.0, Z: 1.0}
+                        Children: {}
+                    5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
+                        Id: e63bdbf8-48f8-4f5c-b3ac-b37f76aff391
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    ac6697409feae83e2053152bc36d3a6e: !StaticColliderComponent
+                        Id: 8f17f6a7-2ede-43ab-88b0-d384190cda5c
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            e05e614f9b1273116f9c7357180d464b: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomTwo
+            Entity:
+                Id: 498d7ae6-9e5b-429a-8c6b-1e266909f5d0
+                Name: Cube
+                Components:
+                    4cecfd98c28aa4d0d242970e1d8d69a6: !TransformComponent
+                        Id: 07a89f21-5e24-4ba6-abcb-779fe908637a
+                        Position: {X: -10.5, Y: 2.499999, Z: -4.941145}
+                        Rotation: {X: 8.74220945E-08, Y: -1.0, Z: 2.44528536E-10, W: -4.371139E-08}
+                        Scale: {X: 10.0, Y: 5.0, Z: 1.0}
+                        Children: {}
+                    5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
+                        Id: 562a2507-de6b-400f-a26b-5965e40562b8
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    4e22c786c4e6c91c59509bd9c5c6aa9f: !StaticColliderComponent
+                        Id: 12c59721-9da4-4ca9-9e0b-e282502969f3
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            5027803963709d5469e728e28ea405c0: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: 4a799eb5-4289-4f50-906c-a0f170eb0c97
+                Name: Camera
+                Components:
+                    2b9be6127bc92b0a328ca32b81a47564: !TransformComponent
+                        Id: 265d8ec4-fde3-4ca0-84e6-503a6eeaa47f
+                        Position: {X: 0.0, Y: 2.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    decb234d569b86b75678cb25a6ff9c58: !CameraComponent
+                        Id: 457fed28-4003-442e-a215-0c50f8dfc728
+                        Name: null
+                        Projection: Perspective
+                        Slot: d5fb481e-db96-4a8e-b678-113307612ee9
+        -   Folder: RoomOne
+            Entity:
+                Id: 5a0f17cf-a24f-4b6b-9226-d0b68f972506
+                Name: Cube
+                Components:
+                    4cecfd98c28aa4d0d242970e1d8d69a6: !TransformComponent
+                        Id: 8f08f256-2b76-42de-8d10-7fbb3f016650
+                        Position: {X: 0.0, Y: 2.5, Z: -5.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 10.0, Y: 5.0, Z: 1.0}
+                        Children: {}
+                    5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
+                        Id: d3bd14c3-f72a-4fe0-8946-06f0ece27be8
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    282acadf160162c837ea311d198b9c4f: !StaticColliderComponent
+                        Id: 8c37c655-6fa5-47fd-beb7-9d466ae6abf1
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            df7f8493853c407d57f29ae703fc6360: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomOne
+            Entity:
+                Id: 5be00bab-cde9-4a51-9660-1b610de2d082
+                Name: Ground
+                Components:
+                    f684201c19117b7c7c59e5c5e1d06da3: !TransformComponent
+                        Id: 2ee0bb6d-8d33-48ad-82a3-719586266026
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c43c6df6e5d8883a03dd2a3cee3f5022: !ModelComponent
+                        Id: 1fdb0a06-8bd2-4e24-a87f-c784460c8d97
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+        -   Entity:
+                Id: 61832c61-fd11-4f0e-aa51-0809d9342e73
+                Name: Player
+                Components:
+                    07f6b025708be4f84b2cfc80f8f07434: !TransformComponent
+                        Id: e546bd9a-b6b9-479d-a6a8-46b18d42fa13
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            4b96834400769d73ba604f2ad904e3e8: ref!! 265d8ec4-fde3-4ca0-84e6-503a6eeaa47f
+                    a26e8e8b273bd3108fd6eadd8c78df32: !XenkoByteSized.PlayerController,XenkoByteSized
+                        Id: 90ac2fa1-188b-4c0d-85a3-f5df29acfb8a
+                        Speed: 5.0
+                        CameraEntity: ref!! 4a799eb5-4289-4f50-906c-a0f170eb0c97
+                        RotationAdaptationSpeed: 5.0
+                        RotationSpeed: 2.355
+                    326ed7c94997c21d8df28eba57b3b154: !CharacterComponent
+                        Id: b344a058-b0ff-4feb-a4bc-dab616b9abc8
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        FallSpeed: 10.0
+                        MaxSlope: {Radians: 0.7853982}
+                        JumpSpeed: 5.0
+                        Gravity: {X: 0.0, Y: -10.0, Z: 0.0}
+                        ColliderShapes:
+                            ec0f31f82b9bd3048ba630b25e2ed36e: !CapsuleColliderShapeDesc
+                                Length: 1.75
+                                Radius: 1.0
+                                LocalOffset: {X: 0.0, Y: 2.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomTwo
+            Entity:
+                Id: 6c99742d-d4f7-4e1c-8ddf-95cdd61150d4
+                Name: Ground
+                Components:
+                    f684201c19117b7c7c59e5c5e1d06da3: !TransformComponent
+                        Id: 22fb95ee-3070-4b8b-8ceb-e8945e246452
+                        Position: {X: -10.0, Y: 4.999999, Z: 0.0}
+                        Rotation: {X: -1.0, Y: -7.54979E-08, Z: -4.371139E-08, W: -2.44528E-10}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c43c6df6e5d8883a03dd2a3cee3f5022: !ModelComponent
+                        Id: fad3d21a-bff8-4167-af36-c95915dab1f2
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+        -   Folder: RoomOne
+            Entity:
+                Id: 72f404ce-5cef-4baf-ad60-99bd2b4de736
+                Name: Ground
+                Components:
+                    f684201c19117b7c7c59e5c5e1d06da3: !TransformComponent
+                        Id: 62aec553-2687-4a7f-a561-193fb30d103b
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c43c6df6e5d8883a03dd2a3cee3f5022: !ModelComponent
+                        Id: 9d40f19d-b80f-4075-90d2-d3a8582012e6
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    99bd0e33167c8a919c28837bd4562d1c: !StaticColliderComponent
+                        Id: 13098116-2122-4c57-a536-21c78ca8ff31
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            a1d54c8621aedc230a7b48c396cc7d05: !StaticPlaneColliderShapeDesc
+                                Normal: {X: 0.0, Y: 1.0, Z: 0.0}
+                                Offset: 0.0
+        -   Folder: RoomTwo
+            Entity:
+                Id: 7d5dd2a5-4016-4a2d-8828-bc6db805620b
+                Name: Ground
+                Components:
+                    f684201c19117b7c7c59e5c5e1d06da3: !TransformComponent
+                        Id: 3c0263bc-d850-4180-8e2f-8890a1473fa9
+                        Position: {X: -10.0, Y: -9.18522971E-07, Z: 0.0}
+                        Rotation: {X: 8.74220945E-08, Y: -1.0, Z: 2.44528536E-10, W: -4.371139E-08}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c43c6df6e5d8883a03dd2a3cee3f5022: !ModelComponent
+                        Id: 3962f065-d55c-4957-9e76-1fb435919da7
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+        -   Folder: RoomWall
+            Entity:
+                Id: 8994d5b0-bd12-4253-80e1-14e95623d024
+                Name: Cube
+                Components:
+                    4cecfd98c28aa4d0d242970e1d8d69a6: !TransformComponent
+                        Id: 0664d959-d5bc-4ec9-8291-dd25207f7189
+                        Position: {X: -5.0, Y: 2.5, Z: -3.5}
+                        Rotation: {X: 0.0, Y: 0.707106769, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 4.0, Y: 5.0, Z: 1.0}
+                        Children: {}
+                    5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
+                        Id: d22d22a8-5a37-41b4-a8c6-5de27cd63501
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    d890a86624df80e91d632a1d90bcae7d: !StaticColliderComponent
+                        Id: 196e3c0e-d55b-4d2d-8a15-4ef49a8a3724
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            edec32b4f26ab16e677860a8d05a02d2: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomOne
+            Entity:
+                Id: ae503647-7507-44f7-8f21-9aa95fb61c3a
+                Name: Ground
+                Components:
+                    f684201c19117b7c7c59e5c5e1d06da3: !TransformComponent
+                        Id: 9130858c-1ac9-4a80-8d14-8f3f5e099898
+                        Position: {X: 0.0, Y: 5.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 1.0, W: -4.371139E-08}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c43c6df6e5d8883a03dd2a3cee3f5022: !ModelComponent
+                        Id: aaefc9c4-fa04-4385-ad65-3ba72a221c36
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+        -   Folder: RoomTwo
+            Entity:
+                Id: afdff0e9-7969-49f9-b3d4-2f2b47cc3b96
+                Name: Cube
+                Components:
+                    4cecfd98c28aa4d0d242970e1d8d69a6: !TransformComponent
+                        Id: 86445440-9d52-44f3-88ca-1288af279446
+                        Position: {X: -10.5, Y: 2.499999, Z: 5.05869675}
+                        Rotation: {X: 8.74220945E-08, Y: -1.0, Z: 2.44528536E-10, W: -4.371139E-08}
+                        Scale: {X: 10.0, Y: 5.0, Z: 1.0}
+                        Children: {}
+                    5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
+                        Id: 7348b618-3b2a-4c94-8311-059a9f1ad5e2
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    f2af0b35baaf37b9cc5c51979185eba2: !StaticColliderComponent
+                        Id: 421246c9-5abf-41f8-976c-0460f0237b69
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            bfe54010ffc1abcb67f3598a026228a5: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomWall
+            Entity:
+                Id: b57e922b-b43c-4f02-8dbc-0ef01a22b3fb
+                Name: Door
+                Components:
+                    4cecfd98c28aa4d0d242970e1d8d69a6: !TransformComponent
+                        Id: cf8b733c-7b24-4e7f-88c5-2cf424cdb6a3
+                        Position: {X: -5.0, Y: 2.5, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.707106769, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 3.0, Y: 5.0, Z: 0.5}
+                        Children: {}
+                    5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
+                        Id: 27030075-ba7e-413b-9428-db3188d115d9
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            3f0476b062e9265da24c46672630a118~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
+                    d5f761f801b1499035c0aee3146bf80b: !XenkoByteSized.DoorScript,XenkoByteSized
+                        Id: 016b9d16-ff5b-45d2-a3ae-440b9f9fbfe3
+                        model: ref!! 27030075-ba7e-413b-9428-db3188d115d9
+                        triggerShape: !BoxColliderShapeDesc
+                            Is2D: false
+                            Size: {X: 1.0, Y: 1.0, Z: 2.0}
+                            LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                            LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        triggerGroup: SensorTrigger
+                        colliderShape: !BoxColliderShapeDesc
+                            Is2D: false
+                            Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                            LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                            LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        colliderGroup: DefaultFilter
+        -   Folder: RoomOne
+            Entity:
+                Id: eae8e754-bfb6-452e-ad09-90cf52b7abc1
+                Name: Cube
+                Components:
+                    4cecfd98c28aa4d0d242970e1d8d69a6: !TransformComponent
+                        Id: 34eb9a1d-22d7-42ee-bb14-1a617ac57ea2
+                        Position: {X: 5.0, Y: 2.5, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.707106769, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 10.0, Y: 5.0, Z: 1.0}
+                        Children: {}
+                    5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
+                        Id: 8386b65f-78be-41b1-9fe9-848f632c2e49
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    72d8f70ef79dc9f252ceb803254482ad: !StaticColliderComponent
+                        Id: eb313b94-81af-403c-aff1-cef888d208da
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            d6480f5802a27e9c14e0458f10fff338: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomWall
+            Entity:
+                Id: f19ff3e8-375d-4e2e-b466-34c23e9c0c20
+                Name: Cube
+                Components:
+                    4cecfd98c28aa4d0d242970e1d8d69a6: !TransformComponent
+                        Id: 0cb44fc3-dfda-43b7-a6eb-1b3c6b07a258
+                        Position: {X: -5.0, Y: 2.5, Z: 3.5}
+                        Rotation: {X: 0.0, Y: 0.707106769, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 4.0, Y: 5.0, Z: 1.0}
+                        Children: {}
+                    5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
+                        Id: a1a48883-8b16-4563-8de1-d6673eae612e
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    be5503fd3d1494e6b22c0011308ac832: !StaticColliderComponent
+                        Id: 2393a0f8-160a-4868-894b-d47339f78ea6
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            41e6bfc1d51ba1792f0a4ea43364e349: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
