@@ -55,7 +55,7 @@ namespace XenkoByteSized {
                 collider.Enabled = false;
                 model.Enabled = false;
 
-                Collision endColl = await trigger.CollisionEnded();
+                await coll.Ended();
                 collider.Enabled = true;
                 model.Enabled = true;
 
