@@ -125,7 +125,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        // FIXME: this is a hack to make the scene reload work
+        // FIXME: can this be done differently? its not a hack but..
         public override void Cancel() {
             mesh.Draw.VertexBuffers[0].Buffer.Dispose();
         }
