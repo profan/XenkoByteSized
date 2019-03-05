@@ -19,26 +19,55 @@ Hierarchy:
         - ref!! afdff0e9-7969-49f9-b3d4-2f2b47cc3b96
         - ref!! 61832c61-fd11-4f0e-aa51-0809d9342e73
         - ref!! 0c122bee-071c-4076-beb6-ff326d476ef1
-        - ref!! 01c9adf3-f4b3-4d5a-880e-c8dea8c42d7c
         - ref!! 8994d5b0-bd12-4253-80e1-14e95623d024
         - ref!! b57e922b-b43c-4f02-8dbc-0ef01a22b3fb
         - ref!! f19ff3e8-375d-4e2e-b466-34c23e9c0c20
+        - ref!! 8c865832-282f-42a0-9913-50047179074f
+        - ref!! 2306891d-9926-443b-8d10-fcddab7996e9
+        - ref!! ee4811b5-ab22-4718-ad93-09338f7f2ab7
+        - ref!! 9034993b-8213-4005-b1be-ff1671ec61c5
+        - ref!! fb854a82-dfca-490a-b159-f01a9095ad40
+        - ref!! ed936250-40d4-42af-a4ed-06e50bc4c925
+        - ref!! 6ca49312-492b-49ab-87aa-5e52b13879e0
+        - ref!! 2cb5a52a-0ce1-4dbe-baf1-67db680f9726
+        - ref!! 018fbe66-1768-43c1-9433-de31271d1c4a
+        - ref!! 6b9cad1c-96d1-4ebc-b335-3a23e5ee64cc
+        - ref!! 7e15162b-45fa-4395-b3e0-27d7b6d72fe1
+        - ref!! 7b96b33c-c577-41f2-8cfd-8902aeaae92a
+        - ref!! ff10be58-bf11-439d-a3bd-d7bcea74f872
+        - ref!! 77ae6273-702f-4569-9e46-dede02a5079e
+        - ref!! 776c9f1f-2efb-442a-af14-0a4e16e14082
+        - ref!! 1ff76045-64a1-471f-bdd0-e0b88a3491ba
+        - ref!! a706e733-9867-4587-b0a9-f0a72732df04
+        - ref!! b842f424-7f28-4970-890e-f4e182b88577
+        - ref!! b159d446-a0d7-40a9-a05f-fb91bf6116e1
+        - ref!! 73ce36e6-40c8-4c1a-9486-fa26d9fe2054
+        - ref!! b7fcef8f-56bc-44a1-815f-aca2c9889c75
+        - ref!! 141824d4-2b05-433b-97b5-0d28624b5831
     Parts:
-        -   Entity:
-                Id: 01c9adf3-f4b3-4d5a-880e-c8dea8c42d7c
-                Name: Ambient light
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: 018fbe66-1768-43c1-9433-de31271d1c4a
+                Name: Light probe
                 Components:
-                    123c29489c852d543c16dccb8244e07d: !TransformComponent
-                        Id: 35a742e6-84ff-458c-9f98-73fbbede0d8f
-                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 3d0450ea-2040-40ef-a172-1bdd44f3b1d9
+                        Position: {X: 0.0275782943, Y: 0.422250539, Z: -0.08995843}
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
-                    61bf9ec0a80eed448e16b689d3dc4df8: !LightComponent
-                        Id: e21159e1-b54e-442d-bae5-4b478063fcf7
-                        Type: !LightAmbient
-                            Color: !ColorRgbProvider
-                                Value: {R: 1.0, G: 1.0, B: 1.0}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 83397e23-3f13-4577-85c2-22f971621047
+                        Coefficients:
+                            - {R: 0.035394337, G: 0.0264567155, B: 0.01244843}
+                            - {R: 0.0594472364, G: 0.0425191149, B: 0.0159842353}
+                            - {R: -0.001264913, G: -0.000914062141, B: -0.0003631151}
+                            - {R: -0.000429165171, G: -0.000311526965, B: -0.0001290158}
+                            - {R: -0.0007926712, G: -0.0005706448, B: -0.00022423183}
+                            - {R: -0.00252617267, G: -0.00181321776, B: -0.000694941031}
+                            - {R: -0.009616119, G: -0.006938527, B: -0.00274063274}
+                            - {R: 8.264592E-06, G: 5.11727649E-06, B: 2.37962485E-08}
+                            - {R: -0.02887265, G: -0.0208426043, B: -0.008254195}
         -   Folder: RoomTwo
             Entity:
                 Id: 0c122bee-071c-4076-beb6-ff326d476ef1
@@ -101,6 +130,145 @@ Hierarchy:
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
         -   Folder: RoomTwo
             Entity:
+                Id: 141824d4-2b05-433b-97b5-0d28624b5831
+                Name: Point light
+                Components:
+                    1a1310e0cad40e8a42ce49f4a22c60dc: !TransformComponent
+                        Id: e3fef02d-d3ce-467a-a28a-09f2c90b9d26
+                        Position: {X: -10.7090673, Y: 4.41540432, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    812318e0f3043ff54db5cdefdac4b54d: !LightComponent
+                        Id: e65001dc-f33d-46fe-a980-ba8a35ecf809
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 1.0, B: 1.0}
+                            Radius: 12.0
+                            Shadow:
+                                Enabled: true
+                                Size: Large
+                                BiasParameters: {}
+                        Intensity: 4.0
+        -   Folder: Lamp
+            Entity:
+                Id: 14703ae2-ffe1-4c19-bc0e-286d050ed7b3
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: bf3c14db-64c7-470a-aedc-30f08564fba7
+                        Position: {X: 0.625, Y: -0.4607889, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 0.25, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: b34c1b29-c9b7-4287-984f-ee24503a37fb
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
+        -   Folder: RoomTwo/Probes
+            Entity:
+                Id: 1ff76045-64a1-471f-bdd0-e0b88a3491ba
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: e9b03b8a-dfa9-4726-8703-112140709978
+                        Position: {X: 3.74746776, Y: 4.793509, Z: 3.04378033}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 5ad8e73e-1d32-413e-8adc-db38c4511f5f
+                        Coefficients:
+                            - {R: 0.00255383, G: 0.00245518144, B: 0.00230229064}
+                            - {R: -0.0009834407, G: -0.000944657833, B: -0.000884577748}
+                            - {R: 0.00116464228, G: 0.00106093579, B: 0.000898735132}
+                            - {R: -0.00118139153, G: -0.00105273689, B: -0.0008535053}
+                            - {R: -9.492166E-05, G: -0.0001182808, B: -0.0001540889}
+                            - {R: -1.44614251E-05, G: 1.77803724E-06, B: 2.73724982E-05}
+                            - {R: 4.76030145E-05, G: 4.72863831E-05, B: 4.68478647E-05}
+                            - {R: -0.000973271148, G: -0.0008367345, B: -0.0006230134}
+                            - {R: 0.000485980039, G: 0.00045628348, B: 0.000410508044}
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: 2306891d-9926-443b-8d10-fcddab7996e9
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 83ffbe26-9fea-4f90-9625-a247214246b9
+                        Position: {X: -7.877231, Y: 3.60029912, Z: -3.40026569}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 3ecb4daa-95fe-41ff-bfa7-94138a928ae7
+                        Coefficients:
+                            - {R: 0.0136784026, G: 0.0112525756, B: 0.007482011}
+                            - {R: 0.0007753652, G: -0.0006714438, B: -0.00292581879}
+                            - {R: -0.0145757981, G: -0.0110331886, B: -0.00550557859}
+                            - {R: -0.0126350634, G: -0.009771854, B: -0.00530981226}
+                            - {R: -0.003666142, G: -0.00202414417, B: 0.0005341671}
+                            - {R: -0.00454845, G: -0.00252965256, B: 0.000614632037}
+                            - {R: 0.00140153512, G: 0.0009260455, B: 0.000186993711}
+                            - {R: 0.0154092424, G: 0.0114567894, B: 0.00530059449}
+                            - {R: 0.0008843364, G: 0.0002703945, B: -0.0006849245}
+        -   Folder: Lamp
+            Entity:
+                Id: 25246412-5002-4ad4-a968-3a2a4fc1a86a
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: 4463a09b-823f-4d25-b059-2b00e2bf4e8c
+                        Position: {X: -1.22421253, Y: -0.4603472, Z: 8.848717E-07}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 0.25, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: 2c0bbe7e-a0c8-4e8e-ab3c-41b7f13fae50
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: 2cb5a52a-0ce1-4dbe-baf1-67db680f9726
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 0db3d0ec-b0cc-4819-bd91-54f69abab079
+                        Position: {X: -10.6839952, Y: 0.422250539, Z: -0.08995843}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: c4c727ec-a3b5-4d62-9dd5-6ac58ede2a00
+                        Coefficients:
+                            - {R: 0.0437912866, G: 0.0350498669, B: 0.0214380939}
+                            - {R: 0.04232972, G: 0.0249466449, B: -0.002123517}
+                            - {R: -0.00172981352, G: -0.00134746917, B: -0.0007518842}
+                            - {R: 0.000161084521, G: 4.43696044E-05, B: -0.000135263}
+                            - {R: 0.0009162965, G: 0.0006865923, B: 0.000331016316}
+                            - {R: -0.00183228031, G: -0.00112385431, B: -2.14011852E-05}
+                            - {R: -0.0123517681, G: -0.009661031, B: -0.005470266}
+                            - {R: -1.06331663E-05, G: -4.8208567E-06, B: 4.36719029E-06}
+                            - {R: -0.0371539854, G: -0.029076416, B: -0.0164965037}
+        -   Folder: Lamp
+            Entity:
+                Id: 36e8a0d3-81e1-42f8-95dc-646d3f45f3dc
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: 6235ed14-d4f4-4c1b-a128-403ed62119f7
+                        Position: {X: -0.5992124, Y: -0.496020168, Z: 8.84836E-07}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: 8c5c72f2-a78d-4661-adc2-cd39b3e053c6
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: eb1a182c-e649-47f5-8699-ba271b69a4c9:Lamp Material
+        -   Folder: RoomTwo
+            Entity:
                 Id: 498d7ae6-9e5b-429a-8c6b-1e266909f5d0
                 Name: Cube
                 Components:
@@ -144,6 +312,22 @@ Hierarchy:
                         Name: null
                         Projection: Perspective
                         Slot: d5fb481e-db96-4a8e-b678-113307612ee9
+        -   Folder: Lamp
+            Entity:
+                Id: 4fa9eee7-52ae-4cc9-8e14-4a670754425f
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: c7346c2c-7dbf-4cf7-9094-30131400f257
+                        Position: {X: -0.5992124, Y: -0.4603472, Z: -0.6249991}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.5, Y: 1.0, Z: 0.25}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: 7743eae2-1bb1-4a9e-9e38-bc53ce85da60
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
         -   Folder: RoomOne
             Entity:
                 Id: 5a0f17cf-a24f-4b6b-9226-d0b68f972506
@@ -224,21 +408,88 @@ Hierarchy:
                                 Radius: 1.0
                                 LocalOffset: {X: 0.0, Y: 2.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Lamp
+            Entity:
+                Id: 67487fb1-774e-4c0f-8cbe-354f05868a9c
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: 34ec4b4c-7f31-47ae-b874-d321afeabb30
+                        Position: {X: -0.5992124, Y: -0.4603472, Z: 0.6250009}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.5, Y: 1.0, Z: 0.25}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: 27ff0d23-23e6-4c72-92d7-9286cac8a4cd
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: 6b9cad1c-96d1-4ebc-b335-3a23e5ee64cc
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 3d5a8372-bed9-4b94-a4c5-2d8639a92adf
+                        Position: {X: 0.0005429089, Y: 4.269615, Z: -0.08995843}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: df7975ff-5822-4a6f-a1a8-e2ffc8639809
+                        Coefficients:
+                            - {R: 0.8829795, G: 0.6313228, B: 0.236826122}
+                            - {R: 1.59257293, G: 1.13492954, B: 0.417517245}
+                            - {R: -0.133886054, G: -0.0947228, B: -0.03332676}
+                            - {R: -0.000361065351, G: -0.000247216783, B: -6.911586E-05}
+                            - {R: -0.000509944046, G: -0.000344162981, B: -7.796171E-05}
+                            - {R: -0.207601011, G: -0.146420076, B: -0.0505093336}
+                            - {R: -0.200630724, G: -0.142405912, B: -0.05113014}
+                            - {R: 3.60809463E-05, G: 2.22265153E-05, B: -6.125418E-07}
+                            - {R: -0.609377861, G: -0.4324534, B: -0.155099124}
         -   Folder: RoomTwo
             Entity:
                 Id: 6c99742d-d4f7-4e1c-8ddf-95cdd61150d4
-                Name: Ground
+                Name: Ceiling
                 Components:
                     f684201c19117b7c7c59e5c5e1d06da3: !TransformComponent
                         Id: 22fb95ee-3070-4b8b-8ceb-e8945e246452
                         Position: {X: -10.0, Y: 4.999999, Z: 0.0}
                         Rotation: {X: -1.0, Y: -7.54979E-08, Z: -4.371139E-08, W: -2.44528E-10}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
-                        Children: {}
+                        Children:
+                            43782adbde3985a1ebe3ffa9da416aa6: ref!! 34ec4b4c-7f31-47ae-b874-d321afeabb30
+                            eaecb98333351264d78648f014714a61: ref!! c7346c2c-7dbf-4cf7-9094-30131400f257
+                            ea38d6a928a3e1808fcba28a8e24db5e: ref!! 4463a09b-823f-4d25-b059-2b00e2bf4e8c
+                            526b9157a79d236d6bc28e47a665b376: ref!! 19861624-094c-44df-b90f-6a940701902b
+                            7f095032c6df16ab21e4f5e41bfe3e08: ref!! 6235ed14-d4f4-4c1b-a128-403ed62119f7
                     c43c6df6e5d8883a03dd2a3cee3f5022: !ModelComponent
                         Id: fad3d21a-bff8-4167-af36-c95915dab1f2
                         Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
                         Materials: {}
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: 6ca49312-492b-49ab-87aa-5e52b13879e0
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: a41ead49-34f9-4313-a7f1-cb7225d58073
+                        Position: {X: -7.877231, Y: 0.6969245, Z: 3.04378033}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: b8c3f54c-30ff-4c68-af18-e91ed5aea42a
+                        Coefficients:
+                            - {R: 0.0200668257, G: 0.0163250789, B: 0.0104996879}
+                            - {R: 0.0123874666, G: 0.00700588152, B: -0.00137269741}
+                            - {R: 0.018300999, G: 0.0145386737, B: 0.00867992453}
+                            - {R: -0.017022064, G: -0.0135900518, B: -0.008244175}
+                            - {R: -0.0109793646, G: -0.006329229, B: 0.00091387314}
+                            - {R: 0.0120457225, G: 0.006933338, B: -0.00102880027}
+                            - {R: -0.00135180424, G: -0.00110103039, B: -0.000710434164}
+                            - {R: -0.0153203141, G: -0.012055059, B: -0.00696963072}
+                            - {R: -0.005452541, G: -0.0043892106, B: -0.00273377169}
         -   Folder: RoomOne
             Entity:
                 Id: 72f404ce-5cef-4baf-ad60-99bd2b4de736
@@ -267,6 +518,98 @@ Hierarchy:
                             a1d54c8621aedc230a7b48c396cc7d05: !StaticPlaneColliderShapeDesc
                                 Normal: {X: 0.0, Y: 1.0, Z: 0.0}
                                 Offset: 0.0
+        -   Folder: RoomTwo/Probes
+            Entity:
+                Id: 73ce36e6-40c8-4c1a-9486-fa26d9fe2054
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 1c005945-7f2c-428f-9106-fd22de1b2e00
+                        Position: {X: -3.536119, Y: 4.93856764, Z: 3.960145}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: a6cc0d34-39d6-476c-8015-b03d0d3e195a
+                        Coefficients:
+                            - {R: 0.0370173045, G: 0.0383140147, B: 0.04329284}
+                            - {R: 0.0506371781, G: 0.05263436, B: 0.0600957647}
+                            - {R: 0.000452242472, G: 0.00042052925, B: 0.000364795385}
+                            - {R: 0.0005175332, G: 0.0004954988, B: 0.000455444417}
+                            - {R: -0.0001181361, G: -9.407756E-05, B: -5.22095143E-05}
+                            - {R: -7.323842E-05, G: -3.46793277E-05, B: 3.03991637E-05}
+                            - {R: -0.00384463649, G: -0.003990214, B: -0.00454550562}
+                            - {R: 0.000221806244, G: 0.000205870238, B: 0.0001772619}
+                            - {R: -0.0116147622, G: -0.0120469145, B: -0.0137063628}
+        -   Folder: RoomTwo/Probes
+            Entity:
+                Id: 776c9f1f-2efb-442a-af14-0a4e16e14082
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 0a208774-279e-4c53-8e5c-7e54669b35d1
+                        Position: {X: 3.77576685, Y: 4.86165047, Z: -3.9342916}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 7fdc0107-74ec-44cb-b8e1-1733e9e56896
+                        Coefficients:
+                            - {R: 0.00191238243, G: 0.00188731891, B: 0.00184994109}
+                            - {R: -0.00102264225, G: -0.0009889419, B: -0.000937566452}
+                            - {R: -0.0006226737, G: -0.0006004646, B: -0.0005663275}
+                            - {R: -0.0006743501, G: -0.0006525051, B: -0.000620254548}
+                            - {R: 0.000123724967, G: 9.826437E-05, B: 5.917816E-05}
+                            - {R: 9.717202E-05, G: 7.1921495E-05, B: 3.2405158E-05}
+                            - {R: 7.668583E-05, G: 7.857267E-05, B: 8.143678E-05}
+                            - {R: 0.000349971961, G: 0.00033347815, B: 0.000307733717}
+                            - {R: 0.000195134329, G: 0.000200632639, B: 0.00020966075}
+        -   Folder: RoomTwo/Probes
+            Entity:
+                Id: 77ae6273-702f-4569-9e46-dede02a5079e
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: c85b4a7c-0b43-474f-941a-96aebbb45146
+                        Position: {X: -3.35633, Y: 4.94553137, Z: -4.199043}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 9207a6ec-e601-49b9-a98f-9aea62711eef
+                        Coefficients:
+                            - {R: 0.0418806225, G: 0.0427306443, B: 0.04725097}
+                            - {R: 0.0510564148, G: 0.0538444631, B: 0.0627854}
+                            - {R: 0.000115527473, G: 2.05197921E-05, B: -0.000120977784}
+                            - {R: -0.000205316028, G: -1.97794361E-05, B: 0.000269248238}
+                            - {R: 0.0005047461, G: 0.000332562835, B: 6.304601E-05}
+                            - {R: -0.0006352577, G: -0.000473109132, B: -0.000222498158}
+                            - {R: -0.00385702471, G: -0.003940439, B: -0.004383885}
+                            - {R: 0.000307347276, G: 0.000166301645, B: -5.365362E-05}
+                            - {R: -0.011323235, G: -0.0116843032, B: -0.0131907789}
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: 7b96b33c-c577-41f2-8cfd-8902aeaae92a
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 48e77c3b-23f6-48b8-b0c7-e96f9a90e26f
+                        Position: {X: -14.2721672, Y: 3.57166362, Z: 3.04462767}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 4c22f917-2426-4b7f-ae72-3fad852b1eb7
+                        Coefficients:
+                            - {R: 0.0123050064, G: 0.0102881622, B: 0.007148842}
+                            - {R: 2.43144113E-05, G: -0.00114393665, B: -0.00296299555}
+                            - {R: 0.010661344, G: 0.008322414, B: 0.00468276441}
+                            - {R: 0.0120067354, G: 0.009244157, B: 0.004946378}
+                            - {R: 0.00269652414, G: 0.00118613883, B: -0.00116452936}
+                            - {R: 0.00233124779, G: 0.00105257984, B: -0.000937765057}
+                            - {R: -0.00014203407, G: -0.000223296855, B: -0.0003498523}
+                            - {R: 0.0124476561, G: 0.009305328, B: 0.00441616075}
+                            - {R: 0.00184862479, G: 0.00104452856, B: -0.000206251236}
         -   Folder: RoomTwo
             Entity:
                 Id: 7d5dd2a5-4016-4a2d-8828-bc6db805620b
@@ -281,7 +624,31 @@ Hierarchy:
                     c43c6df6e5d8883a03dd2a3cee3f5022: !ModelComponent
                         Id: 3962f065-d55c-4957-9e76-1fb435919da7
                         Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
-                        Materials: {}
+                        Materials:
+                            f32c268651405b8d4b12dbdec2a07f34~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: 7e15162b-45fa-4395-b3e0-27d7b6d72fe1
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 5256dccc-66c7-434c-8a95-390c58ab684a
+                        Position: {X: -14.1862078, Y: 0.6337432, Z: 3.17715168}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: feaa69b5-e618-4ba2-af3d-48bc48191562
+                        Coefficients:
+                            - {R: 0.0167498291, G: 0.0137827536, B: 0.009161934}
+                            - {R: 0.008737732, G: 0.00476412755, B: -0.00142430793}
+                            - {R: 0.01464139, G: 0.0117884353, B: 0.00734592928}
+                            - {R: 0.0160011761, G: 0.0128348013, B: 0.007904694}
+                            - {R: 0.008935818, G: 0.00489325775, B: -0.00140201591}
+                            - {R: 0.00797115, G: 0.00434418162, B: -0.001304282}
+                            - {R: -0.00130547129, G: -0.00105674274, B: -0.0006693984}
+                            - {R: 0.0141731482, G: 0.0112495925, B: 0.006697198}
+                            - {R: -0.00243650237, G: -0.00201179483, B: -0.00135012052}
         -   Folder: RoomWall
             Entity:
                 Id: 8994d5b0-bd12-4253-80e1-14e95623d024
@@ -312,17 +679,107 @@ Hierarchy:
                                 Size: {X: 1.0, Y: 1.0, Z: 1.0}
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: 8c865832-282f-42a0-9913-50047179074f
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 839f44a6-beff-4391-979a-1fa27fe8d85a
+                        Position: {X: -14.1862078, Y: 3.99873352, Z: -3.40026569}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 06449c92-7d72-4cd3-8c62-a7bc8f8f143b
+                        Coefficients:
+                            - {R: 0.009165178, G: 0.007955517, B: 0.006067705}
+                            - {R: -0.002415865, G: -0.00286707352, B: -0.00357138552}
+                            - {R: -0.007890005, G: -0.006313641, B: -0.0038539262}
+                            - {R: 0.008017104, G: 0.00636670971, B: 0.00379139022}
+                            - {R: -4.25299331E-05, G: -0.00065999385, B: -0.00162403157}
+                            - {R: 7.32599146E-05, G: 0.000662677048, B: 0.00158266618}
+                            - {R: 0.0001893083, G: 5.08384728E-05, B: -0.000165160658}
+                            - {R: -0.008746245, G: -0.00665296568, B: -0.00338629168}
+                            - {R: 0.0009337924, G: 0.0004191325, B: -0.000384029234}
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: 9034993b-8213-4005-b1be-ff1671ec61c5
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: cc6c2515-b23c-4dff-9672-191baa1e0cb8
+                        Position: {X: -10.6839952, Y: 3.99873352, Z: -0.08995843}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: b50a749d-26e2-4369-a2d8-955d2f0635a8
+                        Coefficients:
+                            - {R: 0.5418227, G: 0.388629526, B: 0.150224373}
+                            - {R: 1.000782, G: 0.711880445, B: 0.262237042}
+                            - {R: -0.07166047, G: -0.050731834, B: -0.01827079}
+                            - {R: 0.0326737, G: 0.0239467286, B: 0.0103762019}
+                            - {R: 0.0535475574, G: 0.0394361354, B: 0.017481396}
+                            - {R: -0.119050413, G: -0.0840449, B: -0.02974401}
+                            - {R: -0.1383, G: -0.09857581, B: -0.0367342681}
+                            - {R: -0.00382563658, G: -0.00277267932, B: -0.00118071958}
+                            - {R: -0.419182062, G: -0.2986645, B: -0.111061014}
+        -   Folder: Lamp
+            Entity:
+                Id: 91a69f14-3742-4e5a-89c6-49040596f3b8
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: 19861624-094c-44df-b90f-6a940701902b
+                        Position: {X: 0.02578759, Y: -0.4603472, Z: 8.848717E-07}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 0.25, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: 937e9fbf-83dd-4750-82e6-c56352bf3271
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
+        -   Folder: RoomTwo/Probes
+            Entity:
+                Id: a706e733-9867-4587-b0a9-f0a72732df04
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 2d1610ab-7727-44d4-a6cd-ab665d54a189
+                        Position: {X: -3.35633, Y: 0.6481342, Z: -4.10950756}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 6594744b-e4c7-49d5-8557-53b2136b0061
+                        Coefficients:
+                            - {R: 0.0103979716, G: 0.00797553547, B: 0.004178716}
+                            - {R: 0.0109660877, G: 0.008014992, B: 0.00338938856}
+                            - {R: -0.0104302308, G: -0.00764003, B: -0.00326691847}
+                            - {R: 0.008632733, G: 0.00635102531, B: 0.00277455687}
+                            - {R: 0.00978972949, G: 0.007079703, B: 0.00283178478}
+                            - {R: -0.0119206794, G: -0.008606776, B: -0.00341247814}
+                            - {R: 0.0002220587, G: 0.000166824655, B: 8.037959E-05}
+                            - {R: -0.00925965, G: -0.006706234, B: -0.00270386133}
+                            - {R: -0.001267158, G: -0.000908685557, B: -0.000346781249}
         -   Folder: RoomOne
             Entity:
                 Id: ae503647-7507-44f7-8f21-9aa95fb61c3a
-                Name: Ground
+                Name: Ceiling
                 Components:
                     f684201c19117b7c7c59e5c5e1d06da3: !TransformComponent
                         Id: 9130858c-1ac9-4a80-8d14-8f3f5e099898
                         Position: {X: 0.0, Y: 5.0, Z: 0.0}
                         Rotation: {X: 0.0, Y: 0.0, Z: 1.0, W: -4.371139E-08}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
-                        Children: {}
+                        Children:
+                            db058c74771e330d09def07785735af3: ref!! 61e62fc9-299d-433c-9088-6b4c9c77a02c
+                            a5ce2eca3473c66eac13e46208c6b86f: ref!! bf3c14db-64c7-470a-aedc-30f08564fba7
+                            58a3452d16e224ece5599729818055ec: ref!! 08839e76-6d92-418e-a556-a840ca0b83b1
+                            e57de746ea3c53a6c48d0824f8dec406: ref!! efe1b827-41a8-48f9-871f-c73aec64ca1c
+                            8aa4fefebde91b5cfc4ecb1c6b78a3ed: ref!! 82861a6e-5ffb-42ea-84d5-7d300b4c3dbc
                     c43c6df6e5d8883a03dd2a3cee3f5022: !ModelComponent
                         Id: aaefc9c4-fa04-4385-ad65-3ba72a221c36
                         Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
@@ -341,7 +798,8 @@ Hierarchy:
                     5a3b04ba446d65e511c95b2516bc55d9: !ModelComponent
                         Id: 7348b618-3b2a-4c94-8311-059a9f1ad5e2
                         Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
-                        Materials: {}
+                        Materials:
+                            966b9f9e51635c5cf9c640928097ec70~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
                     f2af0b35baaf37b9cc5c51979185eba2: !StaticColliderComponent
                         Id: 421246c9-5abf-41f8-976c-0460f0237b69
                         CanSleep: false
@@ -357,6 +815,29 @@ Hierarchy:
                                 Size: {X: 1.0, Y: 1.0, Z: 1.0}
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomTwo/Probes
+            Entity:
+                Id: b159d446-a0d7-40a9-a05f-fb91bf6116e1
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 339dacfe-5626-4094-8762-b693223b7c1e
+                        Position: {X: 3.83535647, Y: 0.6969245, Z: 3.344592}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 1258c5e5-6e1b-4b78-93e2-de4165618845
+                        Coefficients:
+                            - {R: 0.011278756, G: 0.008633716, B: 0.00448786328}
+                            - {R: 0.0122093419, G: 0.008912116, B: 0.00374340522}
+                            - {R: 0.009684289, G: 0.007113587, B: 0.00308432383}
+                            - {R: -0.0109973792, G: -0.008059508, B: -0.00345484563}
+                            - {R: -0.0128272716, G: -0.009257779, B: -0.00366236782}
+                            - {R: 0.0112159429, G: 0.008100164, B: 0.0032159132}
+                            - {R: -0.0007165328, G: -0.000517072855, B: -0.00020431311}
+                            - {R: -0.00998320151, G: -0.007216817, B: -0.002880782}
+                            - {R: -0.0007139027, G: -0.000503722171, B: -0.000173872148}
         -   Folder: RoomWall
             Entity:
                 Id: b57e922b-b43c-4f02-8dbc-0ef01a22b3fb
@@ -388,6 +869,116 @@ Hierarchy:
                             LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                             LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         colliderGroup: DefaultFilter
+        -   Folder: RoomTwo/Probes
+            Entity:
+                Id: b7fcef8f-56bc-44a1-815f-aca2c9889c75
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: d9190e2e-a4e8-4ef3-8565-213c1e36950e
+                        Position: {X: -3.7003746, Y: 0.442930162, Z: 4.088171}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 7245fa01-85b5-476e-a0f5-fdd06fed246c
+                        Coefficients:
+                            - {R: 0.009706192, G: 0.00754946331, B: 0.00419886131}
+                            - {R: 0.0100726346, G: 0.00731698424, B: 0.00298290839}
+                            - {R: 0.00900111347, G: 0.00651340466, B: 0.00258798827}
+                            - {R: 0.008417648, G: 0.006195005, B: 0.00270937965}
+                            - {R: 0.009625564, G: 0.006971308, B: 0.002811104}
+                            - {R: 0.0107373856, G: 0.00780030061, B: 0.00320665329}
+                            - {R: -5.02240837E-05, G: -3.77679135E-05, B: -1.96128E-05}
+                            - {R: 0.008652539, G: 0.006277617, B: 0.00255491724}
+                            - {R: -0.00100527087, G: -0.0007304551, B: -0.000302495057}
+        -   Folder: RoomTwo/Probes
+            Entity:
+                Id: b842f424-7f28-4970-890e-f4e182b88577
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: be07bdc3-9d6d-4165-9678-ce1f24d200e0
+                        Position: {X: 3.652373, Y: 0.408947885, Z: -3.97194386}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: 2c988115-852a-4fb4-b5df-c069c2d03102
+                        Coefficients:
+                            - {R: 0.0107115181, G: 0.008174277, B: 0.004197682}
+                            - {R: 0.0115605062, G: 0.008445044, B: 0.00356183}
+                            - {R: -0.009375629, G: -0.006893176, B: -0.00300245336}
+                            - {R: -0.008823058, G: -0.006491918, B: -0.00283866678}
+                            - {R: -0.009981172, G: -0.00722481543, B: -0.00290468428}
+                            - {R: -0.01079914, G: -0.007813511, B: -0.003133793}
+                            - {R: -0.00021228283, G: -0.000148981417, B: -4.974679E-05}
+                            - {R: 0.008688837, G: 0.006297468, B: 0.00254958542}
+                            - {R: -0.00130756258, G: -0.000938746, B: -0.00036032428}
+        -   Folder: Lamp
+            Entity:
+                Id: d463eeea-b154-4395-b879-3562be569f0d
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: efe1b827-41a8-48f9-871f-c73aec64ca1c
+                        Position: {X: -1.44063E-08, Y: -0.4607889, Z: -0.625}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.5, Y: 1.0, Z: 0.25}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: 93715505-125c-4206-bb39-1ab02ff58d73
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
+        -   Folder: Lamp
+            Entity:
+                Id: d60ca919-65eb-49fa-8f25-30f5c94bfa8a
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: 82861a6e-5ffb-42ea-84d5-7d300b4c3dbc
+                        Position: {X: -1.44063E-08, Y: -0.4607889, Z: 0.625}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.5, Y: 1.0, Z: 0.25}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: 9d6ab861-1309-45bd-b6c7-318bf9234b7d
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
+        -   Folder: Lamp
+            Entity:
+                Id: e27f4319-9015-48c5-9959-456f2f88e464
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: 08839e76-6d92-418e-a556-a840ca0b83b1
+                        Position: {X: -0.625, Y: -0.4607889, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 0.25, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: 9a5b61d5-cda3-47ed-b204-dc3275453085
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: 1f5ffc3e-6b6c-4e4e-ac87-ada054c7838f:Ground Material
+        -   Folder: Lamp
+            Entity:
+                Id: e3f121c5-ad96-4618-9dd9-b90ef0583fee
+                Name: Cube
+                Components:
+                    3021faaa27b3c9d5a587546509ea54d6: !TransformComponent
+                        Id: 61e62fc9-299d-433c-9088-6b4c9c77a02c
+                        Position: {X: -4.352536E-08, Y: -0.4978721, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    4d7e55a21b4908afa368f2ffd809aa99: !ModelComponent
+                        Id: 91af4013-7cc6-42dc-8067-26b3ac28dd04
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials:
+                            b10dc6262d5d1677a8b041ae1956cfa8~0: eb1a182c-e649-47f5-8699-ba271b69a4c9:Lamp Material
         -   Folder: RoomOne
             Entity:
                 Id: eae8e754-bfb6-452e-ad09-90cf52b7abc1
@@ -418,6 +1009,52 @@ Hierarchy:
                                 Size: {X: 1.0, Y: 1.0, Z: 1.0}
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: ed936250-40d4-42af-a4ed-06e50bc4c925
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 79c0349c-3b33-48a3-b5d4-38c54366c744
+                        Position: {X: -7.877231, Y: 0.7305816, Z: -3.40026569}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: fadfac23-4f3e-4f18-bf2e-cd37e06c109d
+                        Coefficients:
+                            - {R: 0.0184326638, G: 0.0150544429, B: 0.009796874}
+                            - {R: 0.0106217992, G: 0.005936378, B: -0.001356562}
+                            - {R: -0.0180145521, G: -0.01431697, B: -0.008556905}
+                            - {R: -0.0151579091, G: -0.0121349115, B: -0.007425544}
+                            - {R: -0.009152247, G: -0.005208147, B: 0.0009356016}
+                            - {R: -0.0112091461, G: -0.00635232776, B: 0.00121325755}
+                            - {R: -0.0005239486, G: -0.000450023625, B: -0.000334863726}
+                            - {R: 0.0147628719, G: 0.0116354236, B: 0.00676462753}
+                            - {R: -0.0046520317, G: -0.00376655278, B: -0.00238785334}
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: ee4811b5-ab22-4718-ad93-09338f7f2ab7
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: 09fba442-3cf6-4a65-8b2c-b2549e6ec792
+                        Position: {X: -7.877231, Y: 3.526958, Z: 3.04378033}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: f809f5b6-5331-457a-8327-c14c69aa8738
+                        Coefficients:
+                            - {R: 0.0160114747, G: 0.012931197, B: 0.008138489}
+                            - {R: 0.00275342586, G: 0.000701044861, B: -0.00249481667}
+                            - {R: 0.0171434116, G: 0.0129169784, B: 0.006329631}
+                            - {R: -0.01612959, G: -0.012308564, B: -0.00635544}
+                            - {R: -0.006308253, G: -0.003882009, B: -0.00010251355}
+                            - {R: 0.007061426, G: 0.004374442, B: 0.0001884219}
+                            - {R: 0.00113230362, G: 0.0007020625, B: 3.322887E-05}
+                            - {R: -0.0189867858, G: -0.0140226036, B: -0.00629168143}
+                            - {R: 0.00150236231, G: 0.000682003039, B: -0.0005946542}
         -   Folder: RoomWall
             Entity:
                 Id: f19ff3e8-375d-4e2e-b466-34c23e9c0c20
@@ -448,3 +1085,48 @@ Hierarchy:
                                 Size: {X: 1.0, Y: 1.0, Z: 1.0}
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: RoomOne/Probes
+            Entity:
+                Id: fb854a82-dfca-490a-b159-f01a9095ad40
+                Name: Light probe
+                Components:
+                    fb12946f9bf3610aa54a4ef6fd93bf05: !TransformComponent
+                        Id: aad19a71-bb03-4a13-86a1-5bcdb4381fb5
+                        Position: {X: -14.1862078, Y: 0.6481342, Z: -3.40026569}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    520d212571892de500730a6e5dd28498: !LightProbeComponent
+                        Id: ab01e386-4ab8-43d5-a22f-662de530e8aa
+                        Coefficients:
+                            - {R: 0.0157387778, G: 0.01299962, B: 0.00873343}
+                            - {R: 0.007718315, G: 0.00412717555, B: -0.00146593}
+                            - {R: -0.014332816, G: -0.011567005, B: -0.00725995}
+                            - {R: 0.0147437612, G: 0.0118660936, B: 0.00738519337}
+                            - {R: 0.00776661653, G: 0.004168033, B: -0.00143619371}
+                            - {R: -0.0073823547, G: -0.003930669, B: 0.0014450259}
+                            - {R: -0.000885494, G: -0.000723884557, B: -0.000472200278}
+                            - {R: -0.01367425, G: -0.0108801192, B: -0.00652903831}
+                            - {R: -0.00218340615, G: -0.00181538076, B: -0.001241988}
+        -   Folder: RoomOne
+            Entity:
+                Id: ff10be58-bf11-439d-a3bd-d7bcea74f872
+                Name: Point light
+                Components:
+                    1a1310e0cad40e8a42ce49f4a22c60dc: !TransformComponent
+                        Id: 02591feb-a04b-4698-846c-306f1c03067b
+                        Position: {X: 0.0, Y: 4.41540432, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    812318e0f3043ff54db5cdefdac4b54d: !LightComponent
+                        Id: 63a25e62-83d0-4ac5-aa56-01040fbaedf6
+                        Type: !LightPoint
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 1.0, B: 1.0}
+                            Radius: 12.0
+                            Shadow:
+                                Enabled: true
+                                Size: Large
+                                BiasParameters: {}
+                        Intensity: 4.0
