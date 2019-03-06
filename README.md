@@ -32,7 +32,7 @@ Can also be observed in the same scene
 A fixed size splitscreen example, with the view being split up in left and right and rendered by different cameras.
 
 This one is slightly harder to simply link to some code to illustrate, you'll want to explore the following to see whats going on: 
-* **Scenes/SplitScreen/SplitScreenScene**
+* **Scenes/SplitScreenScene**
 * **Scenes/SplitScreen/SplitScreenCompositor**
 * **Scenes/SplitScreen/LeftTexture**
 * **Scenes/SplitScreen/RightTexture**
