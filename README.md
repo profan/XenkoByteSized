@@ -50,7 +50,7 @@ Of the most important bits to consider here are:
 * I created a [special script](XenkoByteSized/SplitScreen/Screen.cs) which just takes the center offset at which to place the render texture on screen, a reference to the render texture, the render group it should be in (to not be rendered by the split screen cameras) and creates the sprite for it.
 * I made sure the main camera goes through a forward renderer without postfx (so render left and apply postfx, render right and apply postfx, then the main path composits but does not apply postfx).
 
-## **XenkoByteSized.TriggerScene**
+## **XenkoByteSized.TriggerScene** - [DoorScript](XenkoByteSized/TriggerScene/DoorScript.cs)
 A small two room scene that uses a trigger volume to show/hide a door and enable/disable its collider so the player can pass through.
 Also comes with a `PlayerController` set up with a simple capsule collider so you can walk around in the small scene.
 
@@ -60,12 +60,11 @@ The scene itself is composed entirely out of primitives.
 
 ![trigger scene](trigger_scene.png "scene with light and door visible")
 
-## **XenkoByteSized.VehicleScene**
+## **XenkoByteSized.VehicleScene** - [VehicleScript](XenkoByteSized/VehicleScene/VehicleScript.cs)
+
 A small scene using [rigid bodies](https://doc.xenko.com/latest/en/manual/physics/rigid-bodies.html) together with constraints to create a small vehicle composed of a solid block and 4 cylinders connected to the block with a [Generic6DofConstraint](https://doc.xenko.com/latest/en/api/Xenko.Physics.Generic6DoFConstraint.html) for each cylinder, each constraint limited in rotation such that each cylinder only rotates like you might expect a wheel attached to an axle act.
 
 So we get a vehicle that can roll on these cylinders!
-
-Relevant script for the vehicle constraints: [XenkoByteSized.VehicleScene.VehicleScript](XenkoByteSized/VehicleScene/VehicleScript.cs)
 
 To understand this sample I recommend experimenting with it, changing the type of constraint and adjusting limits etc.
 
