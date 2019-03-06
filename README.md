@@ -61,12 +61,11 @@ The scene itself is composed entirely out of primitives.
 ![trigger scene](trigger_scene.png "scene with light and door visible")
 
 ## **XenkoByteSized.VehicleScene**
-Example of using [Generic6DofConstraint](https://doc.xenko.com/latest/en/api/Xenko.Physics.Generic6DoFConstraint.html) with a solid block and 4 cylinders to make a sort of ... vehicle?
-Uses the basics of constraints, employs a prefab for both the vehicle itself and each wheel.
+Example of using [Generic6DofConstraint](https://doc.xenko.com/latest/en/api/Xenko.Physics.Generic6DoFConstraint.html) with a solid block and 4 cylinders to make a sort of ... vehicle? 
 
 Relevant script for the vehicle constraints: [XenkoByteSized.VehicleScene.VehicleScript](XenkoByteSized/VehicleScene/VehicleScript.cs)
 
-To understand this sample I recommend experimenting with it yourself, changing the type of constraint and adjusting limits and such.
+To understand this sample I recommend experimenting with it, changing the type of constraint and adjusting limits etc.
 
 (will probably revisit this to let the front wheels turn)
 
