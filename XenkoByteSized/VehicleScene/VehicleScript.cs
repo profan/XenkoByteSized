@@ -33,7 +33,7 @@ namespace XenkoByteSized {
 
         static private Generic6DoFConstraint CreateWheelConstraint(RigidbodyComponent parent, RigidbodyComponent wheel) {
 
-            Matrix wheelTranslation = Matrix.Translation(wheel.Entity.Transform.LocalMatrix.TranslationVector);
+            Matrix wheelTranslation = Matrix.Translation(wheel.Entity.Transform.Position);
             Quaternion wheelRotation = wheel.Entity.Transform.Rotation;
 
             Generic6DoFConstraint wheelConstraint = Simulation.CreateConstraint(
@@ -85,7 +85,7 @@ namespace XenkoByteSized {
                 vehicleBody.ApplyImpulse(Entity.Transform.WorldMatrix.Right * FORCE_PER_SECOND * dt);
             }
 
-            DebugText.Print("Left/Right Arrow Key to move the vehicle", new Int2(32, 32));
+            DebugText.Print("Left/Right Arrow Key to move the vehicle (note that switching away from this scene and back to it may currently crash the game!)", new Int2(32, 32));
 
         }
 
