@@ -50,5 +50,25 @@ Of the most important bits to consider here are:
 * I created a [special script](XenkoByteSized/SplitScreen/Screen.cs) which just takes the center offset at which to place the render texture on screen, a reference to the render texture, the render group it should be in (to not be rendered by the split screen cameras) and creates the sprite for it.
 * I made sure the main camera goes through a forward renderer without postfx (so render left and apply postfx, render right and apply postfx, then the main path composits but does not apply postfx).
 
+## **XenkoByteSized.TriggerScene**
+A small two room scene that uses a trigger volume to show/hide a door and enable/disable its collider so the player can pass through.
+Also comes with a `PlayerController` set up with a simple capsule collider so you can walk around in the small scene.
+
+The scene itself is composed entirely out of primitives.
+
+(might revisit this to make the door not just pop out of existence)
+
+![trigger scene](trigger_scene.png "scene with light and door visible")
+
+## **XenkoByteSized.VehicleScene**
+Example of using `Generic6DofConstraint` with a solid block and 4 cylinders to make a sort of ... vehicle?
+Uses the basics of constraints, employs a prefab for both the vehicle itself and each wheel.
+
+To understand this sample I recommend experimenting with it yourself, changing the type of constraint and adjusting limits and such.
+
+(will probably revisit this to let the front wheels turn)
+
+![vehicle scene](vehicle_scene.png "scene with vehicle and some platforms")
+
 ## Misc
 The sample also switches out the graphics compositor to the one associated with the scene being switched to currently, currently only relevant for the **SplitScreen** sample.

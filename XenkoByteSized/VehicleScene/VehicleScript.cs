@@ -38,7 +38,7 @@ namespace XenkoByteSized {
 
             Generic6DoFConstraint wheelConstraint = Simulation.CreateConstraint(
                 ConstraintTypes.Generic6DoF, parent, wheel,
-                wheelTranslation,
+                wheelTranslation, /* the constraint itself should be created at the offset where the wheel itself is */
                 Matrix.RotationQuaternion(wheelRotation),
                 useReferenceFrameA : true
             ) as Generic6DoFConstraint;
