@@ -182,7 +182,7 @@ Hierarchy:
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
             Base:
-                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/VehicleScene/Vehicle
                 BasePartId: 99aba66a-9d2a-4d6f-9900-0b98d59bb580
                 InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
         -   Entity:
@@ -297,7 +297,7 @@ Hierarchy:
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
             Base:
-                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/VehicleScene/Vehicle
                 BasePartId: 475dd7b0-ee5c-4af4-bb4d-6d990c037495
                 InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
         -   Folder: Ground
@@ -391,7 +391,7 @@ Hierarchy:
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
             Base:
-                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/VehicleScene/Vehicle
                 BasePartId: 20a0d5bd-f771-40d3-88ea-a5b4e4796b83
                 InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
         -   Folder: Ground
@@ -467,7 +467,7 @@ Hierarchy:
                         wheelBackLeft: ref!! 72c041e8-39c8-4c0a-b2cf-8e7cac4e3a33
                         wheelBackRight: ref!! 84be3ae8-a35a-44b8-a491-42e8d430a61f
             Base:
-                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/VehicleScene/Vehicle
                 BasePartId: 5c737b04-dea7-4233-8fd1-9714ebdda2f6
                 InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
         -   Folder: Ground
@@ -715,7 +715,7 @@ Hierarchy:
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
             Base:
-                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/VehicleScene/Vehicle
                 BasePartId: e375c0ca-7268-460d-90aa-4ba9132a316d
                 InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
         -   Folder: Ground

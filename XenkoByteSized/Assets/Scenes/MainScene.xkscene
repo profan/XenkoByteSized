@@ -29,7 +29,7 @@ Hierarchy:
                         scenes:
                             f97eac892063de0133a4439502a17437: Scenes/TetrahedronScene
                             6d9cf6fbaabecc844332b20db6569c1b: Scenes/SubdividedPlaneScene
-                            fc9780fc3b358f9edc34dd39aee657b5: Scenes/SplitScreen/SplitScreenScene
+                            fc9780fc3b358f9edc34dd39aee657b5: Scenes/SplitScreenScene
                             65043fa5c34a2f1d993d0c8f2bb1b6d3: Scenes/TriggerScene
                             c1d5dec7b9e87d2e48c5c81b3733271e: Scenes/VehicleScene
                         compositors:

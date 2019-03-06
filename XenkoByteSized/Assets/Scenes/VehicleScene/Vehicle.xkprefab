@@ -46,7 +46,7 @@ Hierarchy:
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
             Base:
-                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/Wheel
+                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/VehicleScene/Wheel
                 BasePartId: dcceff7f-57e2-45be-8d28-fdad869ce2fd
                 InstanceId: c539f1ec-fc50-4a89-bba2-ee6f867e00df
         -   Entity:
@@ -84,7 +84,7 @@ Hierarchy:
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
             Base:
-                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/Wheel
+                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/VehicleScene/Wheel
                 BasePartId: dcceff7f-57e2-45be-8d28-fdad869ce2fd
                 InstanceId: 9bdd2654-06c9-43d8-8909-171fbbe4190b
         -   Entity:
@@ -164,7 +164,7 @@ Hierarchy:
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
             Base:
-                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/Wheel
+                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/VehicleScene/Wheel
                 BasePartId: dcceff7f-57e2-45be-8d28-fdad869ce2fd
                 InstanceId: 4b1f9a24-94e8-4ed0-ae7f-c0f9b6992a20
         -   Entity:
@@ -202,6 +202,6 @@ Hierarchy:
                                 LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
                                 LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
             Base:
-                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/Wheel
+                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/VehicleScene/Wheel
                 BasePartId: dcceff7f-57e2-45be-8d28-fdad869ce2fd
                 InstanceId: e468ace5-3838-4588-8d98-1ab9641e259a

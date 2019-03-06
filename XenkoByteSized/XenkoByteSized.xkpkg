@@ -18,4 +18,4 @@ TemplateFolders: []
 RootAssets:
     - 0e875fe5-1f5a-49dc-922d-b7d286d69967:Scenes/SubdividedPlaneScene
     - 67647aca-f17b-4c8c-81dd-eaa1b53023f3:Scenes/TetrahedronScene
-    - adecce91-3716-41c2-9ccf-20a60019a643:Scenes/SplitScreen/SplitScreenScene
+    - adecce91-3716-41c2-9ccf-20a60019a643:Scenes/SplitScreenScene
