@@ -1,0 +1,805 @@
+!SceneAsset
+Id: 600dfac1-1785-414d-9a95-ceab40b4b55a
+SerializedVersion: {Xenko: 3.1.0.1}
+Tags: []
+ChildrenIds: []
+Parent: 55a44ab0-fb5d-4888-8368-0cb5c34197b5:Scenes/MainScene
+Offset: {X: 0.0, Y: 0.0, Z: 0.0}
+Hierarchy:
+    RootParts:
+        - ref!! 332a9633-8df2-4954-b99d-2fcbfc972f0a
+        - ref!! 6f57b1aa-c89e-4074-88b1-8fe59aded67e
+        - ref!! ff4d92ce-7612-414d-adbc-04140e344e62
+        - ref!! 2a74715d-2386-42cf-85e9-8e98415e5f40
+        - ref!! afc5ab93-077b-48af-bb61-d0e098b8780e
+        - ref!! 01069208-68fb-4a2c-adf7-42c62ab6844d
+        - ref!! 9fdea710-a2d0-45da-975f-4c4915837e69
+        - ref!! f66e9ee6-3c9a-4536-b269-88ee638cef6a
+        - ref!! 90a03859-261e-4732-a9a4-f57e2225b2d7
+        - ref!! 06ae054b-04e3-4c0c-867c-9ea5a08c476f
+        - ref!! ee10f53d-fb5e-45a6-ae59-f26962cb22c3
+        - ref!! 0d729e9c-5a8e-4693-a835-d55204662420
+        - ref!! aa362ef4-80fb-4e55-b0c4-e9900cd681f7
+        - ref!! 5f4703dd-a121-4be0-a4aa-982c947ed5b1
+        - ref!! 4cc9eee0-cd7a-4267-9845-e6bf410b10e1
+        - ref!! 9e296c8f-13cc-46fc-a804-98a49d39aeb0
+        - ref!! 3fde79dc-4f17-42e2-b036-d66f8ebe6e5e
+        - ref!! b4c3074d-a7f4-4e83-a32e-d3d0f888cfba
+        - ref!! d327f90b-45b4-48b4-9c46-5d921169ae92
+        - ref!! ca0323d9-8cb7-4ec4-bfd7-1fc9b15fd1ff
+        - ref!! 1b052fbc-2560-4ee6-b42f-ad0570c0fd86
+    Parts:
+        -   Folder: Ground
+            Entity:
+                Id: 01069208-68fb-4a2c-adf7-42c62ab6844d
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: df7d1c10-222e-4d81-8d24-71201d7bccd5
+                        Position: {X: 19.75, Y: -2.18, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: 929a7f1b-53b7-4ada-a9ef-7ae459fafc2a
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    764de17c29e349535d4c379dc5a8723c: !StaticColliderComponent
+                        Id: f5fdeb85-ce59-46c6-91c6-a3d820bde7e8
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            70550e7405669439083b83e02d73492b: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: 06ae054b-04e3-4c0c-867c-9ea5a08c476f
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: 8525136e-0bf1-47db-8b8e-5077cd97d823
+                        Position: {X: 0.0, Y: 3.80001473, Z: -19.2449036}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: 6108abae-e6e0-4508-a8e3-03247186647f
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    b13e3adc5da5ee62ab3065884513e6a3: !StaticColliderComponent
+                        Id: 15c8e7ce-39ea-453d-a888-1dda16f61989
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            26f07ce9d00a7483ec1eab4abb6f36a7: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: 0d729e9c-5a8e-4693-a835-d55204662420
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: f358fddf-8b8a-446e-9468-315b44a92b49
+                        Position: {X: 0.0, Y: 1.9, Z: -9.6}
+                        Rotation: {X: 8.527668E-09, Y: 0.9807853, Z: 0.195090309, W: -4.28714877E-08}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: 4697e996-88eb-411e-9755-4eeb7cb4db7f
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    d730bffba70e1e8ea8a0ae4411ffcf72: !StaticColliderComponent
+                        Id: 75081482-ce72-412e-9e41-936d1b614aca
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            93a8b28fd411d3a1514b18b4d03286ec: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: 1b052fbc-2560-4ee6-b42f-ad0570c0fd86
+                Name: PhysicsDebug
+                Components:
+                    66b2b3983f72402f5dc6a303f762f4b2: !TransformComponent
+                        Id: 8042ccc7-20d1-412f-909a-0a2b32c5e63d
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    bc944f8e2db86ef3aaed872be553cc2b: !XenkoByteSized.DebugPhysicsShapes,XenkoByteSized
+                        Id: d1444575-e28f-4b55-beb6-9b55da05bd0c
+                        RenderGroup: Group7
+        -   Entity:
+                Id: 2a74715d-2386-42cf-85e9-8e98415e5f40
+                Name: Vehicle
+                Components:
+                    0bfe4e29cbbeed54b88120dfee21758f: !TransformComponent
+                        Id: 9e3ed231-ae58-4731-b355-8c4f7314ed26
+                        Position: {X: 0.0, Y: 2.17356443, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children:
+                            58168afd18f82ed5d87fe53d38571478: ref!! 5e8f41c4-68af-4f19-8867-2fa004160b6d
+                            5c3e13001051a1ffec304e61abc1d2b7: ref!! f8e5140a-191e-4849-bb96-86077dc0bfc2
+                            e8cd8bca88553b25e66571f379825068: ref!! 92feec78-8f39-4fe9-ab9e-96e06bcbc507
+                            8919d2223be7e0420dc9b610f4da5c0f: ref!! b2b8781f-86fd-455b-b3a9-6b014981b916
+                            bff9f1047aabad7d5df965fdc653c4c4: ref!! 3a61786f-714f-423e-bcbd-3f14ac023297
+        -   Entity:
+                Id: 309e51a6-4555-4714-9185-49004da9b525
+                Name: WheelFrontRight
+                Components:
+                    8e87a3aeda9341da76448e625536bd9b: !TransformComponent
+                        Id: 92feec78-8f39-4fe9-ab9e-96e06bcbc507
+                        Position: {X: 1.25, Y: -1.25, Z: 1.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2c9a848845589e1d5f3673d6642eba7: !ModelComponent
+                        Id: 912b5947-165a-484e-8001-d222ce0735d9
+                        Model: 467c27a5-697b-4014-9313-1ffaa41c3486:Cylinder
+                        Materials: {}
+                    5410a3d8fb1fcb2f2946ab65d62cdcb2: !RigidbodyComponent
+                        Id: 72fe8213-66e7-4e31-8ce6-6c44c61db36f
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            e40dc2ee9e319906f607793d80256303: !CylinderColliderShapeDesc
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartId: 99aba66a-9d2a-4d6f-9900-0b98d59bb580
+                InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
+        -   Entity:
+                Id: 332a9633-8df2-4954-b99d-2fcbfc972f0a
+                Name: Skybox
+                Components:
+                    07424f2d928fa023d630acb2a494afbf: !TransformComponent
+                        Id: deffbb1c-52dd-4a6b-a268-fc5b73760a1e
+                        Position: {X: 0.0, Y: 2.0, Z: -2.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    f446bb0f1d7040acd71780442198ccd8: !BackgroundComponent
+                        Id: a218f7fe-8170-4523-839c-38b53be5f31b
+                        Texture: b111c453-668c-49a8-9216-23ec308fc195:Skybox texture
+                    eb8ffcbd1184dfa14fd78e7a9d5e14cc: !LightComponent
+                        Id: 801fc8f4-d1e0-47dd-8381-ba64fa3712c4
+                        Type: !LightSkybox
+                            Skybox: 76aea3e2-991a-48f1-8a00-726296989466:Skybox
+        -   Folder: Ground
+            Entity:
+                Id: 3fde79dc-4f17-42e2-b036-d66f8ebe6e5e
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: cd194b89-1190-4849-8c33-1215d3804a4d
+                        Position: {X: -10.0, Y: 0.0, Z: -20.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: a58e2c5c-621f-40dd-9dd0-599eb1b3673e
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    2c43cea4d3ca8f1e2361831b4a829ab4: !StaticColliderComponent
+                        Id: 1c10d6e4-7a86-401e-bd55-1692c9f714c5
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            f53fe586b5f760b8edf794bc1e85c78a: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: 4cc9eee0-cd7a-4267-9845-e6bf410b10e1
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: e769f31a-9dde-40d7-b79c-1a9f2577ad8d
+                        Position: {X: -10.0, Y: 0.0, Z: 20.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: 783f9776-0af3-4b85-9f13-fcd57573bd39
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    2c59dbc8a33886fa6a071e4839a64b45: !StaticColliderComponent
+                        Id: c5b82cb7-35c3-43c1-b06b-6d75a1bb86dc
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            50a3fd45d3995f68fe6f08fecb159ad6: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: 4e7402db-8012-474a-9eb1-86f9053f519d
+                Name: WheelBackLeft
+                Components:
+                    8e87a3aeda9341da76448e625536bd9b: !TransformComponent
+                        Id: b2b8781f-86fd-455b-b3a9-6b014981b916
+                        Position: {X: -1.25, Y: -1.25, Z: -1.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2c9a848845589e1d5f3673d6642eba7: !ModelComponent
+                        Id: f6976bb0-abf8-4cb3-a7cb-23c93511af65
+                        Model: 467c27a5-697b-4014-9313-1ffaa41c3486:Cylinder
+                        Materials: {}
+                    5410a3d8fb1fcb2f2946ab65d62cdcb2: !RigidbodyComponent
+                        Id: 72c041e8-39c8-4c0a-b2cf-8e7cac4e3a33
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            e40dc2ee9e319906f607793d80256303: !CylinderColliderShapeDesc
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartId: 475dd7b0-ee5c-4af4-bb4d-6d990c037495
+                InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
+        -   Folder: Ground
+            Entity:
+                Id: 5f4703dd-a121-4be0-a4aa-982c947ed5b1
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: 0a0c5ee5-45d9-4fc5-9ab9-b57fbcd8a913
+                        Position: {X: -10.0, Y: 0.0, Z: 10.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: 844ed738-8e19-410a-b85b-82d393481a0d
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    5c5d145e11dadecdf02d7809290ee93f: !StaticColliderComponent
+                        Id: 6ad2e97c-90d0-402c-9b94-8638b9785048
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            e5bcd39a5c6f881bc0d3c4dad4305bc6: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: 6f57b1aa-c89e-4074-88b1-8fe59aded67e
+                Name: Directional light
+                Components:
+                    410a0a22cb23d638e08bd3daae45f5f4: !TransformComponent
+                        Id: 4b00219f-9302-4e68-aaa9-a67bac0ec27a
+                        Position: {X: 0.0, Y: 2.0, Z: 0.0}
+                        Rotation: {X: 1.9623382E-08, Y: -0.9659258, Z: -0.258819044, W: -4.444863E-08}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    2e6d1d380258bd441153d9eedb764e58: !LightComponent
+                        Id: 9b4260ea-59e7-4d8b-80b1-95e725ff5643
+                        Type: !LightDirectional
+                            Color: !ColorRgbProvider
+                                Value: {R: 1.0, G: 1.0, B: 1.0}
+                            Shadow:
+                                Enabled: true
+                                Filter: !LightShadowMapFilterTypePcf
+                                    FilterSize: Filter5x5
+                                Size: Large
+                                DepthRange: {}
+                                PartitionMode: !LightDirectionalShadowMap.PartitionLogarithmic {}
+                                ComputeTransmittance: true
+                                BiasParameters: {}
+                        Intensity: 20.0
+        -   Folder: null
+            Entity:
+                Id: 908928a6-12b9-4301-ad0c-85b95b9dee86
+                Name: WheelBackRight
+                Components:
+                    8e87a3aeda9341da76448e625536bd9b: !TransformComponent
+                        Id: 3a61786f-714f-423e-bcbd-3f14ac023297
+                        Position: {X: -1.25, Y: -1.25, Z: 1.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2c9a848845589e1d5f3673d6642eba7: !ModelComponent
+                        Id: 6635027f-6173-41f1-8473-e791697cff2c
+                        Model: 467c27a5-697b-4014-9313-1ffaa41c3486:Cylinder
+                        Materials: {}
+                    5410a3d8fb1fcb2f2946ab65d62cdcb2: !RigidbodyComponent
+                        Id: 84be3ae8-a35a-44b8-a491-42e8d430a61f
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            e40dc2ee9e319906f607793d80256303: !CylinderColliderShapeDesc
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartId: 20a0d5bd-f771-40d3-88ea-a5b4e4796b83
+                InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
+        -   Folder: Ground
+            Entity:
+                Id: 90a03859-261e-4732-a9a4-f57e2225b2d7
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: c0f6a686-f4f9-402b-ac01-2ad4889bd915
+                        Position: {X: 0.0, Y: 3.80001473, Z: 19.1928158}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: ec9fbbeb-1d95-46df-a331-7a644c261616
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    d31d39364a19221441e81582858ebc53: !StaticColliderComponent
+                        Id: 2f461f6a-9e02-458f-b440-8bd6ffdcade4
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            26509b7f5977cb3e10d67dad886e9c87: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: 9d8bad24-413a-45d9-bb1b-b7077a804c2f
+                Name: VehicleBody
+                Components:
+                    044b3a6e8d28063bb8bc11d56f8e4b7a: !TransformComponent
+                        Id: 5e8f41c4-68af-4f19-8867-2fa004160b6d
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 4.0, Y: 1.0, Z: 2.0}
+                        Children: {}
+                    078c9ae4ef5c9a320daeea1754f614d6: !ModelComponent
+                        Id: 82367769-978a-44cf-882d-c7b691bd10bc
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    e6b676b169172d046245ff37b492ee8a: !RigidbodyComponent
+                        Id: c0e1e47b-3e7f-45b1-9291-55001e88d128
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            432682c49e34ac0460b1ccacfc818d25: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                    813069715dc19f1f87f095206110b352: !XenkoByteSized.VehicleScript,XenkoByteSized
+                        Id: 166f2e6a-8bef-4015-9643-f75eee8616ce
+                        wheelFrontLeft: ref!! 95ed23f4-f080-4bba-940f-59692fd44b46
+                        wheelFrontRight: ref!! 72fe8213-66e7-4e31-8ce6-6c44c61db36f
+                        wheelBackLeft: ref!! 72c041e8-39c8-4c0a-b2cf-8e7cac4e3a33
+                        wheelBackRight: ref!! 84be3ae8-a35a-44b8-a491-42e8d430a61f
+            Base:
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartId: 5c737b04-dea7-4233-8fd1-9714ebdda2f6
+                InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
+        -   Folder: Ground
+            Entity:
+                Id: 9e296c8f-13cc-46fc-a804-98a49d39aeb0
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: 1cd7f732-d4c5-4995-a065-96a7d41755b4
+                        Position: {X: -10.0, Y: 0.0, Z: -10.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: d0e244de-d08c-40e7-aa07-b7013efd1f0b
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    e745901c8be1da1101384c840c9d6112: !StaticColliderComponent
+                        Id: 6baaf09e-dcaf-48cb-8dde-c29cbc056ea1
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            448d8fddee2d6e4b40eebfd62c7beba6: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: 9fdea710-a2d0-45da-975f-4c4915837e69
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: d2865d1c-fe80-4e55-bf3d-200d255058c4
+                        Position: {X: 24.7466812, Y: 0.268002748, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.707106769, W: 0.707106769}
+                        Scale: {X: 0.5, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: 48e8a9a9-93e0-48c7-9b4c-488af2db64b2
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    764de17c29e349535d4c379dc5a8723c: !StaticColliderComponent
+                        Id: 8a9c5019-e1c2-4c50-a014-77437e1f2a44
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            70550e7405669439083b83e02d73492b: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: aa362ef4-80fb-4e55-b0c4-e9900cd681f7
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: 23552fa6-9b14-4324-981f-53fbd332e786
+                        Position: {X: -10.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: 60f13c2f-62f3-48d3-bbb0-1cc7f261de28
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    c70389d9365ad9a491f534501ac27f1c: !StaticColliderComponent
+                        Id: 4e4ce663-2ed3-48cc-af9f-93ebc146dfff
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            b6b1947bb2a396d0a6419a1b6d765c58: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: afc5ab93-077b-48af-bb61-d0e098b8780e
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: 6159f77f-fb56-44e0-86ac-974059b73b47
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: 4418d064-9bdb-4e6d-a74f-9be1b764c5e1
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    619ed28173264776b20968d4494ac547: !StaticColliderComponent
+                        Id: 69ba665f-5026-438e-92d2-d0f3a02e7ff0
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            032edcff9492fede57a26d232319ac37: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: b4c3074d-a7f4-4e83-a32e-d3d0f888cfba
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: 2f2ba19a-6b9a-40a6-a6e5-4dc2daf9ef15
+                        Position: {X: 9.88, Y: -1.1, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: -0.108866878, W: 0.994056344}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: da630d66-c268-4dcf-9288-1273e121c9d6
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    9ba3496a5a007d3aa9b99943917054ea: !StaticColliderComponent
+                        Id: 0497670e-c27b-4d20-83d1-fb8c675ae1ac
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            6e06542f4656528350efc4cb03dd4e23: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: ca0323d9-8cb7-4ec4-bfd7-1fc9b15fd1ff
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: 4690fc3a-97b1-44bc-90c0-7445b41734f1
+                        Position: {X: 10.0, Y: 0.0, Z: -10.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: 30aba6f3-c794-4587-a273-c8475721869c
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    ee354c02dbf425f869f3d4fbc1c546e2: !StaticColliderComponent
+                        Id: a120a976-1532-4fb6-bf23-e3bdfde5c489
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            a3ed0d3254670d1dee36deb3682c9ea7: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: d327f90b-45b4-48b4-9c46-5d921169ae92
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: 55cb92df-e3cb-4415-8a15-ce541f973382
+                        Position: {X: 10.0, Y: 0.0, Z: 10.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: a11e2fec-f1de-49f4-ac47-4a2cc291004b
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    08d6bdff746a2483cd0d11c9aab3a7f1: !StaticColliderComponent
+                        Id: 49b3e778-8795-4ae0-a01e-35b939df7fdc
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            0899e6f158a29a6f7ff11eae8831ba63: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: d3a5285f-ccc1-4de4-b06a-acecfeeca42a
+                Name: WheelFrontLeft
+                Components:
+                    8e87a3aeda9341da76448e625536bd9b: !TransformComponent
+                        Id: f8e5140a-191e-4849-bb96-86077dc0bfc2
+                        Position: {X: 1.25, Y: -1.25, Z: -1.0}
+                        Rotation: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2c9a848845589e1d5f3673d6642eba7: !ModelComponent
+                        Id: 208f389a-02fd-4bb0-95b7-2d473669f3cf
+                        Model: 467c27a5-697b-4014-9313-1ffaa41c3486:Cylinder
+                        Materials: {}
+                    5410a3d8fb1fcb2f2946ab65d62cdcb2: !RigidbodyComponent
+                        Id: 95ed23f4-f080-4bba-940f-59692fd44b46
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            e40dc2ee9e319906f607793d80256303: !CylinderColliderShapeDesc
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: 87ea083f-2cca-47b6-8795-e9f37176f108:Scenes/Vehicle
+                BasePartId: e375c0ca-7268-460d-90aa-4ba9132a316d
+                InstanceId: 6a953506-88e3-4532-b7a7-83a1471866ec
+        -   Folder: Ground
+            Entity:
+                Id: ee10f53d-fb5e-45a6-ae59-f26962cb22c3
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: bbd48bce-41da-453e-8a6b-75c13ab93a58
+                        Position: {X: 0.0, Y: 1.9, Z: 9.6}
+                        Rotation: {X: -0.195090324, Y: 0.0, Z: 0.0, W: 0.980785251}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: e267b705-f35a-4b14-98de-c4ac90042c5b
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    704ffa7a1849a958aa24cb04ddb4490f: !StaticColliderComponent
+                        Id: 4143e3fe-d7f9-4f82-bf18-fba863195695
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            bb592f1df95f56f66992804bb2062bf7: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Folder: Ground
+            Entity:
+                Id: f66e9ee6-3c9a-4536-b269-88ee638cef6a
+                Name: Ground
+                Components:
+                    be20a6e5cb7dc3af2e0abe7a0080ff9d: !TransformComponent
+                        Id: c771c0a3-48b1-4a27-9740-a41e9ab9658a
+                        Position: {X: 19.7079315, Y: 0.27515173, Z: 4.952867}
+                        Rotation: {X: -0.49999997, Y: -0.49999997, Z: 0.49999997, W: 0.49999997}
+                        Scale: {X: 0.5, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    8c3bf41b808be59f7f099c5e39fa4896: !ModelComponent
+                        Id: b0dc63d6-1c08-4d8a-a5ce-faa9a379df28
+                        Model: ba5840a0-9bcc-4c2e-904a-3b816612387d:Ground
+                        Materials: {}
+                    764de17c29e349535d4c379dc5a8723c: !StaticColliderComponent
+                        Id: 53a6dc9b-4478-48bc-b123-866a403e2c4b
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        ColliderShapes:
+                            70550e7405669439083b83e02d73492b: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 10.0, Y: 1.0, Z: 10.0}
+                                LocalOffset: {X: 0.0, Y: -0.5, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+        -   Entity:
+                Id: ff4d92ce-7612-414d-adbc-04140e344e62
+                Name: Camera
+                Components:
+                    2b9be6127bc92b0a328ca32b81a47564: !TransformComponent
+                        Id: 8482bac1-3cc2-4b63-b430-a81a67b9b74a
+                        Position: {X: 2.6, Y: 0.6, Z: -1.0}
+                        Rotation: {X: 0.0, Y: 0.968652546, Z: 0.0, W: -0.248419553}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    decb234d569b86b75678cb25a6ff9c58: !CameraComponent
+                        Id: dabe639e-d956-4e5d-be1b-9506c3773745
+                        Name: null
+                        Projection: Perspective
+                        Slot: d5fb481e-db96-4a8e-b678-113307612ee9
+                    39385e5164e78bcc05669892937d692a: !XenkoByteSized.BasicCameraController,XenkoByteSized
+                        Id: 9788f0c4-ae33-4d18-b3cf-24bf5a42f8b4
+                        Enabled: true
+                        Gamepad: false
+                        KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
+                        TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}
+                        SpeedFactor: 5.0
+                        KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
+                        MouseRotationSpeed: {X: 1.0, Y: 1.0}
+                        TouchRotationSpeed: {X: 1.0, Y: 0.7}

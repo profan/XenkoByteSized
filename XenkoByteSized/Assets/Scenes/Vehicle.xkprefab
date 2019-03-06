@@ -1,0 +1,207 @@
+!PrefabAsset
+Id: 87ea083f-2cca-47b6-8795-e9f37176f108
+SerializedVersion: {Xenko: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! 5c737b04-dea7-4233-8fd1-9714ebdda2f6
+        - ref!! e375c0ca-7268-460d-90aa-4ba9132a316d
+        - ref!! 99aba66a-9d2a-4d6f-9900-0b98d59bb580
+        - ref!! 475dd7b0-ee5c-4af4-bb4d-6d990c037495
+        - ref!! 20a0d5bd-f771-40d3-88ea-a5b4e4796b83
+    Parts:
+        -   Folder: null
+            Entity:
+                Id: 20a0d5bd-f771-40d3-88ea-a5b4e4796b83
+                Name*: WheelBackRight
+                Components:
+                    8e87a3aeda9341da76448e625536bd9b: !TransformComponent
+                        Id: 7fde069e-8b99-49a8-b394-ebdaf4d77e9f
+                        Position*: {X: -1.25, Y: -1.25, Z: 1.0}
+                        Rotation*: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2c9a848845589e1d5f3673d6642eba7: !ModelComponent
+                        Id: 967dc56a-841b-49d0-a845-edc5545bacb3
+                        Model: 467c27a5-697b-4014-9313-1ffaa41c3486:Cylinder
+                        Materials: {}
+                    5410a3d8fb1fcb2f2946ab65d62cdcb2: !RigidbodyComponent
+                        Id: 9c2e0b1d-52c9-42f1-9074-01919d03f81f
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            e40dc2ee9e319906f607793d80256303: !CylinderColliderShapeDesc
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/Wheel
+                BasePartId: dcceff7f-57e2-45be-8d28-fdad869ce2fd
+                InstanceId: c539f1ec-fc50-4a89-bba2-ee6f867e00df
+        -   Entity:
+                Id: 475dd7b0-ee5c-4af4-bb4d-6d990c037495
+                Name*: WheelBackLeft
+                Components:
+                    8e87a3aeda9341da76448e625536bd9b: !TransformComponent
+                        Id: b022abd2-5155-4845-b316-830fad1e4154
+                        Position*: {X: -1.25, Y: -1.25, Z: -1.0}
+                        Rotation*: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2c9a848845589e1d5f3673d6642eba7: !ModelComponent
+                        Id: 1e28eedb-9500-4988-98b1-1080b26bd996
+                        Model: 467c27a5-697b-4014-9313-1ffaa41c3486:Cylinder
+                        Materials: {}
+                    5410a3d8fb1fcb2f2946ab65d62cdcb2: !RigidbodyComponent
+                        Id: b9c8a85c-8ff4-4c3a-b951-f690747b4ded
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            e40dc2ee9e319906f607793d80256303: !CylinderColliderShapeDesc
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/Wheel
+                BasePartId: dcceff7f-57e2-45be-8d28-fdad869ce2fd
+                InstanceId: 9bdd2654-06c9-43d8-8909-171fbbe4190b
+        -   Entity:
+                Id: 5c737b04-dea7-4233-8fd1-9714ebdda2f6
+                Name: VehicleBody
+                Components:
+                    044b3a6e8d28063bb8bc11d56f8e4b7a: !TransformComponent
+                        Id: 73a1cf9c-15cc-4b6e-a8b2-269b776cd916
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 4.0, Y: 1.0, Z: 2.0}
+                        Children: {}
+                    078c9ae4ef5c9a320daeea1754f614d6: !ModelComponent
+                        Id: 924107dd-4324-4deb-bf6b-96ad54ba0eaa
+                        Model: dc945eca-f91b-4b5e-897c-4f90587a5922:Cube
+                        Materials: {}
+                    e6b676b169172d046245ff37b492ee8a: !RigidbodyComponent
+                        Id: ed6ad5e7-6bbd-482b-a3fb-d8da866d0346
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            432682c49e34ac0460b1ccacfc818d25: !BoxColliderShapeDesc
+                                Is2D: false
+                                Size: {X: 1.0, Y: 1.0, Z: 1.0}
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                    813069715dc19f1f87f095206110b352: !XenkoByteSized.VehicleScript,XenkoByteSized
+                        Id: 16ed5ad7-69e5-4f0d-a61a-c111cb1e086a
+                        wheelFrontLeft: ref!! 032b0286-ca07-43af-bbaa-6905d5e6001a
+                        wheelFrontRight: ref!! 3bfd282f-afe7-429c-902a-be75e4962464
+                        wheelBackLeft: ref!! b9c8a85c-8ff4-4c3a-b951-f690747b4ded
+                        wheelBackRight: ref!! 9c2e0b1d-52c9-42f1-9074-01919d03f81f
+        -   Entity:
+                Id: 99aba66a-9d2a-4d6f-9900-0b98d59bb580
+                Name*: WheelFrontRight
+                Components:
+                    8e87a3aeda9341da76448e625536bd9b: !TransformComponent
+                        Id: 659ce7fe-6bd6-49c9-ac4a-0bf6c56fcf77
+                        Position*: {X: 1.25, Y: -1.25, Z: 1.0}
+                        Rotation*: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2c9a848845589e1d5f3673d6642eba7: !ModelComponent
+                        Id: 23f50d12-791c-4084-aa1d-f1100f51d2ee
+                        Model: 467c27a5-697b-4014-9313-1ffaa41c3486:Cylinder
+                        Materials: {}
+                    5410a3d8fb1fcb2f2946ab65d62cdcb2: !RigidbodyComponent
+                        Id: 3bfd282f-afe7-429c-902a-be75e4962464
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            e40dc2ee9e319906f607793d80256303: !CylinderColliderShapeDesc
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/Wheel
+                BasePartId: dcceff7f-57e2-45be-8d28-fdad869ce2fd
+                InstanceId: 4b1f9a24-94e8-4ed0-ae7f-c0f9b6992a20
+        -   Entity:
+                Id: e375c0ca-7268-460d-90aa-4ba9132a316d
+                Name*: WheelFrontLeft
+                Components:
+                    8e87a3aeda9341da76448e625536bd9b: !TransformComponent
+                        Id: d143d18a-dd1a-4cc6-b677-3f0ef49b7cb0
+                        Position*: {X: 1.25, Y: -1.25, Z: -1.0}
+                        Rotation*: {X: 0.707106769, Y: 0.0, Z: 0.0, W: 0.707106769}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2c9a848845589e1d5f3673d6642eba7: !ModelComponent
+                        Id: ff61484d-51d0-421f-9f83-4b4ad2f3342d
+                        Model: 467c27a5-697b-4014-9313-1ffaa41c3486:Cylinder
+                        Materials: {}
+                    5410a3d8fb1fcb2f2946ab65d62cdcb2: !RigidbodyComponent
+                        Id: 032b0286-ca07-43af-bbaa-6905d5e6001a
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            e40dc2ee9e319906f607793d80256303: !CylinderColliderShapeDesc
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+            Base:
+                BasePartAsset: 011ce846-bf44-4957-9198-0325a67169bc:Scenes/Wheel
+                BasePartId: dcceff7f-57e2-45be-8d28-fdad869ce2fd
+                InstanceId: e468ace5-3838-4588-8d98-1ab9641e259a

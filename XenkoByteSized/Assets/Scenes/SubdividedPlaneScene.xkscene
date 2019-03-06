@@ -7,45 +7,45 @@ Parent: 55a44ab0-fb5d-4888-8368-0cb5c34197b5:Scenes/MainScene
 Offset: {X: 0.0, Y: 0.0, Z: 0.0}
 Hierarchy:
     RootParts:
-        - ref!! 18c947a1-9e90-460d-a1bf-e171924d4225
-        - ref!! aa8cd8b8-53b5-450b-b65b-f1ebb9a45d1f
         - ref!! b1068c6f-ffa8-4ea6-af2a-cc1d25f402fe
-        - ref!! 95a2cab4-ab4a-4c44-960a-6cf51e43fa84
+        - ref!! a53a33f5-81a6-432c-ab62-567c2b106ce0
+        - ref!! b58a5aad-0f4d-4381-a743-564deebf3c3a
+        - ref!! 5fbe19a4-bc8c-491e-bd19-4fd5ef78a5d8
     Parts:
         -   Entity:
-                Id: 18c947a1-9e90-460d-a1bf-e171924d4225
+                Id: 5fbe19a4-bc8c-491e-bd19-4fd5ef78a5d8
                 Name: Skybox
                 Components:
                     07424f2d928fa023d630acb2a494afbf: !TransformComponent
-                        Id: 31d423f1-3c2d-4499-af6f-e67645329a25
+                        Id: 545753fa-9e5a-474d-b7f8-27c9afcc42b2
                         Position: {X: 0.0, Y: 2.0, Z: -2.0}
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
                     f446bb0f1d7040acd71780442198ccd8: !BackgroundComponent
-                        Id: abfff022-4ca1-4d61-810d-08e954fafe58
+                        Id: 24b48194-6760-4e44-a00f-7eca6c229a55
                         Texture: b111c453-668c-49a8-9216-23ec308fc195:Skybox texture
                     eb8ffcbd1184dfa14fd78e7a9d5e14cc: !LightComponent
-                        Id: 29134689-ecbc-408e-ab59-cd3a74ca5744
+                        Id: 96b8c2f2-8fa8-4c7e-9393-5f65fbc247be
                         Type: !LightSkybox
                             Skybox: 76aea3e2-991a-48f1-8a00-726296989466:Skybox
         -   Entity:
-                Id: 95a2cab4-ab4a-4c44-960a-6cf51e43fa84
+                Id: a53a33f5-81a6-432c-ab62-567c2b106ce0
                 Name: Camera
                 Components:
                     2b9be6127bc92b0a328ca32b81a47564: !TransformComponent
-                        Id: f8e3ff21-5791-4e32-8764-1c9cfbfe40e3
+                        Id: e5d43877-2257-4086-9c78-33af37df4e29
                         Position: {X: 2.6, Y: 0.6, Z: -1.0}
                         Rotation: {X: 0.0, Y: 0.968652546, Z: 0.0, W: -0.248419553}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
                     decb234d569b86b75678cb25a6ff9c58: !CameraComponent
-                        Id: b1afd2db-cafe-41c8-ba1d-363175440687
+                        Id: 0498d2ee-327b-4baf-a4f5-3218aeb83b1c
                         Name: null
                         Projection: Perspective
                         Slot: d5fb481e-db96-4a8e-b678-113307612ee9
                     39385e5164e78bcc05669892937d692a: !XenkoByteSized.BasicCameraController,XenkoByteSized
-                        Id: a25a148c-4d8e-471d-9034-c28125f6a65b
+                        Id: 50958aa1-89cc-4b14-b992-9a04fb32253a
                         Enabled: true
                         Gamepad: false
                         KeyboardMovementSpeed: {X: 5.0, Y: 5.0, Z: 5.0}
@@ -55,17 +55,30 @@ Hierarchy:
                         MouseRotationSpeed: {X: 1.0, Y: 1.0}
                         TouchRotationSpeed: {X: 1.0, Y: 0.7}
         -   Entity:
-                Id: aa8cd8b8-53b5-450b-b65b-f1ebb9a45d1f
+                Id: b1068c6f-ffa8-4ea6-af2a-cc1d25f402fe
+                Name: SubdividedPlaneMesh
+                Components:
+                    29abf4ad813bf1da198b30894089f4c5: !TransformComponent
+                        Id: 081a3320-889c-431f-8c0d-ff2fa90e2fb9
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    becd83edf6163c7b714e2a54eb0c48a5: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized
+                        Id: c9a5e4a5-f1b6-42fc-9e1a-0da38aa3ab57
+                        CurrentCamera: null
+        -   Entity:
+                Id: b58a5aad-0f4d-4381-a743-564deebf3c3a
                 Name: Directional light
                 Components:
                     410a0a22cb23d638e08bd3daae45f5f4: !TransformComponent
-                        Id: 6af5e83d-0e94-4e3a-9f83-c8db15e5ceef
+                        Id: d368cd6b-288a-4fdf-9df6-8cbe879fef87
                         Position: {X: 0.0, Y: 2.0, Z: 0.0}
                         Rotation: {X: 1.131334E-08, Y: -0.9659258, Z: -0.258819044, W: -4.222196E-08}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
                     2e6d1d380258bd441153d9eedb764e58: !LightComponent
-                        Id: 8837793c-f0da-4737-ac82-3c7d40f86499
+                        Id: 7665e927-613e-49ff-b781-4b75f94f6784
                         Type: !LightDirectional
                             Color: !ColorRgbProvider
                                 Value: {R: 1.0, G: 1.0, B: 1.0}
@@ -79,16 +92,3 @@ Hierarchy:
                                 ComputeTransmittance: false
                                 BiasParameters: {}
                         Intensity: 20.0
-        -   Entity:
-                Id: b1068c6f-ffa8-4ea6-af2a-cc1d25f402fe
-                Name: SubdividedPlaneMesh
-                Components:
-                    29abf4ad813bf1da198b30894089f4c5: !TransformComponent
-                        Id: 081a3320-889c-431f-8c0d-ff2fa90e2fb9
-                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
-                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
-                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
-                        Children: {}
-                    becd83edf6163c7b714e2a54eb0c48a5: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized
-                        Id: c9a5e4a5-f1b6-42fc-9e1a-0da38aa3ab57
-                        CurrentCamera: ref!! b1afd2db-cafe-41c8-ba1d-363175440687

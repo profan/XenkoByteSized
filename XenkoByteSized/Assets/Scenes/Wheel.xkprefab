@@ -1,0 +1,42 @@
+!PrefabAsset
+Id: 011ce846-bf44-4957-9198-0325a67169bc
+SerializedVersion: {Xenko: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! dcceff7f-57e2-45be-8d28-fdad869ce2fd
+    Parts:
+        -   Entity:
+                Id: dcceff7f-57e2-45be-8d28-fdad869ce2fd
+                Name: Wheel
+                Components:
+                    8e87a3aeda9341da76448e625536bd9b: !TransformComponent
+                        Id: 20a4de4d-49e1-4a96-bed2-82c3a9f28e28
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    c2c9a848845589e1d5f3673d6642eba7: !ModelComponent
+                        Id: 46623217-0e35-4269-8f1d-f8545be89c45
+                        Model: 467c27a5-697b-4014-9313-1ffaa41c3486:Cylinder
+                        Materials: {}
+                    5410a3d8fb1fcb2f2946ab65d62cdcb2: !RigidbodyComponent
+                        Id: 30b35f25-5d5e-49cd-99c1-cf52130e2cba
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            e40dc2ee9e319906f607793d80256303: !CylinderColliderShapeDesc
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                                LocalRotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
