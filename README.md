@@ -66,6 +66,7 @@ A small scene using [rigid bodies](https://doc.xenko.com/latest/en/manual/physic
 So we get a vehicle that can roll on these cylinders!
 
 Relevant script for the vehicle constraints: [XenkoByteSized.VehicleScene.VehicleScript](XenkoByteSized/VehicleScene/VehicleScript.cs)
+
 To understand this sample I recommend experimenting with it, changing the type of constraint and adjusting limits etc.
 
 (will probably revisit this to let the front wheels turn)
