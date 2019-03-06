@@ -85,6 +85,8 @@ namespace XenkoByteSized {
                 vehicleBody.ApplyImpulse(Entity.Transform.WorldMatrix.Right * FORCE_PER_SECOND * dt);
             }
 
+            DebugText.Print("Left/Right Arrow Key to move the vehicle", new Int2(32, 32));
+
         }
 
         public override void Cancel() {
