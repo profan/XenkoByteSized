@@ -66,7 +66,7 @@ Hierarchy:
                         Children: {}
                     becd83edf6163c7b714e2a54eb0c48a5: !XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh,XenkoByteSized
                         Id: c9a5e4a5-f1b6-42fc-9e1a-0da38aa3ab57
-                        CurrentCamera: null
+                        CurrentCamera: ref!! 0498d2ee-327b-4baf-a4f5-3218aeb83b1c
         -   Entity:
                 Id: b58a5aad-0f4d-4381-a743-564deebf3c3a
                 Name: Directional light

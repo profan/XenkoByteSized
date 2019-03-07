@@ -1,6 +1,6 @@
 !GraphicsCompositorAsset
 Id: 01a53bfc-fb53-4cf5-a5b0-9aec932490f3
-SerializedVersion: {Xenko: 2.1.0.2}
+SerializedVersion: {Xenko: 3.1.0.1}
 Tags: []
 Archetype: 823a81bf-bac0-4552-9267-aeed499c40df:DefaultGraphicsCompositorLevel10
 Cameras:
@@ -45,73 +45,73 @@ RenderStages:
         EffectSlotName: GBuffer
         SortMode: !FrontToBackSortMode {}
 RenderFeatures:
-    d8fb80b0e7995140a46bca8dc36ee8a2: !Xenko.Rendering.MeshRenderFeature,Xenko.Engine
+    d8fb80b0e7995140a46bca8dc36ee8a2: !Xenko.Rendering.MeshRenderFeature,Xenko.Rendering
         RenderStageSelectors:
-            44cf4a95ef82544e9ce3c6507d5569a9: !Xenko.Rendering.MeshTransparentRenderStageSelector,Xenko.Engine
+            44cf4a95ef82544e9ce3c6507d5569a9: !Xenko.Rendering.MeshTransparentRenderStageSelector,Xenko.Rendering
                 OpaqueRenderStage: ref!! 70fb5505-2e33-4771-9767-6c917177256c
                 TransparentRenderStage: ref!! d3a3abc7-caa4-4855-b5e8-654a20e8351a
                 EffectName: XenkoForwardShadingEffect
-            6f7224048750e7260ea87c444f74b32c: !Xenko.Rendering.Shadows.ShadowMapRenderStageSelector,Xenko.Engine
+            6f7224048750e7260ea87c444f74b32c: !Xenko.Rendering.Shadows.ShadowMapRenderStageSelector,Xenko.Rendering
                 ShadowMapRenderStage: ref!! a5113fe8-ef11-4fce-964d-694679ffc6fb
                 EffectName: XenkoForwardShadingEffect.ShadowMapCaster
-            b60663d7cb46417a94341a39c3bc1a12: !Xenko.Rendering.Shadows.ShadowMapRenderStageSelector,Xenko.Engine
+            b60663d7cb46417a94341a39c3bc1a12: !Xenko.Rendering.Shadows.ShadowMapRenderStageSelector,Xenko.Rendering
                 ShadowMapRenderStage: ref!! 7b69042c-69a3-481b-876b-7f97b57f0c87
                 EffectName: XenkoForwardShadingEffect.ShadowMapCasterParaboloid
-            f5533b1249b942df8a8aba311cd79532: !Xenko.Rendering.Shadows.ShadowMapRenderStageSelector,Xenko.Engine
+            f5533b1249b942df8a8aba311cd79532: !Xenko.Rendering.Shadows.ShadowMapRenderStageSelector,Xenko.Rendering
                 ShadowMapRenderStage: ref!! 4d5f09ec-1a1c-4a3a-a425-e3fe9500f303
                 EffectName: XenkoForwardShadingEffect.ShadowMapCasterCubeMap
-            106341b76db9fcda6a033dad16aa708b: !Xenko.Rendering.MeshTransparentRenderStageSelector,Xenko.Engine
+            106341b76db9fcda6a033dad16aa708b: !Xenko.Rendering.MeshTransparentRenderStageSelector,Xenko.Rendering
                 OpaqueRenderStage: ref!! 6f9fcbf2-f2bb-4c46-b3f2-7d18b235d066
                 EffectName: XenkoForwardShadingEffect.ShadowMapCaster
         PipelineProcessors:
-            d70f5aee0616e4ab25081ceaf643290c: !Xenko.Rendering.MeshPipelineProcessor,Xenko.Engine
+            d70f5aee0616e4ab25081ceaf643290c: !Xenko.Rendering.MeshPipelineProcessor,Xenko.Rendering
                 TransparentRenderStage: ref!! d3a3abc7-caa4-4855-b5e8-654a20e8351a
-            26c899b17f88c21ab13bf60a7220ccd1: !Xenko.Rendering.ShadowMeshPipelineProcessor,Xenko.Engine
+            26c899b17f88c21ab13bf60a7220ccd1: !Xenko.Rendering.ShadowMeshPipelineProcessor,Xenko.Rendering
                 ShadowMapRenderStage: ref!! a5113fe8-ef11-4fce-964d-694679ffc6fb
-            ff51170a7d1a4761b73ef6a5c9f0cba2: !Xenko.Rendering.ShadowMeshPipelineProcessor,Xenko.Engine
+            ff51170a7d1a4761b73ef6a5c9f0cba2: !Xenko.Rendering.ShadowMeshPipelineProcessor,Xenko.Rendering
                 ShadowMapRenderStage: ref!! 7b69042c-69a3-481b-876b-7f97b57f0c87
                 DepthClipping: true
-            ae4336b0a9514e8488e8e0ccbcef25f4: !Xenko.Rendering.ShadowMeshPipelineProcessor,Xenko.Engine
+            ae4336b0a9514e8488e8e0ccbcef25f4: !Xenko.Rendering.ShadowMeshPipelineProcessor,Xenko.Rendering
                 ShadowMapRenderStage: ref!! 4d5f09ec-1a1c-4a3a-a425-e3fe9500f303
                 DepthClipping: true
         RenderFeatures:
-            86b959cbdf51a1438d4973177c77c627: !Xenko.Rendering.TransformRenderFeature,Xenko.Engine {}
-            8e0351fee9883922648a11016224b195: !Xenko.Rendering.SkinningRenderFeature,Xenko.Engine {}
-            f5a2017030ba4b28784e804807ce7628: !Xenko.Rendering.Materials.MaterialRenderFeature,Xenko.Engine {}
-            83fea7526ebe4893a5bad953d0502bfd: !Xenko.Rendering.Shadows.ShadowCasterRenderFeature,Xenko.Engine {}
-            65743b4380f4cc43b2b4bdc23cd0c07c: !Xenko.Rendering.Lights.ForwardLightingRenderFeature,Xenko.Engine
+            86b959cbdf51a1438d4973177c77c627: !Xenko.Rendering.TransformRenderFeature,Xenko.Rendering {}
+            8e0351fee9883922648a11016224b195: !Xenko.Rendering.SkinningRenderFeature,Xenko.Rendering {}
+            f5a2017030ba4b28784e804807ce7628: !Xenko.Rendering.Materials.MaterialRenderFeature,Xenko.Rendering {}
+            83fea7526ebe4893a5bad953d0502bfd: !Xenko.Rendering.Shadows.ShadowCasterRenderFeature,Xenko.Rendering {}
+            65743b4380f4cc43b2b4bdc23cd0c07c: !Xenko.Rendering.Lights.ForwardLightingRenderFeature,Xenko.Rendering
                 LightRenderers:
-                    7ac2775468f53c4399b2f3f6357c85c9: !Xenko.Rendering.Lights.LightAmbientRenderer,Xenko.Engine {}
-                    7b68f9cd17404a4ba9e5f7df72e3b48d: !Xenko.Rendering.Lights.LightDirectionalGroupRenderer,Xenko.Engine {}
-                    411fdcfb9fc388449a0443173dfa3f27: !Xenko.Rendering.Lights.LightSkyboxRenderer,Xenko.Engine {}
-                    facdcd5b543cf1c6bdf2138aab6cc473: !Xenko.Rendering.Lights.LightClusteredPointSpotGroupRenderer,Xenko.Engine {}
-                    79582329a9cf466e960f8920f579de9b: !Xenko.Rendering.Lights.LightPointGroupRenderer,Xenko.Engine {}
-                    cf0c6bd4198b4cc4aaaab5b54870bdfd: !Xenko.Rendering.Lights.LightSpotGroupRenderer,Xenko.Engine {}
-                    451af18f3f5c4187cf3fe5f33feb46b1: !Xenko.Rendering.LightProbes.LightProbeRenderer,Xenko.Engine {}
-                ShadowMapRenderer: !Xenko.Rendering.Shadows.ShadowMapRenderer,Xenko.Engine
+                    7ac2775468f53c4399b2f3f6357c85c9: !Xenko.Rendering.Lights.LightAmbientRenderer,Xenko.Rendering {}
+                    7b68f9cd17404a4ba9e5f7df72e3b48d: !Xenko.Rendering.Lights.LightDirectionalGroupRenderer,Xenko.Rendering {}
+                    411fdcfb9fc388449a0443173dfa3f27: !Xenko.Rendering.Lights.LightSkyboxRenderer,Xenko.Rendering {}
+                    facdcd5b543cf1c6bdf2138aab6cc473: !Xenko.Rendering.Lights.LightClusteredPointSpotGroupRenderer,Xenko.Rendering {}
+                    79582329a9cf466e960f8920f579de9b: !Xenko.Rendering.Lights.LightPointGroupRenderer,Xenko.Rendering {}
+                    cf0c6bd4198b4cc4aaaab5b54870bdfd: !Xenko.Rendering.Lights.LightSpotGroupRenderer,Xenko.Rendering {}
+                    451af18f3f5c4187cf3fe5f33feb46b1: !Xenko.Rendering.LightProbes.LightProbeRenderer,Xenko.Rendering {}
+                ShadowMapRenderer: !Xenko.Rendering.Shadows.ShadowMapRenderer,Xenko.Rendering
                     Renderers:
-                        7c3d3d4c86834c3551bacde2527b3836: !Xenko.Rendering.Shadows.LightDirectionalShadowMapRenderer,Xenko.Engine
+                        7c3d3d4c86834c3551bacde2527b3836: !Xenko.Rendering.Shadows.LightDirectionalShadowMapRenderer,Xenko.Rendering
                             ShadowCasterRenderStage: ref!! a5113fe8-ef11-4fce-964d-694679ffc6fb
-                        1c204b09435636256a3fcfd6f9ddb347: !Xenko.Rendering.Shadows.LightSpotShadowMapRenderer,Xenko.Engine
+                        1c204b09435636256a3fcfd6f9ddb347: !Xenko.Rendering.Shadows.LightSpotShadowMapRenderer,Xenko.Rendering
                             ShadowCasterRenderStage: ref!! a5113fe8-ef11-4fce-964d-694679ffc6fb
-                        7c8c69ce27034b4c8bbcab0bcdfe954b: !Xenko.Rendering.Shadows.LightPointShadowMapRendererParaboloid,Xenko.Engine
+                        7c8c69ce27034b4c8bbcab0bcdfe954b: !Xenko.Rendering.Shadows.LightPointShadowMapRendererParaboloid,Xenko.Rendering
                             ShadowCasterRenderStage: ref!! 7b69042c-69a3-481b-876b-7f97b57f0c87
-                        d59ef45dd99e49d3af3887763d153aa7: !Xenko.Rendering.Shadows.LightPointShadowMapRendererCubeMap,Xenko.Engine
+                        d59ef45dd99e49d3af3887763d153aa7: !Xenko.Rendering.Shadows.LightPointShadowMapRendererCubeMap,Xenko.Rendering
                             ShadowCasterRenderStage: ref!! 4d5f09ec-1a1c-4a3a-a425-e3fe9500f303
-    28e9bf54a5adbe063f59fb17acb2723e: !Xenko.Rendering.Sprites.SpriteRenderFeature,Xenko.Engine
+    28e9bf54a5adbe063f59fb17acb2723e: !Xenko.Rendering.Sprites.SpriteRenderFeature,Xenko.Rendering
         RenderStageSelectors:
-            d74665cff080638a2439c4422e542d85: !Xenko.Rendering.Sprites.SpriteTransparentRenderStageSelector,Xenko.Engine
+            d74665cff080638a2439c4422e542d85: !Xenko.Rendering.Sprites.SpriteTransparentRenderStageSelector,Xenko.Rendering
                 OpaqueRenderStage: ref!! 70fb5505-2e33-4771-9767-6c917177256c
                 TransparentRenderStage: ref!! d3a3abc7-caa4-4855-b5e8-654a20e8351a
                 EffectName: Test
-    60780391e205770513fdd53e07279a01: !Xenko.Rendering.Background.BackgroundRenderFeature,Xenko.Engine
+    60780391e205770513fdd53e07279a01: !Xenko.Rendering.Background.BackgroundRenderFeature,Xenko.Rendering
         RenderStageSelectors:
-            11c8b8ccb522e3cd1dd6688016062a6d: !Xenko.Rendering.SimpleGroupToRenderStageSelector,Xenko.Engine
+            11c8b8ccb522e3cd1dd6688016062a6d: !Xenko.Rendering.SimpleGroupToRenderStageSelector,Xenko.Rendering
                 RenderStage: ref!! 70fb5505-2e33-4771-9767-6c917177256c
                 EffectName: Test
     93933ad00d0c357d4915ad462cbfd04c: !Xenko.Rendering.UI.UIRenderFeature,Xenko.UI
         RenderStageSelectors:
-            14a071694411235038a102ac3794bb4d: !Xenko.Rendering.SimpleGroupToRenderStageSelector,Xenko.Engine
+            14a071694411235038a102ac3794bb4d: !Xenko.Rendering.SimpleGroupToRenderStageSelector,Xenko.Rendering
                 RenderStage: ref!! d3a3abc7-caa4-4855-b5e8-654a20e8351a
                 EffectName: Test
     9013eab3ea0ef6c98bf133b86c173d45: !Xenko.Particles.Rendering.ParticleEmitterRenderFeature,Xenko.Particles
@@ -192,10 +192,10 @@ SharedRenderers:
                     Enabled: false
                     Color: {R: 0.0, G: 0.0, B: 0.0}
         Antialiasing: !FXAAEffect {}
-    ee80a20a9bd99f2d70711114e15fe7ca: !Xenko.Rendering.Compositing.DebugRenderer,Xenko.Engine
+    ee80a20a9bd99f2d70711114e15fe7ca: !Xenko.Rendering.Compositing.DebugRenderer,Xenko.Rendering
         Id: 77bc499f-479a-4f6a-8d58-d8571db0ffc6
         DebugRenderStages: {}
-Game*: !Xenko.Rendering.Compositing.SceneRendererCollection,Xenko.Engine
+Game*: !Xenko.Rendering.Compositing.SceneRendererCollection,Xenko.Rendering
     Id: c25e2562-2a2e-404e-a914-652904ae640f
     Children:
         ea6fd58fba2a8f6b3117c690940ef7e9: !Xenko.Rendering.Compositing.SceneCameraRenderer,Xenko.Engine
@@ -203,11 +203,11 @@ Game*: !Xenko.Rendering.Compositing.SceneRendererCollection,Xenko.Engine
             Camera: ref!! 641ce700-e559-427f-ae31-d5d43bbbd5e9
             Child: !Xenko.Rendering.Compositing.ForwardRenderer,Xenko.Engine ref!! f41fac78-195b-4c88-b926-25f589ece228
             RenderMask: Group31
-        3144dd0caa2f5392a1664f48d246d32f: !Xenko.Rendering.Compositing.DebugRenderer,Xenko.Engine ref!! 77bc499f-479a-4f6a-8d58-d8571db0ffc6
+        3144dd0caa2f5392a1664f48d246d32f: !Xenko.Rendering.Compositing.DebugRenderer,Xenko.Rendering ref!! 77bc499f-479a-4f6a-8d58-d8571db0ffc6
         771e2afc097e27caf89ae2778495e9b4: !Xenko.Rendering.Compositing.SceneCameraRenderer,Xenko.Engine
             Id: df4018cc-686a-4e6a-bede-576791a74668
             Camera: ref!! dfd41ea4-383d-4327-a060-18a9977a3972
-            Child: !Xenko.Rendering.Compositing.RenderTextureSceneRenderer,Xenko.Engine
+            Child: !Xenko.Rendering.Compositing.RenderTextureSceneRenderer,Xenko.Rendering
                 Id: 96bb4b19-4849-4878-9686-4f38c4672acc
                 RenderTexture: 5a86885b-2a5f-4a5d-b4cb-1a7b63e1b6c2:Scenes/SplitScreen/LeftTexture
                 Child: !Xenko.Rendering.Compositing.ForwardRenderer,Xenko.Engine ref!! 3f6de75b-6a20-4f90-8122-7ad78de76a44
@@ -215,7 +215,7 @@ Game*: !Xenko.Rendering.Compositing.SceneRendererCollection,Xenko.Engine
         2ffaf14c539a9a06f9b4a2e1f10b3778: !Xenko.Rendering.Compositing.SceneCameraRenderer,Xenko.Engine
             Id: b1e20099-f038-4585-94cd-000e671737e4
             Camera: ref!! 92b2d06e-7fd6-4c1e-8bc3-1bc9ce0b8ca2
-            Child: !Xenko.Rendering.Compositing.RenderTextureSceneRenderer,Xenko.Engine
+            Child: !Xenko.Rendering.Compositing.RenderTextureSceneRenderer,Xenko.Rendering
                 Id: 09762594-a408-4366-b190-e8e71d46900d
                 RenderTexture: 80c9d666-22a3-4a64-ae79-6ae0ba31527d:Scenes/SplitScreen/RightTexture
                 Child: !Xenko.Rendering.Compositing.ForwardRenderer,Xenko.Engine ref!! 3f6de75b-6a20-4f90-8122-7ad78de76a44

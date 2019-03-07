@@ -4,6 +4,7 @@ using Xenko.Core;
 using Xenko.Core.Mathematics;
 using Xenko.Engine;
 using Xenko.Graphics;
+using Xenko.Rendering;
 using Xenko.Rendering.Sprites;
 
 namespace XenkoByteSized {
