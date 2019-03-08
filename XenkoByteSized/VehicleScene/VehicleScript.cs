@@ -85,16 +85,26 @@ namespace XenkoByteSized {
                 vehicleBody.ApplyImpulse(Entity.Transform.WorldMatrix.Right * FORCE_PER_SECOND * dt);
             }
 
-            DebugText.Print("Left/Right Arrow Key to move the vehicle (note that switching away from this scene and back to it may currently crash the game!)", new Int2(32, 32));
+            DebugText.Print("Left/Right Arrow Key to move the vehicle", new Int2(32, 32));
 
         }
 
         public override void Cancel() {
-            // FIXME: is this necessary?... either way it crashes at the moment
+
+            /* make sure to remove constraints and also dispose them! */
+
+            var sim = this.GetSimulation();
+
+            sim.RemoveConstraint(wheelFrontLeftConstraint);
+            sim.RemoveConstraint(wheelFrontRightConstraint);
+            sim.RemoveConstraint(wheelBackLeftConstraint);
+            sim.RemoveConstraint(wheelBackRightConstraint);
+
             wheelFrontLeftConstraint.Dispose();
             wheelFrontRightConstraint.Dispose();
             wheelBackLeftConstraint.Dispose();
             wheelBackRightConstraint.Dispose();
+
         }
 
     }
