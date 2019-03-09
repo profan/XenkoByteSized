@@ -59,6 +59,8 @@ namespace XenkoByteSized.ProceduralMesh {
 
         class TerrainModifier {
 
+            const float MAX_RADIUS = 8.0f;
+
             public delegate void OnModify();
             public event OnModify OnModifyEvent;
 
@@ -78,8 +80,10 @@ namespace XenkoByteSized.ProceduralMesh {
             private VertexPositionNormalTexture[] vertices;
 
             public ModificationMode Mode { get; set; }
+            public float Radius { get => radius; set => radius = Math.Max(0.0f, Math.Min(value, MAX_RADIUS)); }
+
             public float multiplier = 1.0f;
-            public float radius = 4.0f;
+            private float radius = 4.0f;
 
             private void AdjustHeight(ref Vector2 pos, float radius, float delta) {
 
@@ -317,10 +321,17 @@ namespace XenkoByteSized.ProceduralMesh {
 
         public override void Update() {
 
+            /* terrain modification rate of change */
             const float UNITS_PER_SECOND = 2.0f;
+
+            /* rate of change of adjusting modifier radius with scrollwheel */
+            const float CHANGE_PER_SECOND = 4.0f;
 
             var screenPos = Input.MousePosition;
             float dt = (float)Game.TargetElapsedTime.TotalSeconds;
+
+            /* draw some debug stuff */
+            DebugText.Print($"modifier radius: {modifier.Radius}", new Int2(16, 16));
 
             if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftCtrl)) {
 
@@ -330,7 +341,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Flatten;
-                    modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
+                    modifier.Modify(localHitPos.XZ(), modifier.Radius, UNITS_PER_SECOND * dt);
                 }
 
             } else if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftShift)) {
@@ -341,7 +352,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Smoothen;
-                    modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
+                    modifier.Modify(localHitPos.XZ(), modifier.Radius, UNITS_PER_SECOND * dt);
                 }
 
             } else if (Input.IsMouseButtonDown(MouseButton.Left)) {
@@ -352,7 +363,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Raise;
-                    modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
+                    modifier.Modify(localHitPos.XZ(), modifier.Radius, UNITS_PER_SECOND * dt);
                 }
 
             } else if (Input.IsMouseButtonDown(MouseButton.Middle)) {
@@ -363,9 +374,17 @@ namespace XenkoByteSized.ProceduralMesh {
                 if (worldPosHit.Succeeded) {
                     var localHitPos = Entity.Transform.WorldToLocal(hitPos);
                     modifier.Mode = TerrainModifier.ModificationMode.Lower;
-                    modifier.Modify(localHitPos.XZ(), modifier.radius, UNITS_PER_SECOND * dt);
+                    modifier.Modify(localHitPos.XZ(), modifier.Radius, UNITS_PER_SECOND * dt);
                 }
 
+            }
+
+            foreach (InputEvent ev in Input.Events) {
+                switch (ev) {
+                    case MouseWheelEvent mw:
+                        modifier.Radius += mw.WheelDelta * CHANGE_PER_SECOND * dt;
+                        break;
+                }
             }
 
             StaticDebug.Draw();

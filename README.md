@@ -24,6 +24,8 @@ Has some basic operations possible like:
  * Smoothing terrain (Shift + Left Mouse)
  * Leveling terrain (Ctrl + Left Mouse)
 
+(scrollwheel to change marker radius for the above)
+
 Can also be observed in the same scene
 
 ![terrain](terrainy.png "some sculpted terrain thing")
