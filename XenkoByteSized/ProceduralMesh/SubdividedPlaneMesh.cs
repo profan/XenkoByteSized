@@ -445,9 +445,6 @@ namespace XenkoByteSized.ProceduralMesh {
             modifier.OnModifyEvent += UpdateMeshData;
             modifier.OnModifyEvent += () => CalculateNormals(vertices);
 
-            /* push the created mesh and its data */
-            UpdateMeshData();
-
             /* create our ModelComponent and add the mesh to it */
             var boundingBox = Utils.FromPoints(vertices);
             var boundingSphere = BoundingSphere.FromBox(boundingBox);

@@ -11,6 +11,8 @@ namespace XenkoByteSized.ProceduralMesh {
 
         /* our vertex array, vertex buffer will be built from this data we keep around */
         private VertexPositionNormalTexture[] vertices;
+
+        /* our indices into the vertex buffer */
         private uint[] indices;
 
         /* GPU side data */
@@ -141,6 +143,8 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
+        /* call this if the data changes, in your case maybe only the vertex 
+         * or the index buffer changes? adjust accordingly */
         private void UpdateMeshData() {
             
             var context = Game.GraphicsContext;
@@ -157,9 +161,6 @@ namespace XenkoByteSized.ProceduralMesh {
             (vertices, indices) = GenerateCube();
             CalculateNormals(vertices, indices);
             mesh = CreateMesh(GraphicsDevice, vertices, indices);
-
-            /* push the created mesh and its data */
-            UpdateMeshData();
 
             /* create our ModelComponent and add the mesh to it */
             modelComponent = new ModelComponent() {
