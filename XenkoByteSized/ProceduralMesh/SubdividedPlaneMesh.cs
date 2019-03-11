@@ -279,11 +279,11 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        private Mesh CreateMesh(VertexPositionNormalTexture[] verts) {
+        private Mesh CreateMesh(GraphicsDevice device, VertexPositionNormalTexture[] verts) {
 
             /* now set up the GPU side stuff */
             var vbo = Xenko.Graphics.Buffer.Vertex.New(
-                GraphicsDevice,
+                device,
                 verts, /* allocated size of buffer inferred from the stored datatype and the length of the array */
                 GraphicsResourceUsage.Dynamic /* usage hint to the GPU for it to allocate it appropriately */
             );
@@ -438,7 +438,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 DEFAULT_SUBDIVISIONS
             );
             CalculateNormals(vertices);
-            mesh = CreateMesh(vertices);
+            mesh = CreateMesh(GraphicsDevice, vertices);
 
             /* set up our terrain modifier */
             modifier = new TerrainModifier(vertices);

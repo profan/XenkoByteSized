@@ -4,6 +4,7 @@ SerializedVersion: {Xenko: 3.1.0.1}
 Tags: []
 ChildrenIds:
     - 67647aca-f17b-4c8c-81dd-eaa1b53023f3
+    - 58456b4e-8cea-442f-8e8f-cf17a4aeef62
     - 0e875fe5-1f5a-49dc-922d-b7d286d69967
     - adecce91-3716-41c2-9ccf-20a60019a643
     - 62a7f556-07b9-483c-8910-16eed8aaf9b9
@@ -29,15 +30,17 @@ Hierarchy:
                         scenes:
                             f97eac892063de0133a4439502a17437: Scenes/TetrahedronScene
                             6d9cf6fbaabecc844332b20db6569c1b: Scenes/SubdividedPlaneScene
-                            fc9780fc3b358f9edc34dd39aee657b5: Scenes/SplitScreenScene
-                            65043fa5c34a2f1d993d0c8f2bb1b6d3: Scenes/TriggerScene
-                            c1d5dec7b9e87d2e48c5c81b3733271e: Scenes/VehicleScene
+                            fc9780fc3b358f9edc34dd39aee657b5: Scenes/CubeScene
+                            65043fa5c34a2f1d993d0c8f2bb1b6d3: Scenes/SplitScreenScene
+                            c1d5dec7b9e87d2e48c5c81b3733271e: 'Scenes/TriggerScene '
+                            3f730f0c9b2a2554c0885f721e0ba96b: Scenes/VehicleScene
                         compositors:
                             85cc55b6c2969be23b60ff290e9b19c0: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
                             d7d5a8ac098c617a4edc03d690ef7f94: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
-                            75229fdbaf6ccd870fe516ff837ed18f: 01a53bfc-fb53-4cf5-a5b0-9aec932490f3:Scenes/SplitScreen/SplitScreenCompositor
-                            74c718272503432a40dc68f80ad6c7ea: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
+                            75229fdbaf6ccd870fe516ff837ed18f: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
+                            74c718272503432a40dc68f80ad6c7ea: 01a53bfc-fb53-4cf5-a5b0-9aec932490f3:Scenes/SplitScreen/SplitScreenCompositor
                             d558d56788564cc8153a5d10e1995e0d: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
+                            09575449a8a250118c1110b689f5c59f: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
                         Camera: ref!! 3687e441-4b8f-4295-b012-fa686ee6c024
         -   Entity:
                 Id: 65449698-b1a1-4ea9-9a94-6cd0f9340dbd

@@ -16,5 +16,6 @@ Bundles: []
 TemplateFolders: []
 RootAssets:
     - 01a53bfc-fb53-4cf5-a5b0-9aec932490f3:Scenes/SplitScreen/SplitScreenCompositor
+    - 58456b4e-8cea-442f-8e8f-cf17a4aeef62:Scenes/CubeScene
     - 600dfac1-1785-414d-9a95-ceab40b4b55a:Scenes/VehicleScene
     - 62a7f556-07b9-483c-8910-16eed8aaf9b9:Scenes/TriggerScene

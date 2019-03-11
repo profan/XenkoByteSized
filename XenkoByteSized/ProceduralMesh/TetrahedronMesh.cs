@@ -64,11 +64,11 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        private Mesh CreateMesh(VertexPositionNormalTexture[] verts) {
+        static private Mesh CreateMesh(GraphicsDevice device, VertexPositionNormalTexture[] verts) {
 
             /* now set up the GPU side stuff */
             var vbo = Xenko.Graphics.Buffer.Vertex.New(
-                GraphicsDevice,
+                device,
                 verts, /* allocated size of buffer inferred from the stored datatype and the length of the array */
                 GraphicsResourceUsage.Default /* usage hint to the GPU for it to allocate it appropriately (explicit default in our case) */
             );
@@ -101,7 +101,7 @@ namespace XenkoByteSized.ProceduralMesh {
             /* set up our mesh */
             vertices = GenerateTetrahedra();
             CalculateNormals(vertices);
-            mesh = CreateMesh(vertices);
+            mesh = CreateMesh(GraphicsDevice, vertices);
 
             /* push the created mesh and its data */
             UpdateMeshData();

@@ -11,6 +11,13 @@ Uses only a vertex buffer to be as simple as possible.
 
 ![tetrahedra](bytesized.png "sphere and tetrahedra")
 
+## [XenkoByteSized.ProceduralMesh.Cubemesh](XenkoByteSized/ProceduralMesh/CubeMesh.cs)
+Another example of creating a mesh procedurally, in this case **with** with an index buffer and instead for a cube (as it makes sense finally to use an index buffer here)
+
+24 vertices, 36 indices.
+
+![cube](cube.png "rotating cube")
+
 ## [XenkoByteSized.ProceduralMesh.SubdividedPlaneMesh](XenkoByteSized/ProceduralMesh/SubdividedPlaneMesh.cs)
 
 A somewhat less simple example of expanding upon the above, generates a subdivided plane with a configurable width, height and number of subdivisions in each quadrant.
