@@ -107,7 +107,7 @@ Hierarchy:
                         TouchMovementSpeed: {X: 0.7, Y: 0.7, Z: 0.3}
                         SpeedFactor: 5.0
                         KeyboardRotationSpeed: {X: 3.0, Y: 3.0}
-                        MouseRotationSpeed: {X: 1.0, Y: 1.0}
+                        MouseRotationSpeed: {X: 2.0, Y: 2.0}
                         TouchRotationSpeed: {X: 1.0, Y: 0.7}
         -   Entity:
                 Id: d7b4b4b8-9dc6-4c5c-b077-8754c5538218
