@@ -87,8 +87,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        /* call this if the data changes, in your case maybe only the vertex 
-         * or the index buffer changes? adjust accordingly */
+        /* call this if the data changes */
         private void UpdateMeshData() {
             
             var context = Game.GraphicsContext;
