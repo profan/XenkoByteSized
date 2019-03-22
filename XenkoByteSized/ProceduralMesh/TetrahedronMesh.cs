@@ -83,6 +83,10 @@ namespace XenkoByteSized.ProceduralMesh {
                 }
             };
 
+            /* bounding box+sphere for culling */
+            newMesh.BoundingBox = Utils.FromPoints(verts);
+            newMesh.BoundingSphere = BoundingSphere.FromBox(newMesh.BoundingBox);
+
             return newMesh;
 
         }

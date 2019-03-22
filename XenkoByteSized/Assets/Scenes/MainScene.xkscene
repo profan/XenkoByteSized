@@ -9,6 +9,7 @@ ChildrenIds:
     - adecce91-3716-41c2-9ccf-20a60019a643
     - 62a7f556-07b9-483c-8910-16eed8aaf9b9
     - 600dfac1-1785-414d-9a95-ceab40b4b55a
+    - 9e0a3698-3b6e-4a68-8f04-ea0421296cee
 Offset: {X: 0.0, Y: 0.0, Z: 0.0}
 Hierarchy:
     RootParts:
@@ -34,6 +35,7 @@ Hierarchy:
                             65043fa5c34a2f1d993d0c8f2bb1b6d3: Scenes/SplitScreenScene
                             c1d5dec7b9e87d2e48c5c81b3733271e: Scenes/TriggerScene
                             3f730f0c9b2a2554c0885f721e0ba96b: Scenes/VehicleScene
+                            a1cb7ef567db504c7b3948cb53edc5ab: Scenes/CombinedMeshesScene
                         compositors:
                             85cc55b6c2969be23b60ff290e9b19c0: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
                             d7d5a8ac098c617a4edc03d690ef7f94: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
@@ -41,6 +43,7 @@ Hierarchy:
                             74c718272503432a40dc68f80ad6c7ea: 01a53bfc-fb53-4cf5-a5b0-9aec932490f3:Scenes/SplitScreen/SplitScreenCompositor
                             d558d56788564cc8153a5d10e1995e0d: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
                             09575449a8a250118c1110b689f5c59f: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
+                            d50cc2d2fcc98724337d76a1330f74ef: e9e4f8e8-24b3-40a4-ba12-8dbbb9610fa7:GraphicsCompositor
                         Camera: ref!! 3687e441-4b8f-4295-b012-fa686ee6c024
         -   Entity:
                 Id: 65449698-b1a1-4ea9-9a94-6cd0f9340dbd

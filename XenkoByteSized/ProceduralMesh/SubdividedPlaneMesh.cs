@@ -279,7 +279,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
-        private Mesh CreateMesh(GraphicsDevice device, VertexPositionNormalTexture[] verts) {
+        static private Mesh CreateMesh(GraphicsDevice device, VertexPositionNormalTexture[] verts) {
 
             /* now set up the GPU side stuff */
             var vbo = Xenko.Graphics.Buffer.Vertex.New(
@@ -297,6 +297,10 @@ namespace XenkoByteSized.ProceduralMesh {
                     DrawCount = verts.Length
                 }
             };
+            
+            /* bounding box for culling */
+            newMesh.BoundingBox = Utils.FromPoints(verts);
+            newMesh.BoundingSphere = BoundingSphere.FromBox(newMesh.BoundingBox);
 
             return newMesh;
 
@@ -446,17 +450,12 @@ namespace XenkoByteSized.ProceduralMesh {
             modifier.OnModifyEvent += () => CalculateNormals(vertices);
 
             /* create our ModelComponent and add the mesh to it */
-            var boundingBox = Utils.FromPoints(vertices);
-            var boundingSphere = BoundingSphere.FromBox(boundingBox);
-
             modelComponent = new ModelComponent() {
                 Model = new Model() {
-                    BoundingBox = boundingBox,
-                    BoundingSphere = boundingSphere
+                    mesh
                 }
             };
 
-            modelComponent.Model.Add(mesh);
             Entity.Add(modelComponent);
 
         }
