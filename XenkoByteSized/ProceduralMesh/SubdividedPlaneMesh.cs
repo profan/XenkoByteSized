@@ -405,9 +405,7 @@ namespace XenkoByteSized.ProceduralMesh {
             colliderComponent = new StaticColliderComponent();
 
             /* create plane collider shape, meant to catch our raycasts so we can manipulate terrain (for now) */
-            StaticPlaneColliderShape planeShape = new StaticPlaneColliderShape(new Vector3(0.0f, 1.0f, 0.0f), 0.0f);
             colliderComponent.ColliderShapes.Add(new StaticPlaneColliderShapeDesc() { Normal = new Vector3(0.0f, 1.0f, 0.0f) });
-            colliderComponent.ColliderShape = planeShape;
             Entity.Add(colliderComponent);
 
             /* set up our heightmap and plane */
