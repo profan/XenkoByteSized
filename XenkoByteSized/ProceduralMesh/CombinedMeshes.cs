@@ -5,15 +5,27 @@ using Xenko.Rendering;
 using Xenko.Graphics;
 using Xenko.Graphics.GeometricPrimitives;
 using Xenko.Extensions;
+using System.Runtime.InteropServices;
 
 namespace XenkoByteSized.ProceduralMesh {
 
     class PoorMansMultiMesh : SyncScript {
 
+        [StructLayout(LayoutKind.Sequential, Pack=0)]
+        internal struct TransformData {
+
+            Matrix mat;
+
+            public TransformData(Matrix localMatrix) {
+                mat = localMatrix;
+            }
+
+        };
+
         const int INITIAL_INSTANCE_COUNT = 16;
 
         private TrackingDictionary<System.Guid, TransformComponent> transforms = new TrackingDictionary<System.Guid, TransformComponent>();
-        private FastList<Matrix> matrices = new FastList<Matrix>();
+        private FastList<TransformData> matrices = new FastList<TransformData>(INITIAL_INSTANCE_COUNT);
 
         /* gpu pipeline stuff */
         private PipelineState pipelineState;
@@ -21,6 +33,7 @@ namespace XenkoByteSized.ProceduralMesh {
         /* gpu side data, our ModelComponent we use to render, no index buffer data so there is some... waste yes */
         private ModelComponent modelComponent;
         private VertexBufferBinding streamOutBufferBinding;
+        private Buffer<TransformData> transformBuffer;
         private EffectInstance streamShader;
         private Mesh streamBufferedMesh;
 
@@ -64,20 +77,31 @@ namespace XenkoByteSized.ProceduralMesh {
             var newPipelineState = PipelineState.New(GraphicsDevice, ref pipeline);
             pipelineState = newPipelineState;
 
-            var streamBuffer = Buffer.New<VertexPositionNormalTexture>(GraphicsDevice, INITIAL_INSTANCE_COUNT, BufferFlags.StreamOutput);
+            var streamBuffer = Buffer.New<VertexPositionNormalTexture>(GraphicsDevice, 0, BufferFlags.StreamOutput);
             streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
+
+            var newTransformBuffer = Buffer.New<TransformData>(GraphicsDevice, INITIAL_INSTANCE_COUNT, BufferFlags.StructuredBuffer);
+            transformBuffer = newTransformBuffer;
 
         }
 
         private void CheckBuffers() {
 
             var device = GraphicsDevice;
+            var commandList = Game.GraphicsContext.CommandList;
 
-            uint neededBufferSize = (uint)(transforms.Count);
-            if (neededBufferSize > streamOutBufferBinding.Count) {
+            uint neededStreamBufferSize = (uint)(transforms.Count);
+            if (neededStreamBufferSize > streamOutBufferBinding.Count) {
                 streamOutBufferBinding.Buffer.Dispose(); // dispose the old buffer first
-                var streamBuffer = Buffer.New<VertexPositionNormalTexture>(device, (int)(neededBufferSize), BufferFlags.StreamOutput);
+                var streamBuffer = Buffer.New<VertexPositionNormalTexture>(device, (int)(neededStreamBufferSize), BufferFlags.StreamOutput);
                 streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
+            }
+
+            uint neededTransformBufferSize = (uint)(transforms.Count);
+            if (neededTransformBufferSize > streamOutBufferBinding.Count) {
+                transformBuffer.RecreateWith(matrices.Items);
+            } else {
+                transformBuffer.SetData(commandList, matrices.Items);
             }
 
         }
@@ -97,7 +121,7 @@ namespace XenkoByteSized.ProceduralMesh {
             commandList.SetIndexBuffer(indexBuffer, 0, is32bits: true);
             commandList.SetStreamTargets(streamOutBufferBinding.Buffer);
             
-            streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, matrices.Items);
+            streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, streamOutBufferBinding.Buffer);
             streamShader.UpdateEffect(GraphicsDevice);
 
             /* finally write to our streamout buffer */
@@ -150,17 +174,19 @@ namespace XenkoByteSized.ProceduralMesh {
 
         private void UpdateMatrices() {
 
+            /* FIXME: this is all somewhat stupid.. fix this once it at least runs */
+
             matrices.Clear();
             foreach (var transform in transforms) {
-                matrices.Add(transform.Value.LocalMatrix);
+                matrices.Add(new TransformData(transform.Value.LocalMatrix));
             }
 
         }
 
         public override void Update() {
 
-            UpdateBuffers();
             UpdateMatrices();
+            UpdateBuffers();
             PerformStreamOut();
 
         }
