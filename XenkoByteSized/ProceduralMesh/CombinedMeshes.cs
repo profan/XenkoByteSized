@@ -193,6 +193,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         public override void Cancel() {
             streamOutBufferBinding.Buffer.Dispose();
+            transformBuffer.Dispose();
             streamShader.Dispose();
         }
 
