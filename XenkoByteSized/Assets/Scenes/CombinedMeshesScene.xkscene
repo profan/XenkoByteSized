@@ -22,6 +22,9 @@ Hierarchy:
                         Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
                         Scale: {X: 1.0, Y: 1.0, Z: 1.0}
                         Children: {}
+                    85ffb1f00ee7ed4c20658360e9b7249b: !XenkoByteSized.ProceduralMesh.CombinedMeshes,XenkoByteSized
+                        Id: a29f00d4-004b-409c-9d24-a444e189e2a7
+                        rotationSpeed: 0.7853982
         -   Entity:
                 Id: 92206e47-4b2c-48d8-9289-0752466aa1eb
                 Name: Camera
