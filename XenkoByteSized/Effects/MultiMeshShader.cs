@@ -18,6 +18,6 @@ namespace XenkoByteSized
 {
     public static partial class MultiMeshShaderKeys
     {
-        public static readonly ValueParameterKey<Matrix> modelTransforms = ParameterKeys.NewValue<Matrix>();
+        public static readonly ObjectParameterKey<Buffer> modelTransforms = ParameterKeys.NewObject<Buffer>();
     }
 }
