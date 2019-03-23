@@ -97,7 +97,7 @@ namespace XenkoByteSized.ProceduralMesh {
             commandList.SetIndexBuffer(indexBuffer, 0, is32bits: true);
             commandList.SetStreamTargets(streamOutBufferBinding.Buffer);
             
-            // streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, matrices.Items);
+            streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, matrices.Items);
             streamShader.UpdateEffect(GraphicsDevice);
 
             /* finally write to our streamout buffer */

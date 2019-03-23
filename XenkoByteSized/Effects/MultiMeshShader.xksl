@@ -4,18 +4,18 @@
 
         stream uint InstanceID : SV_InstanceID;
         stream float4 ShadingPosition : SV_Position;
-        stream float4 Normal : NORMAL;
-        stream float4 Uv : TEXCOORD0;
+        stream float3 Normal : NORMAL;
+        stream float2 Uv : TEXCOORD0;
 
-        // stage matrix modelTransforms[]; // this is probably not sane?
+        stage matrix modelTransforms[];
 
-        stage void VSMain() {
-            streams.ShadingPosition = streams.ShadingPosition;
+        void VSMain() {
+            streams.ShadingPosition = mul(streams.ShadingPosition, modelTransforms[streams.InstanceID]);
         }
 
-        [StreamOutput("0:SV_Position.xyzw; 0:NORMAL.xyzw; 0:TEXCOORD0.xyzw")]
+        [StreamOutput("0:SV_Position.xyz; 0:NORMAL.xyz; 0:TEXCOORD0.xy")]
         [maxvertexcount(1)]
-        stage void GSMain(point Input input[1], inout PointStream<Output> vertexStream) {
+        void GSMain(point Input input[1], inout PointStream<Output> vertexStream) {
             streams = input[0];
             vertexStream.Append(streams);
         }

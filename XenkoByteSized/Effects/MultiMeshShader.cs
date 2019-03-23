@@ -6,4 +6,18 @@
 // and re-save the associated .xkfx.
 // </auto-generated>
 
-// Nothing to generate
+using System;
+using Xenko.Core;
+using Xenko.Rendering;
+using Xenko.Graphics;
+using Xenko.Shaders;
+using Xenko.Core.Mathematics;
+using Buffer = Xenko.Graphics.Buffer;
+
+namespace XenkoByteSized
+{
+    public static partial class MultiMeshShaderKeys
+    {
+        public static readonly ValueParameterKey<Matrix> modelTransforms = ParameterKeys.NewValue<Matrix>();
+    }
+}
