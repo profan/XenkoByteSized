@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "XenkoByteSized": {
+      "commandName": "Project",
+      "nativeDebugging": true
+    }
+  }
+}
