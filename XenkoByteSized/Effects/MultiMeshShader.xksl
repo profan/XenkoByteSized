@@ -8,13 +8,15 @@
 
         stream uint InstanceID : SV_InstanceID;
         stream float4 ShadingPosition : SV_Position;
+
+        stream float3 Position : POSITION;
         stream float3 Normal : NORMAL;
         stream float2 Uv : TEXCOORD0;
 
         StructuredBuffer<TransformData> modelTransforms;
 
         void VSMain() {
-            streams.ShadingPosition = mul(streams.ShadingPosition, modelTransforms[streams.InstanceID].mat);
+            streams.ShadingPosition = mul(streams.Position, modelTransforms[streams.InstanceID].mat);
         }
 
         [StreamOutput("0:SV_Position.xyz; 0:NORMAL.xyz; 0:TEXCOORD0.xy")]

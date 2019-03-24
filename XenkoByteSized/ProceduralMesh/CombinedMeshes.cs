@@ -77,7 +77,7 @@ namespace XenkoByteSized.ProceduralMesh {
             var newPipelineState = PipelineState.New(GraphicsDevice, ref pipeline);
             pipelineState = newPipelineState;
 
-            var streamBuffer = Buffer.New<VertexPositionNormalTexture>(GraphicsDevice, 0, BufferFlags.StreamOutput);
+            var streamBuffer = Buffer.New<VertexPositionNormalTexture>(GraphicsDevice, 0, BufferFlags.VertexBuffer | BufferFlags.StreamOutput);
             streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
 
             var newTransformBuffer = Buffer.New<TransformData>(GraphicsDevice, INITIAL_INSTANCE_COUNT, BufferFlags.StructuredBuffer);
@@ -95,7 +95,7 @@ namespace XenkoByteSized.ProceduralMesh {
             uint neededStreamBufferSize = (uint)(transforms.Count * totalIndices);
             if (neededStreamBufferSize > streamOutBufferBinding.Count) {
                 streamOutBufferBinding.Buffer.Dispose(); // dispose the old buffer first
-                var streamBuffer = Buffer.New<VertexPositionNormalTexture>(device, (int)(neededStreamBufferSize), BufferFlags.StreamOutput);
+                var streamBuffer = Buffer.New<VertexPositionNormalTexture>(device, (int)(neededStreamBufferSize), BufferFlags.VertexBuffer | BufferFlags.StreamOutput);
                 streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
             }
 
