@@ -1,4 +1,5 @@
 using Xenko.Engine;
+using Xenko.Graphics;
 
 namespace XenkoByteSized.Windows
 {
@@ -8,6 +9,8 @@ namespace XenkoByteSized.Windows
         {
             using (var game = new Game())
             {
+                /* debugaloo */
+                game.GraphicsDeviceManager.DeviceCreationFlags |= DeviceCreationFlags.Debug;
                 game.Run();
             }
         }

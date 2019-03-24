@@ -6,6 +6,7 @@ using Xenko.Engine;
 using Xenko.Core.Collections;
 using Xenko.Core.Mathematics;
 using Xenko.Rendering.Compositing;
+using Xenko.Graphics;
 
 namespace XenkoByteSized {
     public class SceneManager : SyncScript {
