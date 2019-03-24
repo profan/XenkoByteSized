@@ -64,14 +64,18 @@ namespace XenkoByteSized.ProceduralMesh {
             streamShader = shader;
 
             var pipeline = new PipelineStateDescription() {
-                // BlendState = BlendStates.Default,
-                // RasterizerState = RasterizerStateDescription.Default,
-                // DepthStencilState = DepthStencilStates.None,
-                // Output = new RenderOutputDescription(GraphicsDevice.Presenter.BackBuffer.Format),
-                PrimitiveType = PrimitiveType.TriangleList,
+
+                /* TODO: do we need all these? */
+                BlendState = BlendStates.Default,
+                RasterizerState = RasterizerStateDescription.Default,
+                DepthStencilState = DepthStencilStates.None,
+                Output = new RenderOutputDescription(GraphicsDevice.Presenter.BackBuffer.Format),
+
+                PrimitiveType = PrimitiveType.PointList,
                 InputElements = VertexPositionNormalTexture.Layout.CreateInputElements(),
                 EffectBytecode = shader.Effect.Bytecode,
                 RootSignature = shader.RootSignature,
+
             };
 
             var newPipelineState = PipelineState.New(GraphicsDevice, ref pipeline);
@@ -110,24 +114,25 @@ namespace XenkoByteSized.ProceduralMesh {
 
         private void PerformStreamOut() {
 
-            var commandList = Game.GraphicsContext.CommandList;
+            // var commandList = Game.GraphicsContext.CommandList;
+
+            // /* TODO: this currently assumes a single vertex buffer, is this always the case? */
+            // var vertexBuffer = renderedMesh.Draw.VertexBuffers[0].Buffer;
+            // var indexBuffer = renderedMesh.Draw.IndexBuffer.Buffer;
+
+            // commandList.SetPipelineState(pipelineState);
 
             /* TODO: this currently assumes a single vertex buffer, is this always the case? */
-            var vertexBuffer = renderedMesh.Draw.VertexBuffers[0].Buffer;
-            var indexBuffer = renderedMesh.Draw.IndexBuffer.Buffer;
-
-            commandList.SetPipelineState(pipelineState);
-
-            /* TODO: this currently assumes a single vertex buffer, is this always the case? */
-            commandList.SetVertexBuffer(0, vertexBuffer, 0, VertexPositionNormalTexture.Layout.VertexStride);
-            commandList.SetIndexBuffer(indexBuffer, 0, is32bits: true);
-            commandList.SetStreamTargets(streamOutBufferBinding.Buffer);
+            // commandList.SetVertexBuffer(0, vertexBuffer, 0, VertexPositionNormalTexture.Layout.VertexStride);
+            // commandList.SetIndexBuffer(indexBuffer, 0, is32bits: true);
+            //commandList.SetStreamTargets(streamOutBufferBinding.Buffer);
             
-            streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, streamOutBufferBinding.Buffer);
-            streamShader.UpdateEffect(GraphicsDevice);
+            // streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, streamOutBufferBinding.Buffer);
+            // streamShader.UpdateEffect(GraphicsDevice);
 
             /* finally write to our streamout buffer */
-            commandList.DrawIndexedInstanced(vertexBuffer.ElementCount, transforms.Count);
+            // commandList.DrawIndexedInstanced(vertexBuffer.ElementCount, transforms.Count);
+
 
         }
 

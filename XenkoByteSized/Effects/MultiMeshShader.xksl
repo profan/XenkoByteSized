@@ -19,10 +19,13 @@
             streams.ShadingPosition = mul(streams.Position, modelTransforms[streams.InstanceID].mat);
         }
 
-        [StreamOutput("0:SV_Position.xyz; 0:NORMAL.xyz; 0:TEXCOORD0.xy")]
+        [StreamOutput("0:SV_Position.xyz;0:NORMAL.xyz;0:TEXCOORD0.st")]
         [maxvertexcount(1)]
         void GSMain(point Input input[1], inout PointStream<Output> vertexStream) {
-            streams = input[0];
+            /* we make it explicit that THEY ARE BEING USED or the other fields will be optimized out*/
+            streams.ShadingPosition = input[0].ShadingPosition;
+            streams.Normal = input[0].Normal;
+            streams.Uv = input[0].Uv;
             vertexStream.Append(streams);
         }
 
