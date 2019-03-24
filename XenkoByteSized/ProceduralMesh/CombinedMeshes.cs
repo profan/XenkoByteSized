@@ -90,7 +90,9 @@ namespace XenkoByteSized.ProceduralMesh {
             var device = GraphicsDevice;
             var commandList = Game.GraphicsContext.CommandList;
 
-            uint neededStreamBufferSize = (uint)(transforms.Count);
+            var totalIndices = renderedMesh.Draw.IndexBuffer.Count;
+
+            uint neededStreamBufferSize = (uint)(transforms.Count * totalIndices);
             if (neededStreamBufferSize > streamOutBufferBinding.Count) {
                 streamOutBufferBinding.Buffer.Dispose(); // dispose the old buffer first
                 var streamBuffer = Buffer.New<VertexPositionNormalTexture>(device, (int)(neededStreamBufferSize), BufferFlags.StreamOutput);
@@ -98,7 +100,7 @@ namespace XenkoByteSized.ProceduralMesh {
             }
 
             uint neededTransformBufferSize = (uint)(transforms.Count);
-            if (neededTransformBufferSize > streamOutBufferBinding.Count) {
+            if (neededTransformBufferSize > transformBuffer.ElementCount) {
                 transformBuffer.RecreateWith(matrices.Items);
             } else {
                 transformBuffer.SetData(commandList, matrices.Items);
