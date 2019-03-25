@@ -63,15 +63,18 @@ namespace XenkoByteSized.ProceduralMesh {
             var shader = new EffectInstance(EffectSystem.LoadEffect("MultiMeshShader").WaitForResult());
             streamShader = shader;
 
+            var outputDesc = new RenderOutputDescription(GraphicsDevice.Presenter.BackBuffer.Format);
+            outputDesc.CaptureState(commandList);
+
             var pipeline = new PipelineStateDescription() {
 
                 /* TODO: do we need all these? */
-                BlendState = BlendStates.Default,
-                RasterizerState = RasterizerStateDescription.Default,
-                DepthStencilState = DepthStencilStates.None,
-                Output = new RenderOutputDescription(GraphicsDevice.Presenter.BackBuffer.Format),
+                // BlendState = BlendStates.Default,
+                // RasterizerState = RasterizerStateDescription.Default,
+                // DepthStencilState = DepthStencilStates.None,
 
-                PrimitiveType = PrimitiveType.PointList,
+                Output = outputDesc,
+                PrimitiveType = PrimitiveType.TriangleList,
                 InputElements = VertexPositionNormalTexture.Layout.CreateInputElements(),
                 EffectBytecode = shader.Effect.Bytecode,
                 RootSignature = shader.RootSignature,
@@ -93,7 +96,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
             var device = GraphicsDevice;
             var commandList = Game.GraphicsContext.CommandList;
-
             var totalIndices = renderedMesh.Draw.IndexBuffer.Count;
 
             uint neededStreamBufferSize = (uint)(transforms.Count * totalIndices);
@@ -105,7 +107,9 @@ namespace XenkoByteSized.ProceduralMesh {
 
             uint neededTransformBufferSize = (uint)(transforms.Count);
             if (neededTransformBufferSize > transformBuffer.ElementCount) {
-                transformBuffer.RecreateWith(matrices.Items);
+                transformBuffer.Dispose(); // dispose old buffer first
+                var newTransformBuffer = Buffer.New<TransformData>(device, (int)(neededTransformBufferSize), BufferFlags.StructuredBuffer);
+                transformBuffer = newTransformBuffer;
             } else {
                 transformBuffer.SetData(commandList, matrices.Items);
             }
