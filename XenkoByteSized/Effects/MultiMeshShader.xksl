@@ -17,7 +17,7 @@
 
         void VSMain() {
             streams.ShadingPosition = mul(float4(streams.Position, 1), ModelTransforms[streams.InstanceID].Matrix);
-            // streams.ShadingPosition = float4(streams.Position, 1); // mul(float4(streams.Position, 1), ModelTransforms[streams.InstanceID].Matrix);
+            streams.Normal = mul(float4(streams.Normal, 0), ModelTransforms[streams.InstanceID].Matrix);
         }
 
         [StreamOutput("0:SV_Position.xyz;0:NORMAL.xyz;0:TEXCOORD0.st")]
