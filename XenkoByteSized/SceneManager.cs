@@ -83,7 +83,7 @@ namespace XenkoByteSized {
             /* print info about available scenes to switch to, marking current one */
 
             var sceneId = 1;
-            var curOffset = new Int2(192, 64);
+            var curOffset = new Int2((int)Input.Mouse.SurfaceSize.X - 256, 48);
 
             DebugText.Print("Available Scenes: ", curOffset);
             curOffset.Y += 16;

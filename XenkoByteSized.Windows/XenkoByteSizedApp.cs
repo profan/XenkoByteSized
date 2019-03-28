@@ -10,7 +10,7 @@ namespace XenkoByteSized.Windows
             using (var game = new Game())
             {
                 /* debugaloo */
-                game.GraphicsDeviceManager.DeviceCreationFlags |= DeviceCreationFlags.Debug;
+                // game.GraphicsDeviceManager.DeviceCreationFlags |= DeviceCreationFlags.Debug;
                 game.Run();
             }
         }
