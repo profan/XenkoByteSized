@@ -3,7 +3,7 @@
     shader MultiMeshShader {
 
         struct TransformData {
-            float4x4 mat;
+            float4x4 Matrix;
         };
 
         stream uint InstanceID : SV_InstanceID;
@@ -13,22 +13,22 @@
         stream float3 Normal : NORMAL;
         stream float2 Uv : TEXCOORD0;
 
-        StructuredBuffer<TransformData> modelTransforms;
+        StructuredBuffer<TransformData> ModelTransforms;
 
         void VSMain() {
-            streams.ShadingPosition = mul(float4(streams.Position, 1), modelTransforms[streams.InstanceID].mat);
+            streams.ShadingPosition = mul(float4(streams.Position, 1), ModelTransforms[streams.InstanceID].Matrix);
+            // streams.ShadingPosition = float4(streams.Position, 1); // mul(float4(streams.Position, 1), ModelTransforms[streams.InstanceID].Matrix);
         }
 
         [StreamOutput("0:SV_Position.xyz;0:NORMAL.xyz;0:TEXCOORD0.st")]
         [maxvertexcount(3)]
         void GSMain(triangle Input input[3], inout TriangleStream<Output> vertexStream) {
             /* we make it explicit that THEY ARE BEING USED or the other fields will be optimized out*/
-            Output outVert;
             for (int i = 0; i < 3; ++i) {
-                outVert.ShadingPosition = input[i].ShadingPosition;
-                outVert.Normal = input[i].Normal;
-                outVert.Uv = input[i].Uv;
-                vertexStream.Append(outVert);
+                streams.ShadingPosition = input[i].ShadingPosition;
+                streams.Normal = input[i].Normal;
+                streams.Uv = input[i].Uv;
+                vertexStream.Append(streams);
             }
         }
 

@@ -6,6 +6,7 @@ using Xenko.Graphics;
 using Xenko.Graphics.GeometricPrimitives;
 using Xenko.Extensions;
 using System.Runtime.InteropServices;
+using System;
 
 namespace XenkoByteSized.ProceduralMesh {
 
@@ -25,7 +26,7 @@ namespace XenkoByteSized.ProceduralMesh {
         const int INITIAL_INSTANCE_COUNT = 16;
 
         private TrackingDictionary<System.Guid, TransformComponent> transforms = new TrackingDictionary<System.Guid, TransformComponent>();
-        private FastList<TransformData> matrices = new FastList<TransformData>(INITIAL_INSTANCE_COUNT);
+        private FastList<Matrix> matrices = new FastList<Matrix>(INITIAL_INSTANCE_COUNT);
 
         /* gpu pipeline stuff */
         private PipelineState pipelineState;
@@ -33,7 +34,7 @@ namespace XenkoByteSized.ProceduralMesh {
         /* gpu side data, our ModelComponent we use to render, no index buffer data so there is some... waste yes */
         private ModelComponent modelComponent;
         private VertexBufferBinding streamOutBufferBinding;
-        private Buffer<TransformData> transformBuffer;
+        private Buffer<Matrix> transformBuffer;
         private EffectInstance streamShader;
         private Mesh streamBufferedMesh;
 
@@ -85,18 +86,18 @@ namespace XenkoByteSized.ProceduralMesh {
             var newPipelineState = PipelineState.New(GraphicsDevice, ref pipeline);
             pipelineState = newPipelineState;
 
-            var streamBuffer = Buffer.New<VertexPositionNormalTexture>(
+            var streamBuffer = Xenko.Graphics.Buffer.New<VertexPositionNormalTexture>(
                 GraphicsDevice,
                 INITIAL_INSTANCE_COUNT,
-                BufferFlags.VertexBuffer | BufferFlags.StreamOutput
+                BufferFlags.VertexBuffer | BufferFlags.StreamOutput,
+                GraphicsResourceUsage.Default
             );
             streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
 
-            var newTransformBuffer = Buffer.New<TransformData>(
+            var newTransformBuffer = Xenko.Graphics.Buffer.Structured.New<Matrix>(
                 GraphicsDevice,
                 INITIAL_INSTANCE_COUNT,
-                BufferFlags.StructuredBuffer,
-                GraphicsResourceUsage.Default
+                isUnorderedAccess: false
             );
             transformBuffer = newTransformBuffer;
 
@@ -108,25 +109,25 @@ namespace XenkoByteSized.ProceduralMesh {
             var commandList = Game.GraphicsContext.CommandList;
             var totalIndices = renderedMesh.Draw.IndexBuffer.Count;
 
-            uint neededStreamBufferSize = (uint)(transforms.Count * totalIndices);
+            int neededStreamBufferSize = transforms.Count * totalIndices;
             if (neededStreamBufferSize > streamOutBufferBinding.Count) {
                 streamOutBufferBinding.Buffer.Dispose(); // dispose the old buffer first
-                var streamBuffer = Buffer.New<VertexPositionNormalTexture>(
+                var streamBuffer = Xenko.Graphics.Buffer.New<VertexPositionNormalTexture>(
                     device,
-                    (int)(neededStreamBufferSize),
-                    BufferFlags.VertexBuffer | BufferFlags.StreamOutput
+                    neededStreamBufferSize,
+                    BufferFlags.VertexBuffer | BufferFlags.StreamOutput,
+                    GraphicsResourceUsage.Default
                 );
                 streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
             }
 
-            uint neededTransformBufferSize = (uint)(transforms.Count);
+            int neededTransformBufferSize = transforms.Count;
             if (neededTransformBufferSize > transformBuffer.ElementCount) {
                 transformBuffer.Dispose(); // dispose old buffer first
-                var newTransformBuffer = Buffer.New<TransformData>(
+                var newTransformBuffer = Xenko.Graphics.Buffer.Structured.New<Matrix>(
                     device,
-                    (int)(neededTransformBufferSize),
-                    BufferFlags.StructuredBuffer,
-                    GraphicsResourceUsage.Default
+                    matrices.Items,
+                    isUnorderedAccess: false
                 );
                 transformBuffer = newTransformBuffer;
             } else {
@@ -144,20 +145,17 @@ namespace XenkoByteSized.ProceduralMesh {
             var indexBuffer = renderedMesh.Draw.IndexBuffer.Buffer;
 
             commandList.SetPipelineState(pipelineState);
- 
-            streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, streamOutBufferBinding.Buffer);
-            streamShader.Apply(Game.GraphicsContext);
 
             /* TODO: this currently assumes a single vertex buffer, is this always the case? */
             commandList.SetVertexBuffer(0, vertexBuffer, renderedMesh.Draw.StartLocation, VertexPositionNormalTexture.Layout.VertexStride);
             commandList.SetIndexBuffer(indexBuffer, 0, renderedMesh.Draw.IndexBuffer.Is32Bit);
             commandList.SetStreamTargets(streamOutBufferBinding.Buffer);
 
-            streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, streamOutBufferBinding.Buffer);
+            streamShader.Parameters.Set(MultiMeshShaderKeys.ModelTransforms, transformBuffer);
             streamShader.Apply(Game.GraphicsContext);
 
             /* finally write to our streamout buffer */
-            commandList.DrawIndexedInstanced(vertexBuffer.ElementCount, transforms.Count);
+            commandList.DrawIndexedInstanced(indexBuffer.ElementCount, transforms.Count);
             commandList.SetStreamTargets(null);
 
         }
@@ -211,7 +209,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
             matrices.Clear();
             foreach (var transform in transforms) {
-                matrices.Add(new TransformData(transform.Value.LocalMatrix));
+                matrices.Add(transform.Value.LocalMatrix);
             }
 
         }
@@ -235,10 +233,28 @@ namespace XenkoByteSized.ProceduralMesh {
     class SomeObjectInSpace : SyncScript {
 
         public int Id;
+        public Vector3 Velocity;
 
         public override void Update() {
+
+            var dt = (float)Game.UpdateTime.Elapsed.TotalSeconds;
             var worldPos = Entity.Transform.WorldMatrix.TranslationVector;
-            DebugText.Print($"{Id} - Position - x: {worldPos.X}, y: {worldPos.Y}", new Int2(16, 16 * Id));
+            // DebugText.Print($"{Id} - Position - x: {worldPos.X}, y: {worldPos.Y}", new Int2(16, 48 + 16 * Id));
+
+            if (Entity.Transform.Position.X > 64.0f || Entity.Transform.Position.X < -64.0f) {
+                Velocity.X = -Velocity.X;
+            }
+
+            if (Entity.Transform.Position.Y > 64.0f || Entity.Transform.Position.Y < -64.0f) {
+                Velocity.Y = -Velocity.Y;
+            }
+
+            if (Entity.Transform.Position.Z > 64.0f || Entity.Transform.Position.Z < -64.0f) {
+                Velocity.Z = -Velocity.Z;
+            }
+
+            Entity.Transform.Position += Velocity * dt;
+
         }
 
     }
@@ -262,11 +278,26 @@ namespace XenkoByteSized.ProceduralMesh {
                 }
             };
 
-            var numInstances = 5;
+            var numInstances = 8192;
+            var random = new Random();
             for (int i = 0; i < numInstances; ++i) {
-                var newObjectInSpace = new SomeObjectInSpace() { Id = i };
-                newMultiMesh.AddInstance(Entity.Transform);
-                Entity.Add(newObjectInSpace);
+
+                var randX = random.Next(-64, 64);
+                var randY = random.Next(-64, 64);
+                var randZ = random.Next(-64, 64);
+
+                var velX = random.NextDouble();
+                var velY = random.NextDouble();
+                var velZ = random.NextDouble();
+                var ballVel = new Vector3((float)velX, (float)velY, (float)velZ);
+
+                var newEntity = new Entity(new Vector3(randX, randY, randZ));
+                var newObjectInSpace = new SomeObjectInSpace() { Id = i, Velocity = ballVel };
+
+                newEntity.Add(newObjectInSpace);
+                newMultiMesh.AddInstance(newEntity.Transform);
+                Entity.AddChild(newEntity);
+
             }
 
             Entity.Add(newMultiMesh);
@@ -277,8 +308,8 @@ namespace XenkoByteSized.ProceduralMesh {
         public override void Update() {
 
             var deltaTime = (float)Game.UpdateTime.Elapsed.TotalSeconds;
-            var rotation = Quaternion.RotationY(rotationSpeed * deltaTime);
-            Entity.Transform.Rotation *= rotation;
+            // var rotation = Quaternion.RotationY(rotationSpeed * deltaTime);
+            // Entity.Transform.Rotation *= rotation;
 
         }
 
