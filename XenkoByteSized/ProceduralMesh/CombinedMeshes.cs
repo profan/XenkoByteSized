@@ -229,7 +229,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
             var dt = (float)Game.UpdateTime.Elapsed.TotalSeconds;
             var worldPos = Entity.Transform.WorldMatrix.TranslationVector;
-            // DebugText.Print($"{Id} - Position - x: {worldPos.X}, y: {worldPos.Y}", new Int2(16, 48 + 16 * Id));
 
             if (Entity.Transform.Position.X > 64.0f || Entity.Transform.Position.X < -64.0f) {
                 Velocity.X = -Velocity.X;
