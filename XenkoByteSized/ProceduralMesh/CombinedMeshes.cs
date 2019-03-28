@@ -307,10 +307,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
         public override void Update() {
 
-            var deltaTime = (float)Game.UpdateTime.Elapsed.TotalSeconds;
-            // var rotation = Quaternion.RotationY(rotationSpeed * deltaTime);
-            // Entity.Transform.Rotation *= rotation;
-
         }
 
     }
