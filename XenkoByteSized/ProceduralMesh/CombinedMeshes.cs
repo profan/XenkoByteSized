@@ -61,6 +61,7 @@ namespace XenkoByteSized.ProceduralMesh {
             var commandList = Game.GraphicsContext.CommandList;
 
             var shader = new EffectInstance(EffectSystem.LoadEffect("MultiMeshShader").WaitForResult());
+            shader.UpdateEffect(GraphicsDevice);
             streamShader = shader;
 
             var outputDesc = new RenderOutputDescription(GraphicsDevice.Presenter.BackBuffer.Format);
@@ -69,11 +70,11 @@ namespace XenkoByteSized.ProceduralMesh {
             var pipeline = new PipelineStateDescription() {
 
                 /* TODO: do we need all these? */
-                // BlendState = BlendStates.Default,
-                // RasterizerState = RasterizerStateDescription.Default,
-                // DepthStencilState = DepthStencilStates.None,
-
+                BlendState = BlendStates.Default,
+                RasterizerState = RasterizerStateDescription.Default,
+                DepthStencilState = DepthStencilStates.None,
                 Output = outputDesc,
+
                 PrimitiveType = PrimitiveType.TriangleList,
                 InputElements = VertexPositionNormalTexture.Layout.CreateInputElements(),
                 EffectBytecode = shader.Effect.Bytecode,
@@ -84,10 +85,19 @@ namespace XenkoByteSized.ProceduralMesh {
             var newPipelineState = PipelineState.New(GraphicsDevice, ref pipeline);
             pipelineState = newPipelineState;
 
-            var streamBuffer = Buffer.New<VertexPositionNormalTexture>(GraphicsDevice, 0, BufferFlags.VertexBuffer | BufferFlags.StreamOutput);
+            var streamBuffer = Buffer.New<VertexPositionNormalTexture>(
+                GraphicsDevice,
+                INITIAL_INSTANCE_COUNT,
+                BufferFlags.VertexBuffer | BufferFlags.StreamOutput
+            );
             streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
 
-            var newTransformBuffer = Buffer.New<TransformData>(GraphicsDevice, INITIAL_INSTANCE_COUNT, BufferFlags.StructuredBuffer);
+            var newTransformBuffer = Buffer.New<TransformData>(
+                GraphicsDevice,
+                INITIAL_INSTANCE_COUNT,
+                BufferFlags.StructuredBuffer,
+                GraphicsResourceUsage.Default
+            );
             transformBuffer = newTransformBuffer;
 
         }
@@ -101,14 +111,23 @@ namespace XenkoByteSized.ProceduralMesh {
             uint neededStreamBufferSize = (uint)(transforms.Count * totalIndices);
             if (neededStreamBufferSize > streamOutBufferBinding.Count) {
                 streamOutBufferBinding.Buffer.Dispose(); // dispose the old buffer first
-                var streamBuffer = Buffer.New<VertexPositionNormalTexture>(device, (int)(neededStreamBufferSize), BufferFlags.VertexBuffer | BufferFlags.StreamOutput);
+                var streamBuffer = Buffer.New<VertexPositionNormalTexture>(
+                    device,
+                    (int)(neededStreamBufferSize),
+                    BufferFlags.VertexBuffer | BufferFlags.StreamOutput
+                );
                 streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
             }
 
             uint neededTransformBufferSize = (uint)(transforms.Count);
             if (neededTransformBufferSize > transformBuffer.ElementCount) {
                 transformBuffer.Dispose(); // dispose old buffer first
-                var newTransformBuffer = Buffer.New<TransformData>(device, (int)(neededTransformBufferSize), BufferFlags.StructuredBuffer);
+                var newTransformBuffer = Buffer.New<TransformData>(
+                    device,
+                    (int)(neededTransformBufferSize),
+                    BufferFlags.StructuredBuffer,
+                    GraphicsResourceUsage.Default
+                );
                 transformBuffer = newTransformBuffer;
             } else {
                 transformBuffer.SetData(commandList, matrices.Items);
@@ -118,25 +137,28 @@ namespace XenkoByteSized.ProceduralMesh {
 
         private void PerformStreamOut() {
 
-            // var commandList = Game.GraphicsContext.CommandList;
-
-            // /* TODO: this currently assumes a single vertex buffer, is this always the case? */
-            // var vertexBuffer = renderedMesh.Draw.VertexBuffers[0].Buffer;
-            // var indexBuffer = renderedMesh.Draw.IndexBuffer.Buffer;
-
-            // commandList.SetPipelineState(pipelineState);
+            var commandList = Game.GraphicsContext.CommandList;
 
             /* TODO: this currently assumes a single vertex buffer, is this always the case? */
-            // commandList.SetVertexBuffer(0, vertexBuffer, 0, VertexPositionNormalTexture.Layout.VertexStride);
-            // commandList.SetIndexBuffer(indexBuffer, 0, is32bits: true);
-            //commandList.SetStreamTargets(streamOutBufferBinding.Buffer);
-            
-            // streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, streamOutBufferBinding.Buffer);
-            // streamShader.UpdateEffect(GraphicsDevice);
+            var vertexBuffer = renderedMesh.Draw.VertexBuffers[0].Buffer;
+            var indexBuffer = renderedMesh.Draw.IndexBuffer.Buffer;
+
+            commandList.SetPipelineState(pipelineState);
+ 
+            streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, streamOutBufferBinding.Buffer);
+            streamShader.Apply(Game.GraphicsContext);
+
+            /* TODO: this currently assumes a single vertex buffer, is this always the case? */
+            commandList.SetVertexBuffer(0, vertexBuffer, renderedMesh.Draw.StartLocation, VertexPositionNormalTexture.Layout.VertexStride);
+            commandList.SetIndexBuffer(indexBuffer, 0, renderedMesh.Draw.IndexBuffer.Is32Bit);
+            commandList.SetStreamTargets(streamOutBufferBinding.Buffer);
+
+            streamShader.Parameters.Set(MultiMeshShaderKeys.modelTransforms, streamOutBufferBinding.Buffer);
+            streamShader.Apply(Game.GraphicsContext);
 
             /* finally write to our streamout buffer */
-            // commandList.DrawIndexedInstanced(vertexBuffer.ElementCount, transforms.Count);
-
+            commandList.DrawIndexedInstanced(vertexBuffer.ElementCount, transforms.Count);
+            commandList.SetStreamTargets(null);
 
         }
 
