@@ -12,17 +12,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
     class PoorMansMultiMesh : SyncScript {
 
-        [StructLayout(LayoutKind.Sequential, Pack=0)]
-        internal struct TransformData {
-
-            Matrix mat;
-
-            public TransformData(Matrix localMatrix) {
-                mat = localMatrix;
-            }
-
-        };
-
         const int INITIAL_INSTANCE_COUNT = 16;
 
         private TrackingDictionary<System.Guid, TransformComponent> transforms = new TrackingDictionary<System.Guid, TransformComponent>();
