@@ -234,6 +234,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         public int Id;
         public Vector3 Velocity;
+        public Vector3 RotVelocity;
 
         public override void Update() {
 
@@ -253,6 +254,11 @@ namespace XenkoByteSized.ProceduralMesh {
                 Velocity.Z = -Velocity.Z;
             }
 
+            Entity.Transform.Rotation *= 
+                Quaternion.RotationX(RotVelocity.X * dt) * 
+                Quaternion.RotationY(RotVelocity.Y * dt) * 
+                Quaternion.RotationZ(RotVelocity.Z * dt);
+
             Entity.Transform.Position += Velocity * dt;
 
         }
@@ -269,16 +275,16 @@ namespace XenkoByteSized.ProceduralMesh {
 
         public override void Start() {
 
-            var spherePrimitive = GeometricPrimitive.Sphere.New(GraphicsDevice, 0.5f);
-            var sphereMeshDraw = spherePrimitive.ToMeshDraw();
+            var ourPrimitive = GeometricPrimitive.Cube.New(GraphicsDevice, 1.0f);
+            var primitiveMeshDraw = ourPrimitive.ToMeshDraw();
 
             var newMultiMesh = new PoorMansMultiMesh() {
                 Mesh = new Mesh() {
-                    Draw = sphereMeshDraw
+                    Draw = primitiveMeshDraw
                 }
             };
 
-            var numInstances = 8192;
+            var numInstances = 4096;
             var random = new Random();
             for (int i = 0; i < numInstances; ++i) {
 
@@ -286,13 +292,18 @@ namespace XenkoByteSized.ProceduralMesh {
                 var randY = random.Next(-64, 64);
                 var randZ = random.Next(-64, 64);
 
-                var velX = random.NextDouble();
-                var velY = random.NextDouble();
-                var velZ = random.NextDouble();
+                var velX = random.NextDouble() * 4.0;
+                var velY = random.NextDouble() * 4.0;
+                var velZ = random.NextDouble() * 4.0;
                 var ballVel = new Vector3((float)velX, (float)velY, (float)velZ);
 
+                var rotVelX = random.NextDouble();
+                var rotVelY = random.NextDouble();
+                var rotVelZ = random.NextDouble();
+                var ballRotVel = new Vector3((float)rotVelX, (float)rotVelY, (float)rotVelZ);
+
                 var newEntity = new Entity(new Vector3(randX, randY, randZ));
-                var newObjectInSpace = new SomeObjectInSpace() { Id = i, Velocity = ballVel };
+                var newObjectInSpace = new SomeObjectInSpace() { Id = i, Velocity = ballVel, RotVelocity = ballRotVel };
 
                 newEntity.Add(newObjectInSpace);
                 newMultiMesh.AddInstance(newEntity.Transform);
