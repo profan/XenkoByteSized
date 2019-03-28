@@ -81,5 +81,17 @@ To understand this sample I recommend experimenting with it, changing the type o
 
 ![vehicle scene](vehicle_scene.png "scene with vehicle and some platforms")
 
+## **XenkoByteSized.ProceduralMesh.CombinedMeshes** - [CombinedMeshes](XenkoByteSized/ProceduralMesh/CombinedMeshes.cs)
+So this is a sample of using streamout/transform feedback[1](https://docs.microsoft.com/en-us/windows/desktop/direct3d11/d3d10-graphics-programming-guide-output-stream-stage)[2](http://jason-blog.jlekstrand.net/2018/10/transform-feedback-is-terrible-so-why.html) to render a lot of geometry at once.
+
+How does it work? In a few steps.
+1. With a small custom render pipeline and our [shader](XenkoByteSized/Effects/MultiMeshShader.xksl) we render without a pixel/fragment shader with `DrawIndexedInstanced` in order to do our "instancing", which in fact only outputs our transformed geometry to another buffer (our stream out buffer: `streamOutBufferBinding`) **n** number of times, where **n** is how many separate instances we want to render.
+2. We take the ModelComponent + Mesh that we have Xenko-side and set its `MeshDraw`'s vertex buffer to be our newly created streamout buffer (which we also flagged as a vertexbuffer). At this point we're in business!
+
+In our example we haven't given any thought to multiple materials, or materials at all for that matter, but for each involved entity there is a unique transform that is applied, one could potentially extend this to encompass a different colour/material for each instance if desired using the same idea found in [the shader](XenkoByteSized/Effects/MultiMeshShader.xksl).
+
+**Note that this probably _only_ works on DX11 (maybe DX12)**
+![box scene](combined_meshes.png "a bunch of floating boxes in space")
+
 ## Misc
 The sample also switches out the graphics compositor to the one associated with the scene being switched to currently, currently only relevant for the **SplitScreen** sample.
