@@ -25,7 +25,7 @@ Hierarchy:
                         Children: {}
                     85ffb1f00ee7ed4c20658360e9b7249b: !XenkoByteSized.ProceduralMesh.CombinedMeshes,XenkoByteSized
                         Id: a29f00d4-004b-409c-9d24-a444e189e2a7
-                        rotationSpeed: 0.7853982
+                        meshMaterial: 18b14f50-d3e9-410b-a3fd-10607adc6a2f:CubeVertexColourMaterial
         -   Entity:
                 Id: 82d2b9af-9324-4fd7-9d6b-d8084d44660c
                 Name: Profiler

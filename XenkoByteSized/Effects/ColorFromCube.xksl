@@ -1,0 +1,12 @@
+﻿namespace XenkoByteSized {
+
+    shader ColorFromCube : ShaderBaseStream, ComputeColor {
+
+        override float4 Compute() {
+            var scaledPos = ((streams.ShadingPosition / 64.0f) + 1.0f) / 2.0f;
+            return float4(scaledPos.xyz, 1.0f);
+        }
+
+    };
+
+}

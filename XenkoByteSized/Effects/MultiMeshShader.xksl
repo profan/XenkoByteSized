@@ -11,7 +11,7 @@
 
         stream float3 Position : POSITION;
         stream float3 Normal : NORMAL;
-        stream float2 Uv : TEXCOORD0;
+        stream float Color : COLOR;
 
         StructuredBuffer<TransformData> ModelTransforms;
 
@@ -20,14 +20,14 @@
             streams.Normal = mul(float4(streams.Normal, 0), ModelTransforms[streams.InstanceID].Matrix);
         }
 
-        [StreamOutput("0:SV_Position.xyz;0:NORMAL.xyz;0:TEXCOORD0.st")]
+        [StreamOutput("0:SV_Position.xyz;0:NORMAL.xyz;0:COLOR")]
         [maxvertexcount(3)]
         void GSMain(triangle Input input[3], inout TriangleStream<Output> vertexStream) {
             /* we make it explicit that THEY ARE BEING USED or the other fields will be optimized out*/
             for (int i = 0; i < 3; ++i) {
                 streams.ShadingPosition = input[i].ShadingPosition;
                 streams.Normal = input[i].Normal;
-                streams.Uv = input[i].Uv;
+                streams.Color = input[i].Color;
                 vertexStream.Append(streams);
             }
         }

@@ -7,6 +7,10 @@ using Xenko.Graphics.GeometricPrimitives;
 using Xenko.Extensions;
 using System.Runtime.InteropServices;
 using System;
+using Xenko.Rendering.Materials;
+using Xenko.Rendering.Materials.ComputeColors;
+using Xenko.Core;
+using Xenko.Rendering.Images;
 
 namespace XenkoByteSized.ProceduralMesh {
 
@@ -37,6 +41,8 @@ namespace XenkoByteSized.ProceduralMesh {
             }
         }
 
+        public Material Material { get; set; }
+
         public System.Guid AddInstance(TransformComponent transform) {
             transforms[transform.Id] = transform;
             return transform.Id;
@@ -66,7 +72,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 Output = outputDesc,
 
                 PrimitiveType = PrimitiveType.TriangleList,
-                InputElements = VertexPositionNormalTexture.Layout.CreateInputElements(),
+                InputElements = VertexPositionNormalColor.Layout.CreateInputElements(),
                 EffectBytecode = shader.Effect.Bytecode,
                 RootSignature = shader.RootSignature,
 
@@ -75,18 +81,18 @@ namespace XenkoByteSized.ProceduralMesh {
             var newPipelineState = PipelineState.New(GraphicsDevice, ref pipeline);
             pipelineState = newPipelineState;
 
-            var streamBuffer = Xenko.Graphics.Buffer.New<VertexPositionNormalTexture>(
+            var streamBuffer = Xenko.Graphics.Buffer.New<VertexPositionNormalColor>(
                 GraphicsDevice,
                 INITIAL_INSTANCE_COUNT,
                 BufferFlags.VertexBuffer | BufferFlags.StreamOutput,
                 GraphicsResourceUsage.Default
             );
-            streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
+            streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalColor.Layout, streamBuffer.ElementCount);
 
             var newTransformBuffer = Xenko.Graphics.Buffer.Structured.New<Matrix>(
                 GraphicsDevice,
                 INITIAL_INSTANCE_COUNT,
-                isUnorderedAccess: false
+                isUnorderedAccess: true
             );
             transformBuffer = newTransformBuffer;
 
@@ -101,13 +107,13 @@ namespace XenkoByteSized.ProceduralMesh {
             int neededStreamBufferSize = transforms.Count * totalIndices;
             if (neededStreamBufferSize > streamOutBufferBinding.Count) {
                 streamOutBufferBinding.Buffer.Dispose(); // dispose the old buffer first
-                var streamBuffer = Xenko.Graphics.Buffer.New<VertexPositionNormalTexture>(
+                var streamBuffer = Xenko.Graphics.Buffer.New<VertexPositionNormalColor>(
                     device,
                     neededStreamBufferSize,
                     BufferFlags.VertexBuffer | BufferFlags.StreamOutput,
                     GraphicsResourceUsage.Default
                 );
-                streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalTexture.Layout, streamBuffer.ElementCount);
+                streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalColor.Layout, streamBuffer.ElementCount);
             }
 
             int neededTransformBufferSize = transforms.Count;
@@ -116,7 +122,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 var newTransformBuffer = Xenko.Graphics.Buffer.Structured.New<Matrix>(
                     device,
                     matrices.Items,
-                    isUnorderedAccess: false
+                    isUnorderedAccess: true
                 );
                 transformBuffer = newTransformBuffer;
             } else {
@@ -150,7 +156,7 @@ namespace XenkoByteSized.ProceduralMesh {
         }
 
         static private Mesh CreateMesh(VertexBufferBinding bufferBinding) {
-            
+
             var newMesh = new Mesh() {
                 Draw = new MeshDraw() {
                     PrimitiveType = PrimitiveType.TriangleList,
@@ -165,22 +171,41 @@ namespace XenkoByteSized.ProceduralMesh {
 
         }
 
+        /*
+        static private Material CreateVertexColourMaterial(GraphicsDevice device) {
+
+            Material newVertexColorMaterial = Material.New(device, new MaterialDescriptor {
+                Attributes = new MaterialAttributes {
+                    Diffuse = new MaterialDiffuseMapFeature(new ComputeVertexStreamColor()),
+                    DiffuseModel = new MaterialDiffuseLambertModelFeature(),
+                    CullMode = CullMode.None,
+                },
+            });
+
+            return newVertexColorMaterial;
+
+        }
+        */
+
         public override void Start() {
 
             CreateDeviceObjects();
 
             streamBufferedMesh = CreateMesh(streamOutBufferBinding);
+            streamBufferedMesh.MaterialIndex = 0;
+
+            var newModel = new Model();
+            newModel.Meshes.Add(streamBufferedMesh);
+            newModel.Materials.Add(Material); // FIXME: can be null at this point if not set
 
             modelComponent = new ModelComponent() {
-                Model = new Model() {
-                    streamBufferedMesh
-                }
+                Model = newModel
             };
 
             Entity.Add(modelComponent);
 
         }
-                
+
         private void UpdateBuffers() {
 
             CheckBuffers();
@@ -228,7 +253,6 @@ namespace XenkoByteSized.ProceduralMesh {
         public override void Update() {
 
             var dt = (float)Game.UpdateTime.Elapsed.TotalSeconds;
-            var worldPos = Entity.Transform.WorldMatrix.TranslationVector;
 
             if (Entity.Transform.Position.X > 64.0f || Entity.Transform.Position.X < -64.0f) {
                 Velocity.X = -Velocity.X;
@@ -242,9 +266,9 @@ namespace XenkoByteSized.ProceduralMesh {
                 Velocity.Z = -Velocity.Z;
             }
 
-            Entity.Transform.Rotation *= 
-                Quaternion.RotationX(RotVelocity.X * dt) * 
-                Quaternion.RotationY(RotVelocity.Y * dt) * 
+            Entity.Transform.Rotation *=
+                Quaternion.RotationX(RotVelocity.X * dt) *
+                Quaternion.RotationY(RotVelocity.Y * dt) *
                 Quaternion.RotationZ(RotVelocity.Z * dt);
 
             Entity.Transform.Position += Velocity * dt;
@@ -258,8 +282,8 @@ namespace XenkoByteSized.ProceduralMesh {
         /* GPU side data */
         private PoorMansMultiMesh multiMesh;
 
-        /* rotation in radians per second */
-        public float rotationSpeed = MathUtil.PiOverFour;
+        [Display("Material")]
+        public Material meshMaterial;
 
         public override void Start() {
 
@@ -269,7 +293,8 @@ namespace XenkoByteSized.ProceduralMesh {
             var newMultiMesh = new PoorMansMultiMesh() {
                 Mesh = new Mesh() {
                     Draw = primitiveMeshDraw
-                }
+                },
+                Material = meshMaterial
             };
 
             var numInstances = 4096;
