@@ -1,4 +1,4 @@
-﻿namespace Xenko.Rendering.Materials {
+﻿namespace XenkoByteSized {
     /// <summary>
     /// Material displacement map
     /// </summary>

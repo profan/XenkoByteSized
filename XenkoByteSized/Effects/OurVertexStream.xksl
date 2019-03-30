@@ -1,4 +1,4 @@
-﻿namespace Xenko.Rendering.Materials {
+﻿namespace XenkoByteSized {
 
     shader OurVertexStream : IStreamInitializer {
 

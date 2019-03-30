@@ -1,18 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Text;
+﻿using System.ComponentModel;
 using Xenko.Core;
 using Xenko.Core.Annotations;
+using Xenko.Graphics;
+using Xenko.Rendering;
 using Xenko.Rendering.Materials;
 using Xenko.Rendering.Materials.ComputeColors;
 using Xenko.Shaders;
+using Xenko.Core.Mathematics;
 
 namespace XenkoByteSized.ProceduralMesh {
-
-    class OurMaterialKeys {
-
-    }
 
     [DataContract("MaterialVertexFeature")]
     [Display("Vertex Shader")]
@@ -23,7 +19,7 @@ namespace XenkoByteSized.ProceduralMesh {
         /// <summary>
         /// Initializes a new instance of the <see cref="MaterialVertexFeature"/> class.
         /// </summary>
-        public MaterialVertexFeature() : this(new ComputeColor())
+        public MaterialVertexFeature() : this(new ComputeTextureColor())
         {
         }
 
@@ -76,7 +72,10 @@ namespace XenkoByteSized.ProceduralMesh {
 
             // Workaround to inform compute colors that sampling is occurring from a vertex shader
             context.IsNotPixelStage = materialStage != MaterialShaderStage.Pixel;
-            context.SetStream(materialStage, OurVertexStream, vertexShader, MaterialKeys.DisplacementMap, MaterialKeys.DisplacementValue);
+
+            // FIXME: this probably needs to be looked at upon returning...
+            context.SetStream(materialStage, OurVertexStream, vertexShader, MaterialKeys.GenericTexture, MaterialKeys.GenericValueVector4);
+
             context.IsNotPixelStage = false;
 
             // var scaleNormal = materialStage != MaterialShaderStage.Vertex;
