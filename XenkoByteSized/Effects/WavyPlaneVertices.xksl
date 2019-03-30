@@ -1,0 +1,13 @@
+﻿namespace XenkoByteSized {
+
+    shader WavyPlaneVertices : PositionStream4, ComputeColor {
+
+        override float4 Compute() {
+            var newX = streams.Position.x + cos(streams.Position.x);
+            var newY = streams.Position.y + sin(streams.Position.y);
+            return float4(newX, newY, streams.Position.z, 1.0f);
+        }
+
+    };
+
+}

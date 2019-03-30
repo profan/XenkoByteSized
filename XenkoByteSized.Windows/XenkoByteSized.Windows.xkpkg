@@ -19,4 +19,6 @@ RootAssets:
     - 58456b4e-8cea-442f-8e8f-cf17a4aeef62:Scenes/CubeScene
     - 600dfac1-1785-414d-9a95-ceab40b4b55a:Scenes/VehicleScene
     - 62a7f556-07b9-483c-8910-16eed8aaf9b9:Scenes/TriggerScene
+    - 72bc009e-781a-43f6-880c-6ea1ea60ee43:Scenes/WavyPlaneScene
     - 9e0a3698-3b6e-4a68-8f04-ea0421296cee:Scenes/CombinedMeshesScene
+    - dc224d5b-ff2e-49d7-b605-e8a80408c3a9:WavyPlaneMaterial

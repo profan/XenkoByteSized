@@ -1,0 +1,13 @@
+﻿namespace Xenko.Rendering.Materials {
+    /// <summary>
+    /// Material displacement map
+    /// </summary>
+    shader MaterialVertexDisplacement<MemberName TPosition, MemberName TNormal> : OurVertexStream, IMaterialSurface, PositionStream, NormalStream, Transformation {
+
+        override void Compute() {
+            streams.TPosition = streams.OurPosition;
+        }
+
+    };
+
+}

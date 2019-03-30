@@ -27,7 +27,8 @@
             for (int i = 0; i < 3; ++i) {
                 streams.ShadingPosition = input[i].ShadingPosition;
                 streams.Normal = input[i].Normal;
-                streams.Color = input[i].Color;
+                /* FIXME: hardcoded color stuff */
+                streams.Color = ((streams.ShadingPosition / 64.0f) + 1.0f) / 2.0f;
                 vertexStream.Append(streams);
             }
         }
