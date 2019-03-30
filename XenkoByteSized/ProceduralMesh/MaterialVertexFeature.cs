@@ -6,7 +6,6 @@ using Xenko.Rendering;
 using Xenko.Rendering.Materials;
 using Xenko.Rendering.Materials.ComputeColors;
 using Xenko.Shaders;
-using Xenko.Core.Mathematics;
 
 namespace XenkoByteSized.ProceduralMesh {
 
@@ -33,22 +32,19 @@ namespace XenkoByteSized.ProceduralMesh {
         }
 
         /// <summary>
-        /// Gets or sets the displacement map.
+        /// Gets or sets the vertex shader.
         /// </summary>
-        /// <value>The displacement map.</value>
+        /// <value>The vertex shader.</value>
         /// <userdoc>
-        /// The map containing the displacement offsets to apply onto the model vertex positions.
+        /// The shader that outputs the new position for each vertex.
         /// </userdoc>
         [DataMember(10)]
         [Display("Vertex Shader")]
         [NotNull]
         public ComputeShaderClassColor VertexShader { get; set; }
 
-        /// <summary>
-        /// Gets or sets a value indicating in which stage the displacement should occur.
-        /// </summary>
         /// <userdoc>
-        /// The value indicating in which stage the displacement will occur.
+        /// The value indicating in which stage the vertex shader will run.
         /// </userdoc>
         [DataMember(40)]
         [DefaultValue(true)]
