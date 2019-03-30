@@ -19,15 +19,15 @@ namespace XenkoByteSized.ProceduralMesh {
         /// <summary>
         /// Initializes a new instance of the <see cref="MaterialVertexFeature"/> class.
         /// </summary>
-        public MaterialVertexFeature() : this(new ComputeTextureColor())
+        public MaterialVertexFeature() : this(new ComputeShaderClassColor())
         {
         }
 
         /// <summary>
         /// Initializes a new instance of the <see cref="MaterialVertexFeature"/> class.
         /// </summary>
-        /// <param name="displacementMap">The displacement map.</param>
-        public MaterialVertexFeature(IComputeColor vertexShader) {
+        /// <param name="vertexShader">The displacement map.</param>
+        public MaterialVertexFeature(ComputeShaderClassColor vertexShader) {
             VertexShader = vertexShader;
             Stage = DisplacementMapStage.Vertex;
         }
@@ -42,7 +42,7 @@ namespace XenkoByteSized.ProceduralMesh {
         [DataMember(10)]
         [Display("Vertex Shader")]
         [NotNull]
-        public IComputeColor VertexShader { get; set; }
+        public ComputeShaderClassColor VertexShader { get; set; }
 
         /// <summary>
         /// Gets or sets a value indicating in which stage the displacement should occur.
