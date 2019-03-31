@@ -29,11 +29,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>MultiMeshShader.xksl</DependentUpon>
     </Compile>
-    <Compile Update="Effects\OurVertexStream.cs">
-      <DesignTime>True</DesignTime>
-      <AutoGen>True</AutoGen>
-      <DependentUpon>OurVertexStream.xksl</DependentUpon>
-    </Compile>
     <Compile Update="Effects\WavyPlaneVertices.cs">
       <DesignTime>True</DesignTime>
       <AutoGen>True</AutoGen>
@@ -52,10 +47,6 @@
     <None Update="Effects\MultiMeshShader.xksl">
       <Generator>XenkoShaderKeyGenerator</Generator>
       <LastGenOutput>MultiMeshShader.cs</LastGenOutput>
-    </None>
-    <None Update="Effects\OurVertexStream.xksl">
-      <Generator>XenkoShaderKeyGenerator</Generator>
-      <LastGenOutput>OurVertexStream.cs</LastGenOutput>
     </None>
     <None Update="Effects\WavyPlaneVertices.xksl">
       <Generator>XenkoShaderKeyGenerator</Generator>

@@ -56,28 +56,36 @@ namespace XenkoByteSized.ProceduralMesh {
             if (VertexShader == null) { return; }
 
             var materialStage = (MaterialShaderStage)Stage;
+            var positionMember = materialStage == MaterialShaderStage.Vertex ? "Position" : "PositionWS";
+            var normalMember = materialStage == MaterialShaderStage.Vertex ? "meshNormal" : "normalWS";
 
             // reset the displacement streams at the beginning of the stage
-            context.AddStreamInitializer(materialStage, "OurVertexStream");
+            // context.AddStreamInitializer(materialStage, "OurVertexStream");
 
             // use... (FIXME: is this necessary? why?)
-            context.UseStream(materialStage, OurVertexStream);
+            context.UseStream(materialStage, positionMember);
 
             // build the vertex shader
             var vertexShader = VertexShader;
 
+            var mixin = new ShaderMixinSource();
+            mixin.Mixins.Add(new ShaderClassSource("MaterialVertexDisplacement", positionMember, normalMember));
+
+            var vertexShaderSource = vertexShader.GenerateShaderSource(context, new MaterialComputeColorKeys(MaterialKeys.GenericTexture, MaterialKeys.GenericValueVector4));
+            mixin.AddComposition("ourPosition", vertexShaderSource);
+
+            context.UseStream(materialStage, positionMember);
+            context.AddShaderSource(materialStage, mixin);
+
             // Workaround to inform compute colors that sampling is occurring from a vertex shader
             context.IsNotPixelStage = materialStage != MaterialShaderStage.Pixel;
-
-            // FIXME: this probably needs to be looked at upon returning...
-            context.SetStream(materialStage, OurVertexStream, vertexShader, MaterialKeys.GenericTexture, MaterialKeys.GenericValueVector4);
-
+            context.SetStream(materialStage, positionMember, MaterialStreamType.Float4, mixin);
             context.IsNotPixelStage = false;
 
             // var scaleNormal = materialStage != MaterialShaderStage.Vertex;
-            var positionMember = materialStage == MaterialShaderStage.Vertex ? "Position" : "PositionWS";
-            var normalMember = materialStage == MaterialShaderStage.Vertex ? "meshNormal" : "normalWS";
-            context.SetStreamFinalModifier<MaterialVertexFeature>(materialStage, new ShaderClassSource("MaterialVertexDisplacement", positionMember, normalMember));
+            // var positionMember = materialStage == MaterialShaderStage.Vertex ? "Position" : "PositionWS";
+            // var normalMember = materialStage == MaterialShaderStage.Vertex ? "meshNormal" : "normalWS";
+            // context.SetStreamFinalModifier<MaterialVertexFeature>(materialStage, new ShaderClassSource("MaterialVertexDisplacement", positionMember, normalMember));
 
         }
 

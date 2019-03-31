@@ -4,10 +4,11 @@ SerializedVersion: {Xenko: 2.0.0.0}
 Tags: []
 Attributes:
     Tessellation: !MaterialTessellationFlatFeature
+        Enabled: false
         TriangleSize: 12.0
         AdjacentEdgeAverage: false
     Displacement: !MaterialVertexFeature
-        VertexShader: !ComputeShaderClassColor
+        VertexShader:
             MixinReference: WavyPlaneVertices
             Generics: {}
             CompositionNodes: {}

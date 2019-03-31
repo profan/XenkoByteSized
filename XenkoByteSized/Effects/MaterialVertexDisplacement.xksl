@@ -2,10 +2,12 @@
     /// <summary>
     /// Material displacement map
     /// </summary>
-    shader MaterialVertexDisplacement<MemberName TPosition, MemberName TNormal> : OurVertexStream, IMaterialSurface, PositionStream, NormalStream, Transformation {
+    shader MaterialVertexDisplacement<MemberName TPosition, MemberName TNormal> : IMaterialSurface, PositionStream, NormalStream, Transformation {
+
+        compose ComputeColor ourPosition;
 
         override void Compute() {
-            streams.TPosition = streams.OurPosition;
+            streams.TPosition = ourPosition.Compute();
         }
 
     };
