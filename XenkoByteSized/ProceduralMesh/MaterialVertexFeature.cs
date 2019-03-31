@@ -83,7 +83,9 @@ namespace XenkoByteSized.ProceduralMesh {
             // var scaleNormal = materialStage != MaterialShaderStage.Vertex;
             // var positionMember = materialStage == MaterialShaderStage.Vertex ? "Position" : "PositionWS";
             // var normalMember = materialStage == MaterialShaderStage.Vertex ? "meshNormal" : "normalWS";
-            // context.SetStreamFinalModifier<MaterialVertexFeature>(materialStage, new ShaderClassSource("MaterialVertexDisplacement", positionMember, normalMember));
+            
+            // FIXME: this seems like it somehow might be necessary for a displacement map feature looking at the source considering the order of operations?
+            context.SetStreamFinalModifier<MaterialVertexFeature>(materialStage, mixin);
 
         }
 
