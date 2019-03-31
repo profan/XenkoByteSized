@@ -13,8 +13,6 @@ namespace XenkoByteSized.ProceduralMesh {
     [Display("Vertex Shader")]
     public class MaterialVertexFeature : MaterialFeature, IMaterialDisplacementFeature {
 
-        public const string OurVertexStream = "OurPosition";
-
         /// <summary>
         /// Initializes a new instance of the <see cref="MaterialVertexFeature"/> class.
         /// </summary>
