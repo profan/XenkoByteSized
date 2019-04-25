@@ -1,9 +1,10 @@
 ﻿using System;
-using Xenko.Core.Mathematics;
-using Xenko.Input;
-using Xenko.Engine;
-using Xenko.Physics;
+
 using Xenko.Core;
+using Xenko.Core.Mathematics;
+using Xenko.Engine;
+using Xenko.Input;
+using Xenko.Physics;
 
 namespace XenkoByteSized {
     public class VehicleScript : SyncScript {

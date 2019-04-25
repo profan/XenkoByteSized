@@ -1,8 +1,8 @@
-﻿using Xenko.Input;
-using Xenko.Engine;
+﻿using Xenko.Core;
 using Xenko.Core.Mathematics;
 using Xenko.Core.Collections;
-using Xenko.Core;
+using Xenko.Engine;
+using Xenko.Input;
 
 namespace XenkoByteSized {
     public class CameraSwitcher : SyncScript {

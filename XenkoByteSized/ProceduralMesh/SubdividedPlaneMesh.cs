@@ -1,18 +1,16 @@
-﻿using Xenko.Core.Mathematics;
+﻿using System.Collections.Generic;
+using System;
+
+using Xenko.Core;
+using Xenko.Core.Mathematics;
 using Xenko.Engine;
+using Xenko.Input;
+using Xenko.Profiling;
 using Xenko.Rendering;
 using Xenko.Graphics;
 using Xenko.Physics;
-using Xenko.Core;
-using Xenko.Physics.Shapes;
-using Xenko.Core.Annotations;
-using Xenko.Core.Diagnostics;
-using Xenko.Extensions;
-using Xenko.Profiling;
-using Xenko.Input;
 
-using System.Collections.Generic;
-using System;
+using Xenko.Extensions;
 
 namespace XenkoByteSized.ProceduralMesh {
     public class SubdividedPlaneMesh : SyncScript {

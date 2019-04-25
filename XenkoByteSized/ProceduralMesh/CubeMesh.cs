@@ -76,25 +76,11 @@ namespace XenkoByteSized.ProceduralMesh {
             verts[23].Position = new Vector3(0.0f, 1.0f, 0.0f);
 
             var indices = new uint[CUBE_INDICES];
+
             uint curIndex = 0, curFace = 0;
-            
-            /* top */
-            MakeFace(indices, ref curIndex, curFace++);
-
-            /* bottom */
-            MakeFace(indices, ref curIndex, curFace++);
-            
-            /* left */
-            MakeFace(indices, ref curIndex, curFace++);
-
-            /* right */
-            MakeFace(indices, ref curIndex, curFace++);
-
-            /* front */
-            MakeFace(indices, ref curIndex, curFace++);
-
-            /* back */
-            MakeFace(indices, ref curIndex, curFace++);
+            for (int f = 0; f < 6; ++f) {
+                MakeFace(indices, ref curIndex, curFace++);
+            }
 
             return (verts, indices);
 

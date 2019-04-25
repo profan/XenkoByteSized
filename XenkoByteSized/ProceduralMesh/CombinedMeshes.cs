@@ -1,16 +1,14 @@
-﻿using Xenko.Core.Mathematics;
+﻿using System;
+
+using Xenko.Core;
+using Xenko.Core.Mathematics;
 using Xenko.Core.Collections;
 using Xenko.Engine;
-using Xenko.Rendering;
 using Xenko.Graphics;
 using Xenko.Graphics.GeometricPrimitives;
+using Xenko.Rendering;
+
 using Xenko.Extensions;
-using System.Runtime.InteropServices;
-using System;
-using Xenko.Rendering.Materials;
-using Xenko.Rendering.Materials.ComputeColors;
-using Xenko.Core;
-using Xenko.Rendering.Images;
 
 namespace XenkoByteSized.ProceduralMesh {
 

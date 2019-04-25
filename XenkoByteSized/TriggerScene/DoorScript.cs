@@ -1,13 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Xenko.Core.Mathematics;
-using Xenko.Input;
-using Xenko.Engine;
-using Xenko.Physics;
+﻿using System.Threading.Tasks;
+
 using Xenko.Core;
+using Xenko.Core.Mathematics;
+using Xenko.Engine;
+using Xenko.Input;
+using Xenko.Physics;
 
 namespace XenkoByteSized {
     public class DoorScript : AsyncScript {
