@@ -84,8 +84,7 @@ namespace XenkoByteSized.ProceduralMesh {
             var streamBuffer = Xenko.Graphics.Buffer.New<VertexPositionNormalColor>(
                 GraphicsDevice,
                 INITIAL_INSTANCE_COUNT,
-                BufferFlags.VertexBuffer | BufferFlags.StreamOutput,
-                GraphicsResourceUsage.Default
+                BufferFlags.VertexBuffer | BufferFlags.StreamOutput
             );
             streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalColor.Layout, streamBuffer.ElementCount);
 
@@ -110,8 +109,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 var streamBuffer = Xenko.Graphics.Buffer.New<VertexPositionNormalColor>(
                     device,
                     neededStreamBufferSize,
-                    BufferFlags.VertexBuffer | BufferFlags.StreamOutput,
-                    GraphicsResourceUsage.Default
+                    BufferFlags.VertexBuffer | BufferFlags.StreamOutput
                 );
                 streamOutBufferBinding = new VertexBufferBinding(streamBuffer, VertexPositionNormalColor.Layout, streamBuffer.ElementCount);
             }
@@ -246,7 +244,6 @@ namespace XenkoByteSized.ProceduralMesh {
 
     class SomeObjectInSpace : SyncScript {
 
-        public int Id;
         public Vector3 Velocity;
         public Vector3 RotVelocity;
 
@@ -297,7 +294,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 Material = meshMaterial
             };
 
-            var numInstances = 4096;
+            var numInstances = 2048;
             var random = new Random();
             for (int i = 0; i < numInstances; ++i) {
 
@@ -316,7 +313,7 @@ namespace XenkoByteSized.ProceduralMesh {
                 var ballRotVel = new Vector3((float)rotVelX, (float)rotVelY, (float)rotVelZ);
 
                 var newEntity = new Entity(new Vector3(randX, randY, randZ));
-                var newObjectInSpace = new SomeObjectInSpace() { Id = i, Velocity = ballVel, RotVelocity = ballRotVel };
+                var newObjectInSpace = new SomeObjectInSpace() { Velocity = ballVel, RotVelocity = ballRotVel };
 
                 newEntity.Add(newObjectInSpace);
                 newMultiMesh.AddInstance(newEntity.Transform);
