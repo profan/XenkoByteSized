@@ -4,10 +4,8 @@ SerializedVersion: {Xenko: 2.0.0.0}
 Tags: []
 Attributes:
     Diffuse: !MaterialDiffuseMapFeature
-        DiffuseMap: !ComputeShaderClassColor
-            MixinReference: ColorFromCube
-            Generics: {}
-            CompositionNodes: {}
+        DiffuseMap: !ComputeVertexStreamColor
+            Stream: !ColorVertexStreamDefinition {}
     DiffuseModel: !MaterialDiffuseLambertModelFeature {}
     Overrides:
         UVScale: {X: 1.0, Y: 1.0}

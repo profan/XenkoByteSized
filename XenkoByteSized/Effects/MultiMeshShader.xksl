@@ -1,8 +1,11 @@
-﻿namespace XenkoByteSized {
+﻿namespace XenkoByteSized 
+{
 
-    shader MultiMeshShader {
+    shader MultiMeshShader 
+    {
 
-        struct TransformData {
+        struct TransformData 
+        {
             float4x4 Matrix;
         };
 
@@ -11,23 +14,32 @@
 
         stream float3 Position : POSITION;
         stream float3 Normal : NORMAL;
-        stream float Color : COLOR;
+        stream float2 TexCoord : TEXCOORD;
+        stream float4 Color : COLOR;
 
         StructuredBuffer<TransformData> ModelTransforms;
+        StructuredBuffer<float4> ModelColors;
 
-        void VSMain() {
-            streams.ShadingPosition = mul(float4(streams.Position, 1), ModelTransforms[streams.InstanceID].Matrix);
-            streams.Normal = mul(float4(streams.Normal, 0), ModelTransforms[streams.InstanceID].Matrix);
+        void VSMain() 
+        {
+            float4x4 iw = ModelTransforms[streams.InstanceID].Matrix;
+            streams.ShadingPosition = mul(float4(streams.Position, 1), iw);
+            streams.Normal = mul(float4(streams.Normal, 0), iw).xyz;
+            streams.Color = ModelColors[streams.InstanceID];
         }
 
-        [StreamOutput("0:SV_Position.xyz;0:NORMAL.xyz;0:COLOR")]
+        [StreamOutput("0:SV_Position.xyz;0:NORMAL.xyz;0:TEXCOORD.xy;0:COLOR.xyzw")]
         [maxvertexcount(3)]
-        void GSMain(triangle Input input[3], inout TriangleStream<Output> vertexStream) {
+        void GSMain(triangle Input input[3], inout TriangleStream<Output> vertexStream) 
+        {
             /* we make it explicit that THEY ARE BEING USED or the other fields will be optimized out*/
-            for (int i = 0; i < 3; ++i) {
-                streams.ShadingPosition = input[i].ShadingPosition;
-                streams.Normal = input[i].Normal;
-                streams.Color = input[i].Color;
+            for (int i = 0; i < 3; ++i) 
+            {
+                Input v = input[i];
+                streams.ShadingPosition = v.ShadingPosition;
+                streams.Normal = v.Normal;
+                streams.TexCoord = v.TexCoord;
+                streams.Color = v.Color;
                 vertexStream.Append(streams);
             }
         }
