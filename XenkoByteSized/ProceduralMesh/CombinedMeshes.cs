@@ -237,17 +237,17 @@ namespace XenkoByteSized.ProceduralMesh
 
         }
 
-        private void UpdateMatrices()
+        private void UpdateInstanceData()
         {
 
             /* FIXME: this is all somewhat stupid.. fix this once it at least runs */
 
             matrices.Clear();
             colors.Clear();
-            foreach (var obj in objects.Values)
+            foreach (var kv in objects)
             {
-                matrices.Add(obj.Entity.Transform.WorldMatrix);
-                colors.Add(obj.Color);
+                matrices.Add(kv.Value.Entity.Transform.WorldMatrix);
+                colors.Add(kv.Value.Color);
             }
 
         }
@@ -255,7 +255,7 @@ namespace XenkoByteSized.ProceduralMesh
         public override void Update()
         {
 
-            UpdateMatrices();
+            UpdateInstanceData();
             UpdateBuffers();
             PerformStreamOut();
 
