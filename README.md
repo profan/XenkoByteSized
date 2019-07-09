@@ -22,7 +22,7 @@ Another example of creating a mesh procedurally, in this case **with** with an i
 
 A somewhat less simple example of expanding upon the above, generates a subdivided plane with a configurable width, height and number of subdivisions in each quadrant.
 
-**Does not yet have proper collision.** (Heightfield collider pending)
+Uses a HeightfieldColliderShape for collision, somewhat absurdly calculates this from the mesh data rather than deriving the mesh data from the heightmap data, but alas.. It works well enough here.
 
 Still does not use any index buffer, probably should.
 

@@ -11,6 +11,7 @@ using Xenko.Graphics;
 using Xenko.Physics;
 
 using Xenko.Extensions;
+using Xenko.Physics.Shapes;
 
 namespace XenkoByteSized.ProceduralMesh {
     public class SubdividedPlaneMesh : SyncScript {
@@ -22,7 +23,7 @@ namespace XenkoByteSized.ProceduralMesh {
             const int MSG_HEIGHT = 16;
             const int MAX_MESSAGES = 32;
             static string[] messages = new string[MAX_MESSAGES];
-            static Int2 initialOffset = new Int2(48, 48);
+            static Int2 initialOffset = new Int2(16, 128);
             static int curPos = 0;
 
             public static void Clear() {
@@ -220,12 +221,12 @@ namespace XenkoByteSized.ProceduralMesh {
 
             }
 
-            int vertsPerRow = 6 + (6 * subdivisions * subdivisions);
-            int vertCount = (width * height * 6 * (subdivisions * subdivisions + 1));
+            int vertsPerTile = (6 * (subdivisions * subdivisions));
+            int vertCount = (width * height * vertsPerTile);
             var verts = new VertexPositionNormalTexture[vertCount];
 
             int curX = 0, curZ = 0, curOffset = 0;
-            for (int i = 0; i < verts.Length; i += vertsPerRow) {
+            for (int i = 0; i < verts.Length; i += vertsPerTile) {
 
                 /* no index buffers for now to keep it.. uh, simple, but wasteful */
 
@@ -273,6 +274,34 @@ namespace XenkoByteSized.ProceduralMesh {
                 verts[i + 0].Normal = normal;
                 verts[i + 1].Normal = normal;
                 verts[i + 2].Normal = normal;
+            }
+
+        }
+
+        static private void CalculateHeightdata(VertexPositionNormalTexture[] verts, UnmanagedArray<float> heights) {
+
+            int curX = 0;
+            int curY = 0;
+            int stride = (3 * 2) * (DEFAULT_SUBDIVISIONS * (DEFAULT_SUBDIVISIONS));
+
+            for (int i = 0; i < verts.Length; i += stride) {
+
+                float totalHeight = 0.0f;
+                for (int v = 0; v < stride; ++v) {
+                    totalHeight += verts[i + v].Position.Y;
+                }
+
+                float avgHeight = totalHeight / stride;
+
+                if (curX == DEFAULT_WIDTH - 1) {
+                    curX = 0;
+                    curY += 1;
+                } else {
+                    curX += 1;
+                }
+
+                heights[i / stride] = avgHeight;
+
             }
 
         }
@@ -333,7 +362,11 @@ namespace XenkoByteSized.ProceduralMesh {
             float dt = (float)Game.TargetElapsedTime.TotalSeconds;
 
             /* draw some debug stuff */
-            DebugText.Print($"modifier radius: {modifier.Radius}", new Int2(16, 16));
+            DebugText.Print($"Modifier Radius: {modifier.Radius} (scrollwheel to adjust)", new Int2(16, 16));
+            DebugText.Print("- Left Mouse + Left Control to Flatten", new Int2(16, 32));
+            DebugText.Print("- Left Mouse + Left Shift to Smoothen", new Int2(16, 48));
+            DebugText.Print("- Left Mouse to raise terrain", new Int2(16, 64));
+            DebugText.Print("- Middle Mouse to lower terrain", new Int2(16, 80));
 
             if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftCtrl)) {
 
@@ -402,35 +435,27 @@ namespace XenkoByteSized.ProceduralMesh {
             /* create our collision component, must be created first */
             colliderComponent = new StaticColliderComponent();
 
-            /* create plane collider shape, meant to catch our raycasts so we can manipulate terrain (for now) */
-            colliderComponent.ColliderShapes.Add(new StaticPlaneColliderShapeDesc() { Normal = new Vector3(0.0f, 1.0f, 0.0f) });
-            Entity.Add(colliderComponent);
-
             /* set up our heightmap and plane */
-
-            /* temporarily uncommented
             heightmap = new UnmanagedArray<float>(DEFAULT_WIDTH * DEFAULT_HEIGHT);
             for (int i = 0; i < heightmap.Length; ++i) {
                 heightmap[i] = 0.0f;
             }
 
             var heightfield = new HeightfieldColliderShape(
-                DEFAULT_WIDTH*2, DEFAULT_HEIGHT*2, heightmap,
+                DEFAULT_WIDTH, DEFAULT_HEIGHT, heightmap,
                 heightScale: 1.0f,
                 minHeight: -64.0f,
                 maxHeight: 64.0f,
                 flipQuadEdges: false
             );
-            */
 
-            /* HACK: necessary because of.. reasons? (without this it will complain of having no collider shape) */
-            // colliderComponent.ColliderShapes.Add(new BoxColliderShapeDesc());
+            heightfield.LocalOffset = new Vector3(DEFAULT_WIDTH / 2, 0.0f, DEFAULT_HEIGHT / 2);
 
-            /* this is here because the collider component is what ends up loading the bullet physics dll,
-             * if we create the collider shape before the component, bullet will not have loaded yet. */
-            // colliderComponent.ColliderShape = heightfield;
+            // without this, the LocalOffset is not applied
+            heightfield.UpdateLocalTransformations();
 
-            // Entity.Add(colliderComponent);
+            colliderComponent.ColliderShape = heightfield;
+            Entity.Add(colliderComponent);
 
             /* set up our mesh */
             vertices = GenerateSubdividedPlaneMesh(
@@ -444,6 +469,7 @@ namespace XenkoByteSized.ProceduralMesh {
             modifier = new TerrainModifier(vertices);
             modifier.OnModifyEvent += UpdateMeshData;
             modifier.OnModifyEvent += () => CalculateNormals(vertices);
+            modifier.OnModifyEvent += () => CalculateHeightdata(vertices, heightmap); /* FIXME: this is real daft */
 
             /* create our ModelComponent and add the mesh to it */
             modelComponent = new ModelComponent() {

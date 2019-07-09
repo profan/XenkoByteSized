@@ -11,6 +11,7 @@ Hierarchy:
         - ref!! a53a33f5-81a6-432c-ab62-567c2b106ce0
         - ref!! b58a5aad-0f4d-4381-a743-564deebf3c3a
         - ref!! 5fbe19a4-bc8c-491e-bd19-4fd5ef78a5d8
+        - ref!! 836162b7-4ef7-467a-9212-2830010597d3
     Parts:
         -   Entity:
                 Id: 5fbe19a4-bc8c-491e-bd19-4fd5ef78a5d8
@@ -29,6 +30,19 @@ Hierarchy:
                         Id: 96b8c2f2-8fa8-4c7e-9393-5f65fbc247be
                         Type: !LightSkybox
                             Skybox: 76aea3e2-991a-48f1-8a00-726296989466:Skybox
+        -   Entity:
+                Id: 836162b7-4ef7-467a-9212-2830010597d3
+                Name: PhysicsDebug
+                Components:
+                    8d6e812e8984bc9ac0230df85f70400f: !TransformComponent
+                        Id: 82e56220-8ccd-4314-88ca-5b2d107e17e0
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    28c1d8a726b82c3dfd202a051a4aa900: !XenkoByteSized.DebugPhysicsShapes,XenkoByteSized
+                        Id: 4fa1b4a9-1e72-4357-8481-9609a9f6cabe
+                        RenderGroup: Group7
         -   Entity:
                 Id: a53a33f5-81a6-432c-ab62-567c2b106ce0
                 Name: Camera
