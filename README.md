@@ -30,8 +30,9 @@ Has some basic operations possible like:
  * Raising/Lowering terrain (Left/Middle Mouse)
  * Smoothing terrain (Shift + Left Mouse)
  * Leveling terrain (Ctrl + Left Mouse)
+ * Dropping orbs on the terrain (Spacebar)
 
-(scrollwheel to change marker radius for the above)
+(scrollwheel to change marker radius for terrain) 
 
 Can also be observed in the same scene
 
