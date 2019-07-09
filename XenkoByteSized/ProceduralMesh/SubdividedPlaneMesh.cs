@@ -23,7 +23,7 @@ namespace XenkoByteSized.ProceduralMesh {
             const int MSG_HEIGHT = 16;
             const int MAX_MESSAGES = 32;
             static string[] messages = new string[MAX_MESSAGES];
-            static Int2 initialOffset = new Int2(16, 128);
+            static Int2 initialOffset = new Int2(16, 160);
             static int curPos = 0;
 
             public static void Clear() {
@@ -192,6 +192,10 @@ namespace XenkoByteSized.ProceduralMesh {
         const int DEFAULT_WIDTH = 64;
         const int DEFAULT_HEIGHT = 64;
         const int DEFAULT_SUBDIVISIONS = 1;
+
+        /* ORB */
+        Prefab orbPrefab;
+        float orbSpawnHeight = 2.0f;
 
         /* plane mesh data */
         private VertexPositionNormalTexture[] vertices;
@@ -362,11 +366,12 @@ namespace XenkoByteSized.ProceduralMesh {
             float dt = (float)Game.TargetElapsedTime.TotalSeconds;
 
             /* draw some debug stuff */
-            DebugText.Print($"Modifier Radius: {modifier.Radius} (scrollwheel to adjust)", new Int2(16, 16));
-            DebugText.Print("- Left Mouse + Left Control to Flatten", new Int2(16, 32));
-            DebugText.Print("- Left Mouse + Left Shift to Smoothen", new Int2(16, 48));
+            DebugText.Print($"Modifier Radius: {modifier.Radius} (Scrollwheel to adjust)", new Int2(16, 16));
+            DebugText.Print("- Left Mouse + Left Control to flatten", new Int2(16, 32));
+            DebugText.Print("- Left Mouse + Left Shift to smoothen", new Int2(16, 48));
             DebugText.Print("- Left Mouse to raise terrain", new Int2(16, 64));
             DebugText.Print("- Middle Mouse to lower terrain", new Int2(16, 80));
+            DebugText.Print($"- Spacebar to ORB (spawns at height: {orbSpawnHeight}) \n - adjust height with Left Alt + Scrollwheel", new Int2(16, 96));
 
             if (Input.IsMouseButtonDown(MouseButton.Left) && Input.IsKeyDown(Keys.LeftCtrl)) {
 
@@ -412,12 +417,32 @@ namespace XenkoByteSized.ProceduralMesh {
                     modifier.Modify(localHitPos.XZ(), modifier.Radius, UNITS_PER_SECOND * dt);
                 }
 
+            } else if (Input.IsKeyPressed(Keys.Space)) {
+
+                var worldPosHit = Utils.ScreenPositionToWorldPositionRaycast(screenPos, CurrentCamera, this.GetSimulation());
+                var hitPos = worldPosHit.Point;
+
+                if (worldPosHit.Succeeded) {
+                    var newOrbInstance = orbPrefab.Instantiate();
+                    var orb = newOrbInstance[0];
+                    orb.Transform.Position = hitPos;
+                    orb.Transform.Position.Y += orbSpawnHeight;
+                    var orbScript = orb.Get<OrbScript>();
+                    orbScript.BoundingBox.Minimum = new Vector3(0, -64.0f, 0);
+                    orbScript.BoundingBox.Maximum = new Vector3(DEFAULT_WIDTH, 64.0f, DEFAULT_HEIGHT);
+                    Entity.Scene.Entities.Add(orb);
+                }
+
             }
 
             foreach (InputEvent ev in Input.Events) {
                 switch (ev) {
                     case MouseWheelEvent mw:
-                        modifier.Radius += mw.WheelDelta * CHANGE_PER_SECOND * dt;
+                        if (Input.IsKeyDown(Keys.LeftAlt)) {
+                            orbSpawnHeight += mw.WheelDelta * CHANGE_PER_SECOND * dt;
+                        } else {
+                            modifier.Radius += mw.WheelDelta * CHANGE_PER_SECOND * dt;
+                        }
                         break;
                 }
             }
@@ -427,6 +452,9 @@ namespace XenkoByteSized.ProceduralMesh {
         }
 
         public override void Start() {
+
+            /* loade ZE ORB */
+            orbPrefab = Content.Load<Prefab>("Scenes/SubdividedPlaneScene/ORB");
 
             /* init our bad debug helper and clear it */
             StaticDebug.debug = DebugText;
@@ -484,6 +512,7 @@ namespace XenkoByteSized.ProceduralMesh {
 
         // FIXME: can this be done differently? its not a hack but..
         public override void Cancel() {
+            Content.Unload("Scenes/SubdividedPlaneScene/ORB");
             mesh.Draw.VertexBuffers[0].Buffer.Dispose();
         }
 

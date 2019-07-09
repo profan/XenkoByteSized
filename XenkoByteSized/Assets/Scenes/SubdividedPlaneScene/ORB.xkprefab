@@ -1,0 +1,47 @@
+!PrefabAsset
+Id: a34a0344-7c29-46ff-a341-fe2daacd3684
+SerializedVersion: {Xenko: 3.1.0.1}
+Tags: []
+Hierarchy:
+    RootParts:
+        - ref!! fbf9709f-3a46-4753-ab55-4731c550e16c
+    Parts:
+        -   Entity:
+                Id: fbf9709f-3a46-4753-ab55-4731c550e16c
+                Name: ORB
+                Components:
+                    5708a2f0cd3625c07432665e0e8c677a: !TransformComponent
+                        Id: 5b86a34c-b811-4ac4-a878-4e5b2e06eafc
+                        Position: {X: 0.0, Y: 0.0, Z: 0.0}
+                        Rotation: {X: 0.0, Y: 0.0, Z: 0.0, W: 1.0}
+                        Scale: {X: 1.0, Y: 1.0, Z: 1.0}
+                        Children: {}
+                    9d948f283bd0f2cc37b272265ca81274: !ModelComponent
+                        Id: 0a5fc7c7-0238-4010-8ed5-4a88c2614923
+                        Model: 9ae224a2-16ff-4a06-89b6-fde32293329a:Sphere
+                        Materials: {}
+                    94258b02672a452e02732766ab4c669f: !RigidbodyComponent
+                        Id: bdcc25b6-799c-4a99-a462-8441d291f8fa
+                        CanSleep: false
+                        Restitution: 0.0
+                        Friction: 0.5
+                        RollingFriction: 0.0
+                        CcdMotionThreshold: 0.0
+                        CcdSweptSphereRadius: 0.0
+                        IsTrigger: false
+                        IsKinematic: false
+                        Mass: 1.0
+                        LinearDamping: 0.0
+                        AngularDamping: 0.0
+                        OverrideGravity: false
+                        Gravity: {X: 0.0, Y: 0.0, Z: 0.0}
+                        NodeName: null
+                        ColliderShapes:
+                            44e86ab1d3def7033caf5510b05ed3b1: !SphereColliderShapeDesc
+                                Is2D: false
+                                LocalOffset: {X: 0.0, Y: 0.0, Z: 0.0}
+                    d5f00887c4a69bdc351bf5b2c6dcb798: !XenkoByteSized.OrbScript,XenkoByteSized
+                        Id: a8d38275-0b7c-40d6-b271-76c3e929b8b9
+                        BoundingBox:
+                            Minimum: {X: 0.0, Y: 0.0, Z: 0.0}
+                            Maximum: {X: 0.0, Y: 0.0, Z: 0.0}
